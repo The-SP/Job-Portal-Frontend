@@ -1,37 +1,40 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import axiosInstance from "../axios_instance";
+import axiosInstance from "../../axios_instance";
 
-const Login = () => {
+const Signup = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
   const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!email || !password) {
+    if (!email || !password || !name) {
       // Empty fields
-      setError("Email or Password is invalid.");
+      setError("Username, Email or Password is empty.");
       return;
     }
-
     axiosInstance
-      .post("auth/jwt/create/", { email: email, password: password })
+      .post("auth/users/", {
+        email: email,
+        password: password,
+        re_password: password,
+        name: name,
+      })
       .then((res) => {
-        localStorage.setItem("access_token", res.data.access);
-        localStorage.setItem("refresh_token", res.data.refresh);
-        axiosInstance.defaults.headers["Authorization"] =
-          "JWT " + localStorage.getItem("access_token");
-        navigate("/");
+        navigate("/login");
+        console.log("New user account created:", name, email);
         setError("");
       })
       .catch((err) => {
-        console.log("Login error", err.request.responseText);
-        setError("Email or Password is invalid.");
+        console.log("Register error", err.request.responseText);
+        setError("Username, Email or Password is invalid.");
       });
     setEmail("");
     setPassword("");
+    setName("");
   };
 
   return (
@@ -45,7 +48,7 @@ const Login = () => {
             >
               <div className="card-body p-5 text-center">
                 <div className="pb-5">
-                  <h2 className="fw-bold mb-2 text-uppercase">Login</h2>
+                  <h2 className="fw-bold mb-2 text-uppercase">Sign Up</h2>
                   <p className="text-white-50 mb-5">
                     Please enter your login and password!
                   </p>
@@ -66,6 +69,19 @@ const Login = () => {
 
                   <div className="form-outline form-white mb-4">
                     <input
+                      type="text"
+                      id="typeUsernameX"
+                      className="form-control form-control-lg"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                    />
+                    <label className="form-label" htmlFor="typeUsernameX">
+                      Full Name
+                    </label>
+                  </div>
+
+                  <div className="form-outline form-white mb-4">
+                    <input
                       type="password"
                       id="typePasswordX"
                       className="form-control form-control-lg"
@@ -79,29 +95,20 @@ const Login = () => {
 
                   <div className="error text-danger fw-bold mb-4">{error}</div>
 
-                  <p className="small mb-4 pb-lg-2">
-                    <Link
-                      to="/reset-password"
-                      className="text-white-50 fw-bold"
-                    >
-                      Forgot password?
-                    </Link>
-                  </p>
-
                   <button
                     className="btn btn-outline-light btn-lg px-5"
                     type="submit"
                     onClick={handleSubmit}
                   >
-                    Login
+                    Sign Up
                   </button>
                 </div>
 
                 <div>
                   <p className="mb-0">
-                    Don't have an account?{" "}
-                    <Link to="/signup" className="text-white-50 fw-bold">
-                      Sign Up
+                    Already have an account?{" "}
+                    <Link to="/login" className="text-white-50 fw-bold">
+                      Login
                     </Link>
                   </p>
                 </div>
@@ -114,4 +121,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;

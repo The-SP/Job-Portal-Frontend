@@ -1,40 +1,41 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import axiosInstance from "../axios_instance";
+import axiosInstance from "../../axios_instance";
+import AuthContext from "../../context/AuthContext";
 
-const Signup = () => {
+const Login = () => {
   const navigate = useNavigate();
+  const { setIsLoggedIn } = useContext(AuthContext);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
   const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!email || !password || !name) {
+    if (!email || !password) {
       // Empty fields
-      setError("Username, Email or Password is empty.");
+      setError("Email or Password is invalid.");
       return;
     }
+
     axiosInstance
-      .post("auth/users/", {
-        email: email,
-        password: password,
-        re_password: password,
-        name: name,
-      })
+      .post("auth/jwt/create/", { email: email, password: password })
       .then((res) => {
-        navigate("/login");
-        console.log("New user account created:", name, email);
+        localStorage.setItem("access_token", res.data.access);
+        localStorage.setItem("refresh_token", res.data.refresh);
+        axiosInstance.defaults.headers["Authorization"] =
+          "JWT " + localStorage.getItem("access_token");
+        setIsLoggedIn(true);
+        navigate("/");
         setError("");
       })
       .catch((err) => {
-        console.log("Register error", err.request.responseText);
-        setError("Username, Email or Password is invalid.");
+        console.log("Login error", err.request.responseText);
+        setError("Email or Password is invalid.");
       });
     setEmail("");
     setPassword("");
-    setName("");
   };
 
   return (
@@ -48,7 +49,7 @@ const Signup = () => {
             >
               <div className="card-body p-5 text-center">
                 <div className="pb-5">
-                  <h2 className="fw-bold mb-2 text-uppercase">Sign Up</h2>
+                  <h2 className="fw-bold mb-2 text-uppercase">Login</h2>
                   <p className="text-white-50 mb-5">
                     Please enter your login and password!
                   </p>
@@ -69,19 +70,6 @@ const Signup = () => {
 
                   <div className="form-outline form-white mb-4">
                     <input
-                      type="text"
-                      id="typeUsernameX"
-                      className="form-control form-control-lg"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                    />
-                    <label className="form-label" htmlFor="typeUsernameX">
-                      Full Name
-                    </label>
-                  </div>
-
-                  <div className="form-outline form-white mb-4">
-                    <input
                       type="password"
                       id="typePasswordX"
                       className="form-control form-control-lg"
@@ -95,20 +83,29 @@ const Signup = () => {
 
                   <div className="error text-danger fw-bold mb-4">{error}</div>
 
+                  <p className="small mb-4 pb-lg-2">
+                    <Link
+                      to="/reset-password"
+                      className="text-white-50 fw-bold"
+                    >
+                      Forgot password?
+                    </Link>
+                  </p>
+
                   <button
                     className="btn btn-outline-light btn-lg px-5"
                     type="submit"
                     onClick={handleSubmit}
                   >
-                    Sign Up
+                    Login
                   </button>
                 </div>
 
                 <div>
                   <p className="mb-0">
-                    Already have an account?{" "}
-                    <Link to="/login" className="text-white-50 fw-bold">
-                      Login
+                    Don't have an account?{" "}
+                    <Link to="/signup" className="text-white-50 fw-bold">
+                      Sign Up
                     </Link>
                   </p>
                 </div>
@@ -121,4 +118,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Login;

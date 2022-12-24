@@ -1,21 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import axiosInstance from "../axios_instance";
 
-const Home = () => (
-  <div className="container">
-    <div class="jumbotron mt-5">
-      <h1 class="display-4">Welcome to Auth System!</h1>
-      <p class="lead">
-        This is an incredible authentication system with production level
-        features!
-      </p>
-      <hr class="my-4" />
-      <p>Click the Log In button</p>
-      <Link class="btn btn-primary btn-lg" to="/login" role="button">
-        Login
-      </Link>
+const Home = () => {
+  const [current_user, setCurrentUser] = useState(null);
+  useEffect(() => {
+    axiosInstance
+      .get("auth/users/me/")
+      .then((res) => {
+        console.log("Current logged in user:", res.data);
+        setCurrentUser(res.data);
+      })
+      .catch((err) => console.log("Fetch logged in user error:", err));
+  }, []);
+
+  return (
+    <div className="container">
+      <div class="jumbotron mt-5">
+        {current_user && <h1 class="display-4">Welcome {current_user.name}</h1>}
+
+        {!current_user && (
+          <Link class="btn btn-primary btn-lg" to="/login" role="button">
+            Login
+          </Link>
+        )}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default Home;

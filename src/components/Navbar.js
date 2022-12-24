@@ -1,6 +1,33 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import AuthContext from "../context/AuthContext";
 
 const Navbar = () => {
+  const { isLoggedIn } = useContext(AuthContext);
+
+  const authLinks = () => (
+    <>
+      {isLoggedIn && (
+        <Link className="nav-link" to="/logout">
+          Logout
+        </Link>
+      )}
+      <Link className="nav-link" to="/reset-password">
+        Reset-Password
+      </Link>
+    </>
+  );
+  const guestLinks = () => (
+    <>
+      <Link className="nav-link" to="/signup">
+        Signup
+      </Link>
+      <Link className="nav-link" to="/login">
+        Login
+      </Link>
+    </>
+  );
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
@@ -21,18 +48,7 @@ const Navbar = () => {
 
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav ms-auto">
-            <Link className="nav-link" to="/signup">
-              Signup
-            </Link>
-            <Link className="nav-link" to="/login">
-              Login
-            </Link>
-            <Link className="nav-link" to="/logout">
-              Logout
-            </Link>
-            <Link className="nav-link" to="/reset-password">
-              Reset-Password
-            </Link>
+            {isLoggedIn ? authLinks() : guestLinks()}
           </div>
         </div>
       </div>
