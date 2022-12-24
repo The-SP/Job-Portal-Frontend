@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import axiosInstance from "../axios_instance";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -14,23 +15,21 @@ const Login = () => {
       setError("Email or Password is invalid.");
       return;
     }
-    //   axiosInstance
-    //     .post("token/", {
-    //       email: email,
-    //       password: password,
-    //     })
-    //     .then((res) => {
-    //       localStorage.setItem("access_token", res.data.access);
-    //       localStorage.setItem("refresh_token", res.data.refresh);
-    //       axiosInstance.defaults.headers["Authorization"] =
-    //         "JWT " + localStorage.getItem("access_token");
-    //       navigate("/");
-    //       setError("");
-    //     })
-    //     .catch((err) => {
-    //       console.log("Login error", err.request.responseText);
-    //       setError("Email or Password is invalid.");
-    //     });
+
+    axiosInstance
+      .post("auth/jwt/create/", { email: email, password: password })
+      .then((res) => {
+        localStorage.setItem("access_token", res.data.access);
+        localStorage.setItem("refresh_token", res.data.refresh);
+        axiosInstance.defaults.headers["Authorization"] =
+          "JWT " + localStorage.getItem("access_token");
+        navigate("/");
+        setError("");
+      })
+      .catch((err) => {
+        console.log("Login error", err.request.responseText);
+        setError("Email or Password is invalid.");
+      });
     setEmail("");
     setPassword("");
   };

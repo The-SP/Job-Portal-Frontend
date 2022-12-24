@@ -27,6 +27,9 @@ const Navbar = () => {
             <Link className="nav-link" to="/login">
               Login
             </Link>
+            <Link className="nav-link" to="/logout">
+              Logout
+            </Link>
             <Link className="nav-link" to="/reset-password">
               Reset-Password
             </Link>

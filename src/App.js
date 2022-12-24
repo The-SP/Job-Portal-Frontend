@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import Logout from "./pages/Logout";
 import Signup from "./pages/Signup";
 import ResetPassword from "./pages/ResetPassword";
 import ResetPasswordConfirm from "./pages/ResetPasswordConfirm";
@@ -15,6 +16,7 @@ const App = () => (
     <Routes>
       <Route exact path="/" element={<Home />} />
       <Route exact path="/login" element={<Login />} />
+      <Route exact path="/logout" element={<Logout />} />
       <Route exact path="/signup" element={<Signup />} />
       <Route exact path="/reset-password" element={<ResetPassword />} />
       <Route
