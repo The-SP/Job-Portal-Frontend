@@ -13,7 +13,6 @@ const ResetPassword = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!new_password || !re_new_password) {
-      // Empty fields
       setError("Must provide a new password.");
       return;
     } else if (new_password !== re_new_password) {
@@ -30,7 +29,9 @@ const ResetPassword = () => {
       })
       .then((res) => navigate("/login"))
       .catch((err) => {
-        console.log(err);
+        // console.log(err.request.responseText);
+        if (err.response.data.new_password) setError(err.response.data.new_password[0]);
+        else setError("Password is weak.");
       });
     setNewPassword("");
     setReNewPassword("");

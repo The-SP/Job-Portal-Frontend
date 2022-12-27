@@ -10,17 +10,20 @@ const ResetPassword = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!email) {
-      // Empty fields
-      setError("Email is invalid.");
+      setError("Email is required.");
       return;
     }
 
-    axiosInstance.post("auth/users/reset_password/", { email }).catch((err) => {
-      console.log(err);
-    });
+    axiosInstance
+      .post("auth/users/reset_password/", { email })
+      .then((res) => setRequestSent(true))
+      .catch((err) => {
+        //   console.log(err);
+        if (err.response.data.email) setError(err.response.data.email[0]);
+        else setError("Email is invalid.");
+      });
     setEmail("");
     setError("");
-    setRequestSent(true);
   };
 
   if (requestSent) return <Navigate to="/" />;

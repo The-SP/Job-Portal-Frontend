@@ -12,8 +12,7 @@ const Signup = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!email || !password || !name) {
-      // Empty fields
-      setError("Username, Email or Password is empty.");
+      setError("Please fill out all fields.");
       return;
     }
     axiosInstance
@@ -29,8 +28,15 @@ const Signup = () => {
         setError("");
       })
       .catch((err) => {
-        console.log("Register error", err.request.responseText);
-        setError("Username, Email or Password is invalid.");
+        // console.log(err.request.responseText);
+        // console.log(err.response.data.email, err.response.data.password);
+
+        let newErrorMessage = "Email or Password is invalid.";
+        if (err.response.data.email)
+          newErrorMessage = err.response.data.email[0];
+        else if (err.response.data.password)
+          newErrorMessage = err.response.data.password[0];
+        setError(newErrorMessage);
       });
     setEmail("");
     setPassword("");
@@ -93,7 +99,9 @@ const Signup = () => {
                     </label>
                   </div>
 
-                  <div className="error text-danger fw-bold mb-4">{error}</div>
+                  <div className="error text-danger fw-bold mb-4">
+                    {error}
+                  </div>
 
                   <button
                     className="btn btn-outline-light btn-lg px-5"

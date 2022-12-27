@@ -14,8 +14,7 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!email || !password) {
-      // Empty fields
-      setError("Email or Password is invalid.");
+      setError("Please fill out all fields.");
       return;
     }
 
@@ -31,7 +30,7 @@ const Login = () => {
         setError("");
       })
       .catch((err) => {
-        console.log("Login error", err.request.responseText);
+        // console.log("Login error", err.request.responseText);
         setError("Email or Password is invalid.");
       });
     setEmail("");
