@@ -12,9 +12,6 @@ const Navbar = () => {
           Logout
         </Link>
       )}
-      <Link className="nav-link" to="/reset-password">
-        Reset-Password
-      </Link>
     </>
   );
   const guestLinks = () => (
