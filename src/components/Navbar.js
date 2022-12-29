@@ -7,11 +7,12 @@ const Navbar = () => {
 
   const authLinks = () => (
     <>
-      {isLoggedIn && (
-        <Link className="nav-link" to="/logout">
-          Logout
-        </Link>
-      )}
+      <Link className="nav-link" to="/profile">
+        Profile
+      </Link>
+      <Link className="nav-link" to="/logout">
+        Logout
+      </Link>
     </>
   );
   const guestLinks = () => (
