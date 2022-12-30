@@ -1,6 +1,8 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
+import { AuthProvider } from "./context/AuthContext";
+
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Login from "./pages/user/Login";
@@ -9,8 +11,7 @@ import Signup from "./pages/user/Signup";
 import ResetPassword from "./pages/user/ResetPassword";
 import ResetPasswordConfirm from "./pages/user/ResetPasswordConfirm";
 import Profile from "./pages/profile/Profile";
-
-import { AuthProvider } from "./context/AuthContext";
+import ProfileUpdate from "./pages/profile/ProfileUpdate";
 
 const App = () => (
   <BrowserRouter>
@@ -31,6 +32,7 @@ const App = () => (
         />
         {/* profile pages */}
         <Route exact path="/profile" element={<Profile />} />
+        <Route exact path="/profile/update" element={<ProfileUpdate />} />
       </Routes>
     </AuthProvider>
   </BrowserRouter>

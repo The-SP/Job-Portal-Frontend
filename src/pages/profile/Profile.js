@@ -9,7 +9,7 @@ const Profile = () => {
     axiosInstance
       .get("user/profile/detail/")
       .then((res) => {
-        console.table("Res:", res.data);
+        // console.table("Res:", res.data);
         setProfile(res.data);
       })
       .catch((err) => console.log(err));
@@ -21,26 +21,27 @@ const Profile = () => {
     <div className="container-fluid py-5 px-5">
       <div className="row">
         <div className="col-4 d-flex align-items-center">
-          <div className="card text-center" style={{ width: "18rem" }}>
+          <div className="card text-center p-2" style={{ width: "18rem" }}>
             <img
-              src="https://via.placeholder.com/50"
+              src="https://via.placeholder.com/30"
               className="card-img-top rounded-circle"
               alt="Profile Pic"
             />
             <div className="card-body">
-              <h5 className="card-title">{profile && profile.first_name}</h5>
+              <h5 className="card-title">{profile.first_name}</h5>
               <p className="card-text">
                 Full Stack Developer
                 <br />
                 Kathmandu, Nepal
               </p>
-              <Link to="#" className="btn btn-primary">
+              <Link to="/profile/update" className="btn btn-primary">
                 Update
               </Link>
             </div>
           </div>
         </div>
         <div className="col-8">
+          {/* Loop through the profile response */}
           {Object.entries(profile).map(([key, value]) => (
             <div key={key}>
               <div className="row">
@@ -52,9 +53,9 @@ const Profile = () => {
               <hr />
             </div>
           ))}
-        <Link to="#" className="btn btn-outline-primary">
-          Update
-        </Link>
+          <Link to="/profile/update" className="btn btn-outline-primary">
+            Update
+          </Link>
         </div>
       </div>
     </div>
