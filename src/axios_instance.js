@@ -4,7 +4,7 @@ const baseURL = "http://127.0.0.1:8000/";
 
 const axiosInstance = axios.create({
   baseURL: baseURL,
-  timeout: 5000,
+  timeout: 10000, // 10sec
   headers: {
     Authorization: localStorage.getItem("access_token")
       ? "JWT " + localStorage.getItem("access_token")
