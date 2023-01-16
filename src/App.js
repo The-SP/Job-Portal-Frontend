@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Login from "./pages/user/Login";
 import Logout from "./pages/user/Logout";
 import Signup from "./pages/user/Signup";
+import EmployerSignup from "./pages/user/EmployerSignup";
 import ResetPassword from "./pages/user/ResetPassword";
 import ResetPasswordConfirm from "./pages/user/ResetPasswordConfirm";
 import Profile from "./pages/profile/Profile";
@@ -24,6 +25,7 @@ const App = () => (
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/logout" element={<Logout />} />
         <Route exact path="/signup" element={<Signup />} />
+        <Route exact path="/signup-employer" element={<EmployerSignup />} />
         <Route exact path="/reset-password" element={<ResetPassword />} />
         <Route
           exact

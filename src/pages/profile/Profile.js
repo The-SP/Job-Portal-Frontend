@@ -7,7 +7,7 @@ const Profile = () => {
 
   useEffect(() => {
     axiosInstance
-      .get("user/profile/detail/")
+      .get("api/profile/")
       .then((res) => {
         // console.table("Res:", res.data);
         setProfile(res.data);

@@ -8,7 +8,7 @@ const ProfileUpdate = () => {
 
   useEffect(() => {
     axiosInstance
-      .get("user/profile/detail/")
+      .get("api/profile/")
       .then((res) => {
         setProfile(res.data);
       })
@@ -30,7 +30,7 @@ const ProfileUpdate = () => {
     if (!profileData.first_name) profileData.first_name = profile.first_name;
 
     axiosInstance
-      .put("user/profile/detail/", profileData)
+      .put("api/profile/", profileData)
       .then((res) => {
         navigate("/profile");
       })

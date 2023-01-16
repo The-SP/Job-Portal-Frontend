@@ -18,7 +18,10 @@ const Navbar = () => {
   const guestLinks = () => (
     <>
       <Link className="nav-link" to="/signup">
-        Signup
+        Seeker
+      </Link>
+      <Link className="nav-link" to="/signup-employer">
+        Employer
       </Link>
       <Link className="nav-link" to="/login">
         Login
@@ -30,7 +33,7 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
-          Web Auth System
+          Job Hunter
         </Link>
         <button
           className="navbar-toggler"
