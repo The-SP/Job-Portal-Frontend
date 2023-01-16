@@ -7,6 +7,12 @@ const Navbar = () => {
 
   const authLinks = () => (
     <>
+      <Link className="nav-link" to="/jobs/create">
+        CreateJob
+      </Link>
+      <Link className="nav-link" to="/jobs/employer">
+        YourJobs
+      </Link>
       <Link className="nav-link" to="/profile">
         Profile
       </Link>
@@ -49,6 +55,9 @@ const Navbar = () => {
 
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav ms-auto">
+            <Link className="nav-link" to="/jobs">
+              Jobs
+            </Link>
             {isLoggedIn ? authLinks() : guestLinks()}
           </div>
         </div>

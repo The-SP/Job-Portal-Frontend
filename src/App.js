@@ -13,6 +13,10 @@ import ResetPassword from "./pages/user/ResetPassword";
 import ResetPasswordConfirm from "./pages/user/ResetPasswordConfirm";
 import Profile from "./pages/profile/Profile";
 import ProfileUpdate from "./pages/profile/ProfileUpdate";
+import JobList from "./pages/jobs/JobList";
+import JobDetail from "./pages/jobs/JobDetail";
+import JobCreate from "./pages/jobs/JobCreate";
+import EmployerJobList from "./pages/jobs/EmployerJobList";
 
 const App = () => (
   <BrowserRouter>
@@ -35,6 +39,11 @@ const App = () => (
         {/* profile pages */}
         <Route exact path="/profile" element={<Profile />} />
         <Route exact path="/profile/update" element={<ProfileUpdate />} />
+        {/* Job pages */}
+        <Route exact path="/jobs" element={<JobList />} />
+        <Route exact path="/jobs/employer" element={<EmployerJobList />} />
+        <Route exact path="/jobs/:id" element={<JobDetail />} />
+        <Route exact path="/jobs/create" element={<JobCreate />} />
       </Routes>
     </AuthProvider>
   </BrowserRouter>
