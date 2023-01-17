@@ -13,8 +13,11 @@ const Navbar = () => {
       <Link className="nav-link" to="/jobs/employer">
         YourJobs
       </Link>
-      <Link className="nav-link" to="/profile">
-        Profile
+      <Link className="nav-link" to="/profile/seeker">
+        SeekerProfile
+      </Link>
+      <Link className="nav-link" to="/profile/employer">
+        EmployerProfile
       </Link>
       <Link className="nav-link" to="/logout">
         Logout

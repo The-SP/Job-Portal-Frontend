@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axiosInstance from "../../axios_instance";
 
-const Profile = () => {
+const EmployerProfile = () => {
   const [profile, setProfile] = useState(null);
 
   useEffect(() => {
     axiosInstance
-      .get("api/profile/")
+      .get("api/profile/employer/")
       .then((res) => {
         // console.table("Res:", res.data);
         setProfile(res.data);
@@ -28,13 +28,13 @@ const Profile = () => {
               alt="Profile Pic"
             />
             <div className="card-body">
-              <h5 className="card-title">{profile.first_name}</h5>
+              <h5 className="card-title">{profile.company_name}</h5>
               <p className="card-text">
-                Full Stack Developer
+                Logpoint
                 <br />
                 Kathmandu, Nepal
               </p>
-              <Link to="/profile/update" className="btn btn-primary">
+              <Link to="/profile/employer/update" className="btn btn-primary">
                 Update
               </Link>
             </div>
@@ -53,7 +53,10 @@ const Profile = () => {
               <hr />
             </div>
           ))}
-          <Link to="/profile/update" className="btn btn-outline-primary">
+          <Link
+            to="/profile/employer/update"
+            className="btn btn-outline-primary"
+          >
             Update
           </Link>
         </div>
@@ -62,4 +65,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default EmployerProfile;

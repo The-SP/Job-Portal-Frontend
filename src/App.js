@@ -5,14 +5,19 @@ import { AuthProvider } from "./context/AuthContext";
 
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
+// Auth
 import Login from "./pages/user/Login";
 import Logout from "./pages/user/Logout";
 import Signup from "./pages/user/Signup";
 import EmployerSignup from "./pages/user/EmployerSignup";
 import ResetPassword from "./pages/user/ResetPassword";
 import ResetPasswordConfirm from "./pages/user/ResetPasswordConfirm";
-import Profile from "./pages/profile/Profile";
-import ProfileUpdate from "./pages/profile/ProfileUpdate";
+// Profile
+import SeekerProfile from "./pages/profile/SeekerProfile";
+import SeekerProfileUpdate from "./pages/profile/SeekerProfileUpdate";
+import EmployerProfile from "./pages/profile/EmployerProfile";
+import EmployerProfileUpdate from "./pages/profile/EmployerProfileUpdate";
+// Jobs
 import JobList from "./pages/jobs/JobList";
 import JobDetail from "./pages/jobs/JobDetail";
 import JobCreate from "./pages/jobs/JobCreate";
@@ -37,13 +42,15 @@ const App = () => (
           element={<ResetPasswordConfirm />}
         />
         {/* profile pages */}
-        <Route exact path="/profile" element={<Profile />} />
-        <Route exact path="/profile/update" element={<ProfileUpdate />} />
+        <Route exact path="/profile/seeker" element={<SeekerProfile />} />
+        <Route exact path="/profile/seeker/update" element={<SeekerProfileUpdate />} />
+        <Route exact path="/profile/employer" element={<EmployerProfile />} />
+        <Route exact path="/profile/employer/update" element={<EmployerProfileUpdate />} />
         {/* Job pages */}
         <Route exact path="/jobs" element={<JobList />} />
-        <Route exact path="/jobs/employer" element={<EmployerJobList />} />
         <Route exact path="/jobs/:id" element={<JobDetail />} />
         <Route exact path="/jobs/create" element={<JobCreate />} />
+        <Route exact path="/jobs/employer" element={<EmployerJobList />} />
       </Routes>
     </AuthProvider>
   </BrowserRouter>

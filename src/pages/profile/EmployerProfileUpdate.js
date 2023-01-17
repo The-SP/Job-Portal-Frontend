@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axiosInstance from "../../axios_instance";
 
-const ProfileUpdate = () => {
+const EmployerProfileUpdate = () => {
   const navigate = useNavigate();
   const [profile, setProfile] = useState(null);
 
   useEffect(() => {
     axiosInstance
-      .get("api/profile/")
+      .get("api/profile/employer/")
       .then((res) => {
         setProfile(res.data);
       })
@@ -26,13 +26,14 @@ const ProfileUpdate = () => {
       // If the value is empty, insert as null. Otherwise it is ignored by put request.
       else if (value === "") profileData[key] = null;
     }
-    // first_name is a required field, so if it is empty just use previous value
-    if (!profileData.first_name) profileData.first_name = profile.first_name;
+    // company_name is a required field, so if it is empty just use previous value
+    if (!profileData.company_name)
+      profileData.company_name = profile.company_name;
 
     axiosInstance
-      .put("api/profile/", profileData)
+      .put("api/profile/employer/", profileData)
       .then((res) => {
-        navigate("/profile");
+        navigate("/profile/employer");
       })
       .catch((err) => console.log(err));
   };
@@ -50,9 +51,9 @@ const ProfileUpdate = () => {
               alt="Profile Pic"
             />
             <div className="card-body">
-              <h5 className="card-title">{profile.first_name}</h5>
+              <h5 className="card-title">{profile.company_name}</h5>
               <p className="card-text">
-                Full Stack Developer
+                Logpoint
                 <br />
                 Kathmandu, Nepal
               </p>
@@ -87,4 +88,4 @@ const ProfileUpdate = () => {
   );
 };
 
-export default ProfileUpdate;
+export default EmployerProfileUpdate;

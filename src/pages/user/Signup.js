@@ -54,7 +54,7 @@ const Signup = () => {
             >
               <div className="card-body p-5 text-center">
                 <div className="pb-5">
-                  <h2 className="fw-bold mb-2 text-uppercase">Sign Up</h2>
+                  <h2 className="fw-bold mb-2 text-uppercase">Seeker Sign Up</h2>
                   <p className="text-white-50 mb-5">
                     Please enter your login and password!
                   </p>
