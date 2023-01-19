@@ -4,8 +4,17 @@ import AuthContext from "../context/AuthContext";
 
 const Navbar = () => {
   const { isLoggedIn } = useContext(AuthContext);
-
-  const authLinks = () => (
+  const seekerLinks = () => (
+    <>
+      <Link className="nav-link" to="/profile/seeker">
+        SeekerProfile
+      </Link>
+      <Link className="nav-link" to="/logout">
+        Logout
+      </Link>
+    </>
+  );
+  const employerLinks = () => (
     <>
       <Link className="nav-link" to="/jobs/create">
         CreateJob
@@ -13,15 +22,19 @@ const Navbar = () => {
       <Link className="nav-link" to="/jobs/employer">
         YourJobs
       </Link>
-      <Link className="nav-link" to="/profile/seeker">
-        SeekerProfile
-      </Link>
       <Link className="nav-link" to="/profile/employer">
         EmployerProfile
       </Link>
       <Link className="nav-link" to="/logout">
         Logout
       </Link>
+    </>
+  );
+
+  const authLinks = () => (
+    <>
+      {seekerLinks()}
+      {employerLinks()}
     </>
   );
   const guestLinks = () => (

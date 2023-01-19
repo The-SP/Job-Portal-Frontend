@@ -19,8 +19,10 @@ import EmployerProfile from "./pages/profile/EmployerProfile";
 import EmployerProfileUpdate from "./pages/profile/EmployerProfileUpdate";
 // Jobs
 import JobList from "./pages/jobs/JobList";
-import JobDetail from "./pages/jobs/JobDetail";
 import JobCreate from "./pages/jobs/JobCreate";
+import JobDetail from "./pages/jobs/JobDetail";
+import JobUpdate from "./pages/jobs/JobUpdate";
+import JobDelete from "./pages/jobs/JobDelete";
 import EmployerJobList from "./pages/jobs/EmployerJobList";
 
 const App = () => (
@@ -43,12 +45,22 @@ const App = () => (
         />
         {/* profile pages */}
         <Route exact path="/profile/seeker" element={<SeekerProfile />} />
-        <Route exact path="/profile/seeker/update" element={<SeekerProfileUpdate />} />
+        <Route
+          exact
+          path="/profile/seeker/update"
+          element={<SeekerProfileUpdate />}
+        />
         <Route exact path="/profile/employer" element={<EmployerProfile />} />
-        <Route exact path="/profile/employer/update" element={<EmployerProfileUpdate />} />
+        <Route
+          exact
+          path="/profile/employer/update"
+          element={<EmployerProfileUpdate />}
+        />
         {/* Job pages */}
         <Route exact path="/jobs" element={<JobList />} />
         <Route exact path="/jobs/:id" element={<JobDetail />} />
+        <Route exact path="/jobs/:id/update" element={<JobUpdate />} />
+        <Route exact path="/jobs/:id/delete" element={<JobDelete />} />
         <Route exact path="/jobs/create" element={<JobCreate />} />
         <Route exact path="/jobs/employer" element={<EmployerJobList />} />
       </Routes>
