@@ -1,34 +1,37 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
+import { useState } from "react";
+import './Navbar.css'
+import {Menu} from 'react-feather';
 
 const Navbar = () => {
   const { isLoggedIn } = useContext(AuthContext);
   const seekerLinks = () => (
-    <>
-      <Link className="nav-link" to="/profile/seeker">
+    <ul>
+      <li><Link to="/profile/seeker">
         SeekerProfile
-      </Link>
-      <Link className="nav-link" to="/logout">
+      </Link></li>
+      <li><Link to="/logout">
         Logout
-      </Link>
-    </>
+      </Link></li>
+    </ul>
   );
   const employerLinks = () => (
-    <>
-      <Link className="nav-link" to="/jobs/create">
+    <ul>
+      <li><Link to="/jobs/create">
         CreateJob
-      </Link>
-      <Link className="nav-link" to="/jobs/employer">
+      </Link></li>
+      <li><Link to="/jobs/employer">
         YourJobs
-      </Link>
-      <Link className="nav-link" to="/profile/employer">
+      </Link></li>
+      <li><Link to="/profile/employer">
         EmployerProfile
-      </Link>
-      <Link className="nav-link" to="/logout">
+      </Link></li>
+      <li><Link to="/logout">
         Logout
-      </Link>
-    </>
+      </Link></li>
+    </ul>
   );
 
   const authLinks = () => (
@@ -38,47 +41,45 @@ const Navbar = () => {
     </>
   );
   const guestLinks = () => (
-    <>
-      <Link className="nav-link" to="/signup">
+    <ul>
+      <li><Link to="/signup">
         Seeker
-      </Link>
-      <Link className="nav-link" to="/signup-employer">
+      </Link></li>
+      <li><Link to="/signup-employer">
         Employer
-      </Link>
-      <Link className="nav-link" to="/login">
+      </Link></li>
+      <li><Link to="/login">
         Login
-      </Link>
-    </>
+      </Link></li>
+    </ul>
   );
 
-  return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
-          Job Hunter
-        </Link>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNavAltMarkup"
-          aria-controls="navbarNavAltMarkup"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
+  const [showMediaIcons, setShowMediaIcons] = useState(false);
 
-        <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div className="navbar-nav ms-auto">
-            <Link className="nav-link" to="/jobs">
-              Jobs
-            </Link>
-            {isLoggedIn ? authLinks() : guestLinks()}
-          </div>
+  return (
+    <div className="heroNav">
+      <nav className="mainNav">
+        <div className="logoNav">
+            <Link to="/">Job <span>Hunt</span></Link>
         </div>
-      </div>
-    </nav>
+        <div
+            className={
+              showMediaIcons ? "menu-link mobile-menu-link" : "menu-link"
+            }>
+            <ul>
+            <li><Link to="/jobs">
+                Jobs
+            </Link></li>
+            </ul>
+            {isLoggedIn ? authLinks() : guestLinks()}
+        </div>
+        <div className="hamburger-menu">
+            <a href="#" onClick={() => setShowMediaIcons(!showMediaIcons)}>
+              <Menu />
+            </a>
+        </div>
+      </nav>
+    </div>
   );
 };
 
