@@ -74,6 +74,9 @@ const Navbar = () => {
             <Link className="nav-link" to="/jobs">
               Jobs
             </Link>
+            <Link className="nav-link" to="/jobs/explore">
+              Explore
+            </Link>
             {isLoggedIn ? authLinks() : guestLinks()}
           </div>
         </div>
