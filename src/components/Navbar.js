@@ -1,36 +1,36 @@
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import { Menu } from "react-feather";
+
 import AuthContext from "../context/AuthContext";
-import { useState } from "react";
-import './Navbar.css'
-import {Menu} from 'react-feather';
+import "./Navbar.css";
 
 const Navbar = () => {
   const { isLoggedIn } = useContext(AuthContext);
   const seekerLinks = () => (
     <ul>
-      <li><Link to="/profile/seeker">
-        SeekerProfile
-      </Link></li>
-      <li><Link to="/logout">
-        Logout
-      </Link></li>
+      <li>
+        <Link to="/profile/seeker">SeekerProfile</Link>
+      </li>
+      <li>
+        <Link to="/logout">Logout</Link>
+      </li>
     </ul>
   );
   const employerLinks = () => (
     <ul>
-      <li><Link to="/jobs/create">
-        CreateJob
-      </Link></li>
-      <li><Link to="/jobs/employer">
-        YourJobs
-      </Link></li>
-      <li><Link to="/profile/employer">
-        EmployerProfile
-      </Link></li>
-      <li><Link to="/logout">
-        Logout
-      </Link></li>
+      <li>
+        <Link to="/jobs/create">CreateJob</Link>
+      </li>
+      <li>
+        <Link to="/jobs/employer">YourJobs</Link>
+      </li>
+      <li>
+        <Link to="/profile/employer">EmployerProfile</Link>
+      </li>
+      <li>
+        <Link to="/logout">Logout</Link>
+      </li>
     </ul>
   );
 
@@ -42,15 +42,15 @@ const Navbar = () => {
   );
   const guestLinks = () => (
     <ul>
-      <li><Link to="/signup">
-        Seeker
-      </Link></li>
-      <li><Link to="/signup-employer">
-        Employer
-      </Link></li>
-      <li><Link to="/login">
-        Login
-      </Link></li>
+      <li>
+        <Link to="/signup">Seeker</Link>
+      </li>
+      <li>
+        <Link to="/signup-employer">Employer</Link>
+      </li>
+      <li>
+        <Link to="/login">Login</Link>
+      </li>
     </ul>
   );
 
@@ -60,23 +60,30 @@ const Navbar = () => {
     <div className="heroNav">
       <nav className="mainNav">
         <div className="logoNav">
-            <Link to="/">Job <span>Hunt</span></Link>
+          <Link to="/">
+            Hire <span>Nepal</span>
+          </Link>
         </div>
         <div
-            className={
-              showMediaIcons ? "menu-link mobile-menu-link" : "menu-link"
-            }>
-            <ul>
-            <li><Link to="/jobs">
-                Jobs
-            </Link></li>
-            </ul>
-            {isLoggedIn ? authLinks() : guestLinks()}
+          className={
+            showMediaIcons ? "menu-link mobile-menu-link" : "menu-link"
+          }
+        >
+          <ul>
+            <li>
+              <Link to="/jobs">Jobs</Link>
+            </li>
+
+            <li>
+              <Link to="/jobs/explore">Explore</Link>
+            </li>
+          </ul>
+          {isLoggedIn ? authLinks() : guestLinks()}
         </div>
         <div className="hamburger-menu">
-            <a href="#" onClick={() => setShowMediaIcons(!showMediaIcons)}>
-              <Menu />
-            </a>
+          <a href="#" onClick={() => setShowMediaIcons(!showMediaIcons)}>
+            <Menu />
+          </a>
         </div>
       </nav>
     </div>
