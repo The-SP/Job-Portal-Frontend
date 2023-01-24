@@ -13,6 +13,9 @@ const Navbar = () => {
         <Link to="/profile/seeker">SeekerProfile</Link>
       </li>
       <li>
+        <Link to="/jobs/applications">History</Link>
+      </li>
+      <li>
         <Link to="/logout">Logout</Link>
       </li>
     </ul>

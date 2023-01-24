@@ -20,6 +20,12 @@ const EmployerJobItem = ({ job }) => {
         </Link>{" "}
         <Link to={`/jobs/${job.id}/delete`} className="btn btn-outline-danger">
           Delete Job
+        </Link>{" "}
+        <Link
+          to={`/jobs/${job.id}/applications`}
+          className="btn btn-outline-success"
+        >
+          View Applicants
         </Link>
       </div>
     </div>
