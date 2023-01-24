@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../axios_instance";
+import { urls } from "../../config";
 
 const JobCreate = () => {
   const navigate = useNavigate();
@@ -36,7 +37,7 @@ const JobCreate = () => {
       perks_and_benefits,
     };
     axiosInstance
-      .post("api/jobs/create/", job)
+      .post(urls.JOB_CREATE, job)
       .then((res) => {
         console.log("Job posted:", res.data);
         navigate("/jobs");

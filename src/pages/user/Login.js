@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axiosInstance from "../../axios_instance";
+import { auth_urls } from "../../config";
 import AuthContext from "../../context/AuthContext";
 
 const Login = () => {
@@ -19,7 +20,7 @@ const Login = () => {
     }
 
     axiosInstance
-      .post("auth/jwt/create/", { email: email, password: password })
+      .post(auth_urls.LOGIN, { email: email, password: password })
       .then((res) => {
         localStorage.setItem("access_token", res.data.access);
         localStorage.setItem("refresh_token", res.data.refresh);

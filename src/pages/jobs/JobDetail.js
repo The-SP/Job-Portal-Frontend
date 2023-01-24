@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import axiosInstance from "../../axios_instance";
+import { urls } from "../../config";
 
 const JobDetail = () => {
   const [job, setJob] = useState(null);
@@ -8,7 +9,7 @@ const JobDetail = () => {
 
   useEffect(() => {
     axiosInstance
-      .get(`api/jobs/${id}/`)
+      .get(urls.JOB_DETAIL.replace(':id', id))
       .then((res) => {
         console.table("Res:", res.data);
         setJob(res.data);

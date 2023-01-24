@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axiosInstance from "../../axios_instance";
+import { urls } from "../../config";
 import EmployerJobItem from "./EmployerJobItem";
 
 const EmployerJobList = () => {
@@ -7,7 +8,7 @@ const EmployerJobList = () => {
 
   useEffect(() => {
     axiosInstance
-      .get("api/jobs/employer/")
+      .get(urls.EMPLOYER_JOBS)
       .then((res) => {
         console.table("Jobs:", res.data);
         setJobs(res.data);

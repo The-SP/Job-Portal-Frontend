@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Navigate, Link } from "react-router-dom";
 import axiosInstance from "../../axios_instance";
+import {auth_urls} from "../../config"
 
 const ResetPassword = () => {
   const [requestSent, setRequestSent] = useState(false);
@@ -15,7 +16,7 @@ const ResetPassword = () => {
     }
 
     axiosInstance
-      .post("auth/users/reset_password/", { email })
+      .post(auth_urls.RESET_PASSWORD, { email })
       .then((res) => setRequestSent(true))
       .catch((err) => {
         //   console.log(err);

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axiosInstance from "../../axios_instance";
+import { urls } from "../../config";
 
 const JobDelete = () => {
   const { id } = useParams();
@@ -11,7 +12,7 @@ const JobDelete = () => {
   const handleDelete = () => {
     setIsDeleting(true);
     axiosInstance
-      .delete(`/api/jobs/${id}/update`)
+      .delete(urls.JOB_UPDATE.replace(':id', id))
       .then(() => {
         setIsDeleting(false);
         alert("Job deleted successfully!");

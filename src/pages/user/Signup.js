@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axiosInstance from "../../axios_instance";
+import { auth_urls } from "../../config";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const Signup = () => {
       return;
     }
     axiosInstance
-      .post("auth/users/", {
+      .post(auth_urls.SIGNUP, {
         email: email,
         password: password,
         re_password: password,
@@ -54,7 +55,9 @@ const Signup = () => {
             >
               <div className="card-body p-5 text-center">
                 <div className="pb-5">
-                  <h2 className="fw-bold mb-2 text-uppercase">Seeker Sign Up</h2>
+                  <h2 className="fw-bold mb-2 text-uppercase">
+                    Seeker Sign Up
+                  </h2>
                   <p className="text-white-50 mb-5">
                     Please enter your login and password!
                   </p>
@@ -99,9 +102,7 @@ const Signup = () => {
                     </label>
                   </div>
 
-                  <div className="error text-danger fw-bold mb-4">
-                    {error}
-                  </div>
+                  <div className="error text-danger fw-bold mb-4">{error}</div>
 
                   <button
                     className="btn btn-outline-light btn-lg px-5"

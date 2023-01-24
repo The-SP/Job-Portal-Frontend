@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axiosInstance from "../../axios_instance";
+import { urls } from "../../config";
 
 const JobUpdate = () => {
   const navigate = useNavigate();
@@ -9,7 +10,7 @@ const JobUpdate = () => {
 
   useEffect(() => {
     axiosInstance
-      .get(`api/jobs/${id}/`)
+      .get(urls.JOB_UPDATE.replace(":id", id))
       .then((res) => {
         setJob(res.data);
       })

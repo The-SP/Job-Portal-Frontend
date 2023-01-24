@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axiosInstance from "../../axios_instance";
+import { auth_urls } from "../../config";
 
 const ResetPassword = () => {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ const ResetPassword = () => {
     }
 
     axiosInstance
-      .post("auth/users/reset_password_confirm/", {
+      .post(auth_urls.RESET_PASSWORD_CONFIRM, {
         uid,
         token,
         new_password,

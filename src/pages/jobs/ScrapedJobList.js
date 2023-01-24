@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import axiosInstance from "../../axios_instance";
 import ScrapedJobItem from "./ScrapedJobItem";
+import { urls } from "../../config";
 
 const ScrapedJobList = () => {
   const [jobs, setJobs] = useState(null);
 
   useEffect(() => {
     axiosInstance
-      .get("api/jobs/scraped/")
+      .get(urls.JOB_SCRAPED)
       .then((res) => {
         console.table("Jobs:", res.data);
         setJobs(res.data);
