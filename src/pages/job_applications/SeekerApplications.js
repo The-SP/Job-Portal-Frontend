@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import axiosInstance from "../../axios_instance";
 import { urls } from "../../config";
+import ApplicationDelete from "./ApplicationDelete";
 
 const SeekerApplicationsList = () => {
   const [applications, setApplications] = useState(null);
+  const [activeID, setActiveID] = useState(null);
 
   useEffect(() => {
     axiosInstance
@@ -29,7 +31,8 @@ const SeekerApplicationsList = () => {
             <th>Phone Number</th>
             <th>Cover Letter</th>
             <th>Created At</th>
-            <th>Updated At</th>
+            {/* <th>Updated At</th> */}
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -40,14 +43,28 @@ const SeekerApplicationsList = () => {
                 <td>{application.job}</td>
                 <td>{application.email}</td>
                 <td>{application.phone_number}</td>
-                <td>{application.cover_letter.substring(0,15)}...</td>
-                <td>{application.created_at.substring(0,10)}</td>
-                <td>{application.updated_at.substring(0,10)}</td>
+                <td>{application.cover_letter.substring(0, 15)}...</td>
+                <td>{application.created_at.substring(0, 10)}</td>
+                {/* <td>{application.updated_at.substring(0,10)}</td> */}
+                <td>
+                  {/* Button trigger modal  */}
+                  <button
+                    type="button"
+                    class="btn btn-outline-danger"
+                    data-bs-toggle="modal"
+                    data-bs-target="#delApplicationModal"
+                    onClick={() => setActiveID(application.id)}
+                  >
+                    X
+                  </button>
+                </td>
               </tr>
             );
           })}
         </tbody>
       </table>
+      {/* This creates the modal when delete button is clicked */}
+          {<ApplicationDelete applicationID={activeID} />}
     </div>
   );
 };
