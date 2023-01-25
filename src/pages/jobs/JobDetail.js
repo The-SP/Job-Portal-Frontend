@@ -11,11 +11,11 @@ const JobDetail = () => {
     axiosInstance
       .get(urls.JOB_DETAIL.replace(':id', id))
       .then((res) => {
-        console.table("Res:", res.data);
+        // console.table("Res:", res.data);
         setJob(res.data);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [id]);
 
   if (!job) return <></>;
 
@@ -35,7 +35,7 @@ const JobDetail = () => {
             <hr />
           </div>
         ))}
-        <Link to="/" className="btn btn-outline-primary">
+        <Link to={`/jobs/${id}/apply`} className="btn btn-outline-primary">
           Apply
         </Link>
       </div>

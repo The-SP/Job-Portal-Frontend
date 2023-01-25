@@ -32,7 +32,7 @@ axiosInstance.interceptors.response.use(
 
     if (
       error.response.status === 401 &&
-      originalRequest.url === baseURL + "token/refresh/"
+      originalRequest.url === baseURL + "auth/jwt/refresh/"
     ) {
       window.location.href = "/login/";
       return Promise.reject(error);
@@ -54,7 +54,7 @@ axiosInstance.interceptors.response.use(
 
         if (tokenParts.exp > now) {
           return axiosInstance
-            .post("/token/refresh/", {
+            .post("/auth/jwt/refresh/", {
               refresh: refreshToken,
             })
             .then((response) => {
