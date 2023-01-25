@@ -1,6 +1,4 @@
 const ScrapedJobItem = ({ job }) => {
-  console.table(job);
-
   return (
     <div className="card mb-2">
       <div className="row no-gutters">
@@ -19,7 +17,7 @@ const ScrapedJobItem = ({ job }) => {
             <h5 className="card-title">{job.title}</h5>
             <h6 className="card-subtitle mb-2 text-muted">
               {job.tags.map((tag, index) => {
-                return <span className="badge bg-secondary mr-2">{tag}</span>;
+                return <span className="badge bg-secondary mr-2" key={index}>{tag}</span>;
               })}
             </h6>
             <p className="card-text">Company: {job.company}</p>

@@ -6,7 +6,8 @@ import AuthContext from "../context/AuthContext";
 import "./Navbar.css";
 
 const Navbar = () => {
-  const { isLoggedIn } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
+
   const seekerLinks = () => (
     <ul>
       <li>
@@ -38,10 +39,7 @@ const Navbar = () => {
   );
 
   const authLinks = () => (
-    <>
-      {seekerLinks()}
-      {employerLinks()}
-    </>
+    <>{user.is_employer ? employerLinks() : seekerLinks()}</>
   );
   const guestLinks = () => (
     <ul>
@@ -81,10 +79,10 @@ const Navbar = () => {
               <Link to="/jobs/explore">Explore</Link>
             </li>
           </ul>
-          {isLoggedIn ? authLinks() : guestLinks()}
+          {user ? authLinks() : guestLinks()}
         </div>
         <div className="hamburger-menu">
-          <a href="#" onClick={() => setShowMediaIcons(!showMediaIcons)}>
+          <a href="/" onClick={() => setShowMediaIcons(!showMediaIcons)}>
             <Menu />
           </a>
         </div>

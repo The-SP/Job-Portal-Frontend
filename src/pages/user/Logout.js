@@ -4,14 +4,14 @@ import axiosInstance from "../../axios_instance";
 import AuthContext from "../../context/AuthContext";
 
 const Logout = () => {
-  const { setIsLoggedIn } = useContext(AuthContext);
+  const { setUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
   useEffect(() => {
     localStorage.removeItem("access_token");
     localStorage.removeItem("refresh_token");
     axiosInstance.defaults.headers["Authorization"] = null;
-    setIsLoggedIn(false);
+    setUser(null);
     navigate("/login");
   });
   return null;

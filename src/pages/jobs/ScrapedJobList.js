@@ -10,7 +10,7 @@ const ScrapedJobList = () => {
     axiosInstance
       .get(urls.JOB_SCRAPED)
       .then((res) => {
-        console.table("Jobs:", res.data);
+        console.log("Total jobs fetched:", (res.data).length);
         setJobs(res.data);
       })
       .catch((err) => console.log(err));

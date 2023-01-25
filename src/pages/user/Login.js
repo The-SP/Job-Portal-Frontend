@@ -6,7 +6,7 @@ import AuthContext from "../../context/AuthContext";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { setIsLoggedIn } = useContext(AuthContext);
+  const { setUser } = useContext(AuthContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,7 +26,11 @@ const Login = () => {
         localStorage.setItem("refresh_token", res.data.refresh);
         axiosInstance.defaults.headers["Authorization"] =
           "JWT " + localStorage.getItem("access_token");
-        setIsLoggedIn(true);
+
+        // Update the user context with the user information returned by the API
+        axiosInstance.get("/auth/users/me").then((response) => {
+          setUser(response.data);
+        });
         navigate("/");
         setError("");
       })

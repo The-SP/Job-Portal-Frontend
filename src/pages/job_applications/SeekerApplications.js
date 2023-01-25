@@ -20,7 +20,7 @@ const SeekerApplicationsList = () => {
   return (
     <div className="container-fluid py-5 px-5">
       <h2>Your Job Applications</h2>
-      <table class="table table-xs table-striped table-hover">
+      <table className="table table-xs table-striped table-hover">
         <thead>
           <tr>
             <th>Id</th>
