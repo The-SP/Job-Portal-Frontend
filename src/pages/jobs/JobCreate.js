@@ -5,55 +5,40 @@ import * as Yup from "yup";
 import { urls } from "../../config";
 import axiosInstance from "../../axios_instance";
 import { MyTextInput, MySelect } from "../../components/Inputs";
+import {
+  JOB_LEVEL_CHOICES,
+  EMPLOYMENT_TYPE_CHOICES,
+  JOB_NATURE_CHOICES,
+} from "./Choices";
 
 const JobCreate = () => {
   const navigate = useNavigate();
 
-  const JOB_LEVEL_CHOICES = [
-    { value: "entry", label: "Entry" },
-    { value: "intern", label: "Intern" },
-    { value: "mid", label: "Mid" },
-    { value: "senior", label: "Senior" },
-  ];
-
-  const EMPLOYMENT_TYPE_CHOICES = [
-    { value: "full-time", label: "Full-time" },
-    { value: "part-time", label: "Part-time" },
-    { value: "contract", label: "Contract" },
-    { value: "intern", label: "Intern" },
-    { value: "freelance", label: "Freelance" },
-  ];
-
-  const JOB_LOCATION_CHOICES = [
-    { value: "remote", label: "Remote" },
-    { value: "work-from-home", label: "Work-from-home" },
-    { value: "office", label: "Office" },
-  ];
   const handleSubmit = (job) => {
     axiosInstance
       .post(urls.JOB_CREATE, job)
       .then((res) => {
         console.log("Job posted:", res.data);
-        navigate("/jobs");
+        navigate("/jobs/employer");
       })
       .catch((error) => console.log("Form submit error:", error));
   };
 
   return (
-    <div className="contianer m-5 p-5">
+    <div className="contianer mx-5 p-5">
       <h2>Create new job</h2>
 
       {/* Pass initial values, validation and submit funciton */}
       <Formik
         initialValues={{
           title: "",
-          category: "",
-          job_level: "",
+          location: "",
           no_of_vacancy: 1,
           salary_range: "",
           deadline: "",
+          job_level: "",
           employment_type: "",
-          job_location: "",
+          job_nature: "",
           education_level: "",
           experience_required: 0,
           skill_required: "",
@@ -63,7 +48,7 @@ const JobCreate = () => {
         validationSchema={Yup.object({
           // Basic Information
           title: Yup.string().required("Required"),
-          category: Yup.string().required("Required"),
+          location: Yup.string().required("Required"),
           no_of_vacancy: Yup.number().min(1).required("Required"),
           salary_range: Yup.string().required("Required"),
           deadline: Yup.date().required("Required"),
@@ -71,9 +56,7 @@ const JobCreate = () => {
           job_level: Yup.string().required("Job level is required"),
           // .oneOf(JOB_LEVEL_CHOICES.map((level) => level[0]), 'Invalid Job Level'),
           employment_type: Yup.string().required("Employment type is required"),
-          // .oneOf(EMPLOYMENT_TYPE_CHOICES.map((type) => type[0]), 'Invalid Employment Type'),
-          job_location: Yup.string().required("Job location is required"),
-          // .oneOf(JOB_LOCATION_CHOICES.map((location) => location[0]), 'Invalid Job Location'),
+          job_nature: Yup.string().required("Job location is required"),
           //   Specification
           education_level: Yup.string(),
           experience_required: Yup.number().min(0),
@@ -95,10 +78,10 @@ const JobCreate = () => {
             required
           />
           <MyTextInput
-            label="Category"
-            name="category"
+            label="Location"
+            name="location"
             type="text"
-            placeholder="Enter the job category"
+            placeholder="Enter the job location"
             required
           />
           <MySelect
@@ -116,9 +99,9 @@ const JobCreate = () => {
           />
 
           <MySelect
-            label="Job Location"
-            name="job_location"
-            options={JOB_LOCATION_CHOICES}
+            label="Job Nature"
+            name="job_nature"
+            options={JOB_NATURE_CHOICES}
             required
           />
 
@@ -136,25 +119,19 @@ const JobCreate = () => {
             placeholder="Enter salary range (eg: Rs.50000-Rs.75000)"
             required
           />
-          <MyTextInput
-            label="Deadline"
-            name="deadline"
-            type="date"
-            placeholder="Doe"
-            required
-          />
+          <MyTextInput label="Deadline" name="deadline" type="date" required />
 
           <MyTextInput
             label="Education Level"
             name="education_level"
             type="text"
-            placeholder="Enter required education level (e.g. Bachelor's Degree, Master's Degree"
+            placeholder="Enter required education level (e.g. Bachelor's Degree, Master's Degree)"
           />
           <MyTextInput
             label="Experience Required"
             name="experience_required"
             type="number"
-            placeholder="Enter required experience in years(e.g. 3, 5)"
+            placeholder="Enter required experience in years (e.g. 3, 5)"
           />
           <MyTextInput
             label="Skills Required"
