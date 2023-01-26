@@ -43,9 +43,19 @@ axiosInstance.interceptors.response.use(
       error.response.status === 401 &&
       error.response.statusText === "Unauthorized"
     ) {
-      const refreshToken = localStorage.getItem("refresh_token");
-
+      let refreshToken = localStorage.getItem("refresh_token");
+      
+      // For unknown reasons, refresh_token was stored as 'undefined'(string). If this occurs delete the tokens 
+      if (refreshToken === 'undefined') {
+        console.log("refresh token is undefined");
+        localStorage.removeItem("access_token");
+        localStorage.removeItem("refresh_token");
+        // set refreshToken to falsy value so that below if's don't execute
+        refreshToken = false
+      }
+      
       if (refreshToken) {
+          console.log("refreshToken", typeof(refreshToken));
         const tokenParts = JSON.parse(atob(refreshToken.split(".")[1]));
 
         // exp date in token is expressed in seconds, while now() returns milliseconds:
@@ -54,7 +64,7 @@ axiosInstance.interceptors.response.use(
 
         if (tokenParts.exp > now) {
           return axiosInstance
-            .post("/auth/jwt/refresh/", {
+            .post("auth/jwt/refresh/", {
               refresh: refreshToken,
             })
             .then((response) => {
