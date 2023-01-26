@@ -7,14 +7,24 @@ const MyTextInput = ({ label, required, ...props }) => {
   const [field, meta] = useField(props);
   return (
     <div className="form-group mb-3">
-      <label htmlFor={props.id || props.name} className="form-label">
-        {label}
-        {required && <span className="text-danger"> *</span>}
-      </label>
-      <input className="form-control" {...field} {...props} />
       {meta.touched && meta.error ? (
-        <div className="error text-danger small">{meta.error}</div>
-      ) : null}
+        <>
+          <label htmlFor={props.id || props.name} className="form-label">
+            {label}
+            {required && <span className="text-danger"> *</span>}
+          </label>
+          <input className="form-control is-invalid" {...field} {...props} />
+          <div className="invalid-feedback">{meta.error}</div>
+        </>
+      ) : (
+        <>
+          <label htmlFor={props.id || props.name} className="form-label">
+            {label}
+            {required && <span className="text-danger"> *</span>}
+          </label>
+          <input className="form-control" {...field} {...props} />
+        </>
+      )}
     </div>
   );
 };
