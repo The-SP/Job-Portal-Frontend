@@ -7,6 +7,10 @@ const auth_urls = {
     RESET_PASSWORD_CONFIRM: 'auth/users/reset_password_confirm/'
 };
 
+const profile_urls = {
+    SEEKER_PROFILE: 'api/profile/seeker/',
+    EMPLOYER_PROFILE: 'api/profile/employer/',
+}
 const urls = {
     JOB_LIST: 'api/jobs/',
     JOB_CREATE: 'api/jobs/create/',
@@ -20,4 +24,4 @@ const urls = {
     JOB_APPLICATIONS_LIST: 'api/jobs/:job_id/applications/'
 }
 
-export {auth_urls, urls};
+export {auth_urls, profile_urls, urls};

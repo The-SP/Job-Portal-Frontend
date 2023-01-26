@@ -45,20 +45,53 @@ const MySelect = ({ label, required, options, ...props }) => {
 };
 
 const MyFloatingTextInput = ({ label, required, ...props }) => {
-    const [field, meta] = useField(props);
-    return (
-      <div className="form-floating mb-3">
-        <input className="form-control" {...field} {...props} />
-        <label htmlFor={props.id || props.name}>
-          {label}
-          {required && <span className="text-danger"> *</span>}
-        </label>
-        {meta.touched && meta.error ? (
-          <div className="error text-danger small">{meta.error}</div>
-        ) : null}
-      </div>
-    );
-  };
+  const [field, meta] = useField(props);
+  return (
+    <div className="form-floating mb-3">
+      {meta.touched && meta.error ? (
+        // Check if there is error display red input outline with message using (is-invalid and invalid-feedback)
+        <>
+          <input className="form-control is-invalid" {...field} {...props} />
+          <label htmlFor={props.id || props.name}>
+            {label}
+            {required && <span className="text-danger"> *</span>}
+          </label>
+          <div className="invalid-feedback">{meta.error}</div>
+        </>
+      ) : (
+        // If there is no error display normal input fields
+        <>
+          <input className="form-control" {...field} {...props} />
+          <label htmlFor={props.id || props.name}>
+            {label}
+            {required && <span className="text-danger"> *</span>}
+          </label>
+        </>
+      )}
+    </div>
+  );
+};
+
+const MyFloatingTextArea = ({ label, required, ...props }) => {
+  const [field, meta] = useField(props);
+  return (
+    <div className="form-floating mb-3">
+      <textarea
+        className="form-control"
+        style={{ height: "100px" }}
+        {...field}
+        {...props}
+      />
+      <label htmlFor={props.id || props.name}>
+        {label}
+        {required && <span className="text-danger"> *</span>}
+      </label>
+      {meta.touched && meta.error ? (
+        <div className="error text-danger small">{meta.error}</div>
+      ) : null}
+    </div>
+  );
+};
 
 // const MyCheckbox = ({ children, ...props }) => {
 //   // React treats radios and checkbox inputs differently other input types, select, and textarea.
@@ -79,4 +112,4 @@ const MyFloatingTextInput = ({ label, required, ...props }) => {
 //   );
 // };
 
-export { MyTextInput, MySelect, MyFloatingTextInput };
+export { MyTextInput, MySelect, MyFloatingTextInput, MyFloatingTextArea };

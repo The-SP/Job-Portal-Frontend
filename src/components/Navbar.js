@@ -11,7 +11,7 @@ const Navbar = () => {
   const seekerLinks = () => (
     <ul>
       <li>
-        <Link to="/profile/seeker">SeekerProfile</Link>
+        <Link to="/profile/seeker">Profile</Link>
       </li>
       <li>
         <Link to="/jobs/applications">History</Link>
@@ -30,7 +30,7 @@ const Navbar = () => {
         <Link to="/jobs/employer">YourJobs</Link>
       </li>
       <li>
-        <Link to="/profile/employer">EmployerProfile</Link>
+        <Link to="/profile/employer">Profile</Link>
       </li>
       <li>
         <Link to="/logout">Logout</Link>

@@ -6,7 +6,7 @@ import * as Yup from "yup";
 import AuthContext from "../../context/AuthContext";
 import axiosInstance from "../../axios_instance";
 import { urls } from "../../config";
-import { MyFloatingTextInput } from "../../components/Inputs";
+import { MyFloatingTextInput, MyFloatingTextArea} from "../../components/Inputs";
 
 const ApplicationCreate = () => {
   const { user } = useContext(AuthContext);
@@ -30,7 +30,7 @@ const ApplicationCreate = () => {
     <>
       <div className="container">
         <div className="row h-100">
-          <div className="col-sm-12 my-auto">
+          <div className="col-sm-12 col-md-8 mx-auto mb-2">
             <div className="card">
               <div className="card-body">
                 <h2 className="text-center mb-3">Apply</h2>
@@ -44,7 +44,7 @@ const ApplicationCreate = () => {
                   }}
                   validationSchema={Yup.object({
                     name: Yup.string().required("Required"),
-                    email: Yup.string().email().required("Required"),
+                    email: Yup.string().email("Invalid email").required("Required"),
                     phoneNumber: Yup.number(),
                     coverLetter: Yup.string(),
                   })}
@@ -74,7 +74,7 @@ const ApplicationCreate = () => {
                       placeholder="Enter your phone number"
                     />
 
-                    <MyFloatingTextInput
+                    <MyFloatingTextArea
                       label="Cover Letter"
                       name="cover_letter"
                       type="text"

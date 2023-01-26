@@ -1,6 +1,14 @@
 import { useEffect, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { Formik, Form } from "formik";
+import * as Yup from "yup";
+
 import axiosInstance from "../../axios_instance";
+import { profile_urls } from "../../config";
+import {
+  MyFloatingTextInput,
+  MyFloatingTextArea,
+} from "../../components/Inputs";
 
 const ProfileUpdate = () => {
   const navigate = useNavigate();
@@ -8,29 +16,16 @@ const ProfileUpdate = () => {
 
   useEffect(() => {
     axiosInstance
-      .get("api/profile/seeker/")
+      .get(profile_urls.SEEKER_PROFILE)
       .then((res) => {
         setProfile(res.data);
       })
       .catch((err) => console.log(err));
   }, []);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-
-    let profileData = {};
-    for (let [key, value] of formData.entries()) {
-      // If the value is not null, insert to profileData
-      if (value) profileData[key] = value;
-      // If the value is empty, insert as null. Otherwise it is ignored by put request.
-      else if (value === "") profileData[key] = null;
-    }
-    // first_name is a required field, so if it is empty just use previous value
-    if (!profileData.first_name) profileData.first_name = profile.first_name;
-
+  const handleSubmit = (formData) => {
     axiosInstance
-      .put("api/profile/seeker/", profileData)
+      .put(profile_urls.SEEKER_PROFILE, formData)
       .then((res) => {
         navigate("/profile/seeker");
       })
@@ -40,47 +35,95 @@ const ProfileUpdate = () => {
   if (!profile) return <></>;
 
   return (
-    <div className="container-fluid py-5 px-5">
-      <div className="row">
-        <div className="col-4 d-flex align-items-center">
-          <div className="card text-center p-2" style={{ width: "18rem" }}>
-            <img
-              src="https://via.placeholder.com/30"
-              className="card-img-top rounded-circle"
-              alt="Profile Pic"
-            />
+    <div className="container">
+      <div className="row h-100">
+        <div className="col-sm-12 col-md-8 mx-auto">
+          <div className="card">
             <div className="card-body">
-              <h5 className="card-title">{profile.first_name}</h5>
-              <p className="card-text">
-                Full Stack Developer
-                <br />
-                Kathmandu, Nepal
-              </p>
-              <Link to="/profile" className="btn btn-primary">
-                Profile
-              </Link>
+              <h2 className="text-center mb-3">Update Profile</h2>
+              {/* Pass initial values, validation and submit funciton */}
+              <Formik
+                initialValues={{
+                  name: profile.name,
+                  email: profile.email,
+                  city: profile.city || "",
+                  country: profile.country || "",
+                  phone_number: profile.phone_number || "",
+                  github: profile.github || "",
+                  linkedin: profile.linkedin || "",
+                  website: profile.website || "",
+                  bio: profile.bio || "",
+                }}
+                validationSchema={Yup.object({
+                  name: Yup.string().required("Required"),
+                  email: Yup.string().email().required("Required"),
+                  city: Yup.string(),
+                  country: Yup.string(),
+                  phoneNumber: Yup.string(),
+                  github: Yup.string().url("Enter a valid url"),
+                  linkedin: Yup.string().url("Enter a valid url"),
+                  website: Yup.string().url("Enter a valid url"),
+                  bio: Yup.string(),
+                })}
+                onSubmit={(formData) => {
+                  handleSubmit(formData);
+                }}
+              >
+                <Form>
+                  <MyFloatingTextInput
+                    label="Name"
+                    name="name"
+                    type="text"
+                    placeholder="Enter your name"
+                    required
+                  />
+                  <MyFloatingTextInput
+                    label="Email Address"
+                    name="email"
+                    type="email"
+                    placeholder="name@example.com"
+                    required
+                  />
+                  <MyFloatingTextInput
+                    label="Phone Number"
+                    name="phone_number"
+                    type="text"
+                    // placeholder="Enter your phone number"
+                  />
+
+                  <MyFloatingTextInput label="City" name="city" type="text" />
+                  <MyFloatingTextInput
+                    label="Country"
+                    name="country"
+                    type="text"
+                  />
+                  <MyFloatingTextInput
+                    label="Github URL"
+                    name="github"
+                    type="text"
+                    placeholder="url"
+                  />
+                  <MyFloatingTextInput
+                    label="LinkedIn URL"
+                    name="linkedin"
+                    type="text"
+                    placeholder="url"
+                  />
+                  <MyFloatingTextInput
+                    label="Website URL"
+                    name="website"
+                    type="text"
+                    placeholder="url"
+                  />
+                  <MyFloatingTextArea label="Bio" name="bio" type="text" />
+
+                  <button type="submit" className="btn btn-outline-success">
+                    Update
+                  </button>
+                </Form>
+              </Formik>
             </div>
           </div>
-        </div>
-        <div className="col-8">
-          <form className="mt-5 p-4 container bg-dark" onSubmit={handleSubmit}>
-            {/* Loop through the profile response */}
-            {Object.entries(profile).map(([key, value]) => (
-              <div key={key} className="col mb-3">
-                <div className={"form-floating"}>
-                  {/* Set name and defaultValue of each input fields */}
-                  <input
-                    type="text"
-                    className="form-control"
-                    name={key}
-                    defaultValue={value}
-                  />
-                  <label>{key}</label>
-                </div>
-              </div>
-            ))}
-            <button className="btn btn-outline-success">Update</button>
-          </form>
         </div>
       </div>
     </div>
