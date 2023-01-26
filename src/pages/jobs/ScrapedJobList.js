@@ -20,7 +20,7 @@ const ScrapedJobList = () => {
 
   return (
     <div className="container-fluid py-5 px-5">
-      <h2>Scraped Jobs</h2>
+      <h2 className="text-center mb-5">Scraped Jobs</h2>
       {jobs.map((job, index) => {
         return <ScrapedJobItem key={index} job={job} />;
       })}

@@ -44,10 +44,10 @@ const ScrapedJobItem = ({ job }) => {
         </div>
 
         <div className="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-          <div className="d-flex mb-3">
+          <div className="d-flex mb-3 applyScrapped">
             <a
               href={job.url}
-              className="btn btn-sm btn-outline-success"
+              className="btn btn-outline-success"
               target="_blank"
               rel="noopener noreferrer"
             >
