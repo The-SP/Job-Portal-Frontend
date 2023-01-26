@@ -1,41 +1,35 @@
-import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axiosInstance from "../../axios_instance";
+import { Formik, Form } from "formik";
+import * as Yup from "yup";
+
 import { urls } from "../../config";
+import axiosInstance from "../../axios_instance";
+import { MyTextInput, MySelect } from "../../components/Inputs";
 
 const JobCreate = () => {
   const navigate = useNavigate();
-  const [title, setTitle] = useState("");
-  const [category, setCategory] = useState("");
-  const [job_level, setJobLevel] = useState("");
-  const [no_of_vacancy, setNoOfVacancy] = useState("");
-  const [employment_type, setEmploymentType] = useState("");
-  const [job_location, setJobLocation] = useState("");
-  const [salary_range, setSalaryRange] = useState("");
-  const [deadline, setDeadline] = useState("");
-  const [education_level, setEducationLevel] = useState("");
-  const [experience_required, setExperienceRequired] = useState("");
-  const [skill_required, setSkillRequired] = useState("");
-  const [tasks, setTasks] = useState("");
-  const [perks_and_benefits, setPerksAndBenefits] = useState("");
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const job = {
-      title,
-      category,
-      job_level,
-      no_of_vacancy,
-      employment_type,
-      job_location,
-      salary_range,
-      deadline,
-      education_level,
-      experience_required,
-      skill_required,
-      tasks,
-      perks_and_benefits,
-    };
+  const JOB_LEVEL_CHOICES = [
+    { value: "entry", label: "Entry" },
+    { value: "intern", label: "Intern" },
+    { value: "mid", label: "Mid" },
+    { value: "senior", label: "Senior" },
+  ];
+
+  const EMPLOYMENT_TYPE_CHOICES = [
+    { value: "full-time", label: "Full-time" },
+    { value: "part-time", label: "Part-time" },
+    { value: "contract", label: "Contract" },
+    { value: "intern", label: "Intern" },
+    { value: "freelance", label: "Freelance" },
+  ];
+
+  const JOB_LOCATION_CHOICES = [
+    { value: "remote", label: "Remote" },
+    { value: "work-from-home", label: "Work-from-home" },
+    { value: "office", label: "Office" },
+  ];
+  const handleSubmit = (job) => {
     axiosInstance
       .post(urls.JOB_CREATE, job)
       .then((res) => {
@@ -48,147 +42,144 @@ const JobCreate = () => {
   return (
     <div className="contianer m-5 p-5">
       <h2>Create new job</h2>
-      <form className="p-5 border border-5" onSubmit={handleSubmit}>
-        <div className="form-group mb-3">
-          <label htmlFor="title">Title</label>
-          <input
+
+      {/* Pass initial values, validation and submit funciton */}
+      <Formik
+        initialValues={{
+          title: "",
+          category: "",
+          job_level: "",
+          no_of_vacancy: 1,
+          salary_range: "",
+          deadline: "",
+          employment_type: "",
+          job_location: "",
+          education_level: "",
+          experience_required: 0,
+          skill_required: "",
+          tasks: "",
+          perks_and_benefits: "",
+        }}
+        validationSchema={Yup.object({
+          // Basic Information
+          title: Yup.string().required("Required"),
+          category: Yup.string().required("Required"),
+          no_of_vacancy: Yup.number().min(1).required("Required"),
+          salary_range: Yup.string().required("Required"),
+          deadline: Yup.date().required("Required"),
+          // Choice fields
+          job_level: Yup.string().required("Job level is required"),
+          // .oneOf(JOB_LEVEL_CHOICES.map((level) => level[0]), 'Invalid Job Level'),
+          employment_type: Yup.string().required("Employment type is required"),
+          // .oneOf(EMPLOYMENT_TYPE_CHOICES.map((type) => type[0]), 'Invalid Employment Type'),
+          job_location: Yup.string().required("Job location is required"),
+          // .oneOf(JOB_LOCATION_CHOICES.map((location) => location[0]), 'Invalid Job Location'),
+          //   Specification
+          education_level: Yup.string(),
+          experience_required: Yup.number().min(0),
+          skill_required: Yup.string(),
+          //   Additional Description
+          tasks: Yup.string(),
+          perks_and_benefits: Yup.string(),
+        })}
+        onSubmit={(job) => {
+          handleSubmit(job);
+        }}
+      >
+        <Form className="p-4 border border-2">
+          <MyTextInput
+            label="Title"
+            name="title"
             type="text"
-            className="form-control"
-            autoFocus
-            id="title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            placeholder="Enter job title"
             required
           />
-        </div>
-        <div className="form-group mb-3">
-          <label htmlFor="category">Category</label>
-          <input
+          <MyTextInput
+            label="Category"
+            name="category"
             type="text"
-            className="form-control"
-            id="category"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
+            placeholder="Enter the job category"
             required
           />
-        </div>
-        <div className="form-group mb-3">
-          <label htmlFor="job_level">Job Level</label>
-          <input
-            type="text"
-            className="form-control"
-            id="job_level"
-            value={job_level}
-            onChange={(e) => setJobLevel(e.target.value)}
+          <MySelect
+            label="Job Level"
+            name="job_level"
+            options={JOB_LEVEL_CHOICES}
             required
           />
-        </div>
-        <div className="form-group mb-3">
-          <label htmlFor="no_of_vacancy">No of Vacancy</label>
-          <input
+
+          <MySelect
+            label="Employment Type"
+            name="employment_type"
+            options={EMPLOYMENT_TYPE_CHOICES}
+            required
+          />
+
+          <MySelect
+            label="Job Location"
+            name="job_location"
+            options={JOB_LOCATION_CHOICES}
+            required
+          />
+
+          <MyTextInput
+            label="no_of_vacancy"
+            name="no_of_vacancy"
             type="number"
-            className="form-control"
-            id="no_of_vacancy"
-            value={no_of_vacancy}
-            onChange={(e) => setNoOfVacancy(e.target.value)}
+            placeholder="Enter number of vacant posts"
             required
           />
-        </div>
-        <div className="form-group mb-3">
-          <label htmlFor="employment_type">Employment Type</label>
-          <input
+          <MyTextInput
+            label="Salary Range"
+            name="salary_range"
             type="text"
-            className="form-control"
-            id="employment_type"
-            value={employment_type}
-            onChange={(e) => setEmploymentType(e.target.value)}
+            placeholder="Enter salary range (eg: Rs.50000-Rs.75000)"
             required
           />
-        </div>
-        <div className="form-group mb-3">
-          <label htmlFor="job_location">Job Location</label>
-          <input
-            type="text"
-            className="form-control"
-            id="job_location"
-            value={job_location}
-            onChange={(e) => setJobLocation(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group mb-3">
-          <label htmlFor="salary_range">Salary Range</label>
-          <input
-            type="text"
-            className="form-control"
-            id="salary_range"
-            value={salary_range}
-            onChange={(e) => setSalaryRange(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group mb-3">
-          <label htmlFor="deadline">Deadline</label>
-          <input
+          <MyTextInput
+            label="Deadline"
+            name="deadline"
             type="date"
-            className="form-control"
-            id="deadline"
-            value={deadline}
-            onChange={(e) => setDeadline(e.target.value)}
+            placeholder="Doe"
             required
           />
-        </div>
-        <div className="form-group mb-3">
-          <label htmlFor="education_level">Education Level</label>
-          <input
+
+          <MyTextInput
+            label="Education Level"
+            name="education_level"
             type="text"
-            className="form-control"
-            id="education_level"
-            value={education_level}
-            onChange={(e) => setEducationLevel(e.target.value)}
+            placeholder="Enter required education level (e.g. Bachelor's Degree, Master's Degree"
           />
-        </div>
-        <div className="form-group mb-3">
-          <label htmlFor="experience_required">Experience Required</label>
-          <input
+          <MyTextInput
+            label="Experience Required"
+            name="experience_required"
             type="number"
-            className="form-control"
-            id="experience_required"
-            value={experience_required}
-            onChange={(e) => setExperienceRequired(e.target.value)}
+            placeholder="Enter required experience in years(e.g. 3, 5)"
           />
-        </div>
-        <div className="form-group mb-3">
-          <label htmlFor="skill_required">Skill Required</label>
-          <textarea
-            className="form-control"
-            id="skill_required"
-            value={skill_required}
-            onChange={(e) => setSkillRequired(e.target.value)}
+          <MyTextInput
+            label="Skills Required"
+            name="skill_required"
+            type="text"
+            placeholder="Enter the skills required for the job, separated by commas"
           />
-        </div>
-        <div className="form-group mb-3">
-          <label htmlFor="tasks">Tasks</label>
-          <textarea
-            className="form-control"
-            id="tasks"
-            value={tasks}
-            onChange={(e) => setTasks(e.target.value)}
+          <MyTextInput
+            label="Tasks"
+            name="tasks"
+            type="text"
+            placeholder="Enter the job tasks, separated by commas"
           />
-        </div>
-        <div className="form-group mb-3">
-          <label htmlFor="perks_and_benefits">Perks and Benefits</label>
-          <textarea
-            className="form-control"
-            id="perks_and_benefits"
-            value={perks_and_benefits}
-            onChange={(e) => setPerksAndBenefits(e.target.value)}
+          <MyTextInput
+            label="Perks and Benefits"
+            name="perks_and_benefits"
+            type="text"
+            placeholder="Enter the perks and benefits offered with the job, separated by commas"
           />
-        </div>
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
-      </form>
+
+          <button type="submit" className="btn btn-success">
+            Post
+          </button>
+        </Form>
+      </Formik>
     </div>
   );
 };

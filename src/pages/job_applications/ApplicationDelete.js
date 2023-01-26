@@ -17,38 +17,38 @@ const ApplicationDelete = ({ applicationID }) => {
   };
   return (
     <div
-      class="modal fade"
+      className="modal fade"
       id="delApplicationModal"
-      tabindex="-1"
+      tabIndex="-1"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">
+      <div className="modal-dialog modal-dialog-centered">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h1 className="modal-title fs-5" id="exampleModalLabel">
               Are you sure?
             </h1>
             <button
               type="button"
-              class="btn-close"
+              className="btn-close"
               data-bs-dismiss="modal"
               aria-label="Close"
             ></button>
           </div>
-          <div class="modal-body lead">
+          <div className="modal-body lead">
             Do you really want to delete this record? This process cannot be
             undone.
           </div>
-          <div class="modal-footer">
+          <div className="modal-footer">
             <button
               type="button"
-              class="btn btn-secondary"
+              className="btn btn-secondary"
               data-bs-dismiss="modal"
             >
               Cancel
             </button>
-            <button type="button" class="btn btn-danger" onClick={handleDelete}>
+            <button type="button" className="btn btn-danger" onClick={handleDelete}>
               Delete
             </button>
           </div>
