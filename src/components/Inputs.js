@@ -44,6 +44,22 @@ const MySelect = ({ label, required, options, ...props }) => {
   );
 };
 
+const MyFloatingTextInput = ({ label, required, ...props }) => {
+    const [field, meta] = useField(props);
+    return (
+      <div className="form-floating mb-3">
+        <input className="form-control" {...field} {...props} />
+        <label htmlFor={props.id || props.name}>
+          {label}
+          {required && <span className="text-danger"> *</span>}
+        </label>
+        {meta.touched && meta.error ? (
+          <div className="error text-danger small">{meta.error}</div>
+        ) : null}
+      </div>
+    );
+  };
+
 // const MyCheckbox = ({ children, ...props }) => {
 //   // React treats radios and checkbox inputs differently other input types, select, and textarea.
 //   // Formik does this too! When you specify `type` to useField(), it will
@@ -63,4 +79,4 @@ const MySelect = ({ label, required, options, ...props }) => {
 //   );
 // };
 
-export { MyTextInput, MySelect };
+export { MyTextInput, MySelect, MyFloatingTextInput };

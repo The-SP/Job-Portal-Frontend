@@ -1,15 +1,19 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
+
+import AuthContext from "../../context/AuthContext";
+
 import axiosInstance from "../../axios_instance";
 import { urls } from "../../config";
 
 const JobDetail = () => {
+  const { user } = useContext(AuthContext);
   const [job, setJob] = useState(null);
   const { id } = useParams();
 
   useEffect(() => {
     axiosInstance
-      .get(urls.JOB_DETAIL.replace(':id', id))
+      .get(urls.JOB_DETAIL.replace(":id", id))
       .then((res) => {
         // console.table("Res:", res.data);
         setJob(res.data);
@@ -35,9 +39,11 @@ const JobDetail = () => {
             <hr />
           </div>
         ))}
-        <Link to={`/jobs/${id}/apply`} className="btn btn-outline-primary">
-          Apply
-        </Link>
+        {user && user.is_employer ? null : (
+          <Link to={`/jobs/${id}/apply`} className="btn btn-outline-primary">
+            Apply
+          </Link>
+        )}
       </div>
     </div>
   );
