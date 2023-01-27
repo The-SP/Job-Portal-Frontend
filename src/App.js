@@ -17,6 +17,7 @@ import SeekerProfile from "./pages/profile/SeekerProfile";
 import SeekerProfileUpdate from "./pages/profile/SeekerProfileUpdate";
 import EmployerProfile from "./pages/profile/EmployerProfile";
 import EmployerProfileUpdate from "./pages/profile/EmployerProfileUpdate";
+import CompanyProfile from "./pages/profile/CompanyProfile";
 // Jobs
 import JobList from "./pages/jobs/JobList";
 import JobCreate from "./pages/jobs/JobCreate";
@@ -55,6 +56,11 @@ const App = () => (
           path="/profile/seeker/update"
           element={<SeekerProfileUpdate />}
         />
+        <Route
+          exact
+          path="/profile/employer/:id"
+          element={<CompanyProfile />}
+        />
         <Route exact path="/profile/employer" element={<EmployerProfile />} />
         <Route
           exact
@@ -80,11 +86,7 @@ const App = () => (
           path="/jobs/:id/applications"
           element={<JobApplicationsList />}
         />
-        <Route
-          exact
-          path="/jobs/:id/apply"
-          element={<ApplicationCreate />}
-        />
+        <Route exact path="/jobs/:id/apply" element={<ApplicationCreate />} />
       </Routes>
     </AuthProvider>
   </BrowserRouter>
