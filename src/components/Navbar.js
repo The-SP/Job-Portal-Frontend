@@ -78,6 +78,9 @@ const Navbar = () => {
             <li>
               <Link to="/jobs/explore">Explore</Link>
             </li>
+            <li>
+              <Link to="/resume">Resume</Link>
+            </li>
           </ul>
           {user ? authLinks() : guestLinks()}
         </div>

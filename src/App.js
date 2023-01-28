@@ -30,6 +30,8 @@ import ScrapedJobList from "./pages/jobs/ScrapedJobList";
 import SeekerApplicationsList from "./pages/job_applications/SeekerApplications";
 import JobApplicationsList from "./pages/job_applications/JobApplications";
 import ApplicationCreate from "./pages/job_applications/ApplicationCreate";
+// Resume
+import ResumeBuilder from "./pages/resume/ResumeBuilder";
 
 const App = () => (
   <BrowserRouter>
@@ -87,6 +89,8 @@ const App = () => (
           element={<JobApplicationsList />}
         />
         <Route exact path="/jobs/:id/apply" element={<ApplicationCreate />} />
+        {/* Resume */}
+        <Route exact path="/resume" element={<ResumeBuilder />} />
       </Routes>
     </AuthProvider>
   </BrowserRouter>
