@@ -32,6 +32,8 @@ import JobApplicationsList from "./pages/job_applications/JobApplications";
 import ApplicationCreate from "./pages/job_applications/ApplicationCreate";
 // Resume
 import ResumeBuilder from "./pages/resume/ResumeBuilder";
+import Letter from "./pages/cover_letter/Letter";
+
 
 const App = () => (
   <BrowserRouter>
@@ -91,6 +93,7 @@ const App = () => (
         <Route exact path="/jobs/:id/apply" element={<ApplicationCreate />} />
         {/* Resume */}
         <Route exact path="/resume" element={<ResumeBuilder />} />
+        <Route exact path="/cover-letter" element={<Letter />} />
       </Routes>
     </AuthProvider>
   </BrowserRouter>

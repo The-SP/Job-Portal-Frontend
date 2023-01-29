@@ -81,6 +81,9 @@ const Navbar = () => {
             <li>
               <Link to="/resume">Resume</Link>
             </li>
+            <li>
+              <Link to="/cover-letter">Cover Letter</Link>
+            </li>
           </ul>
           {user ? authLinks() : guestLinks()}
         </div>
