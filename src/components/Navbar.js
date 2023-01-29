@@ -1,6 +1,6 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { Menu } from "react-feather";
+import logo from "./logo.png";
 
 import AuthContext from "../context/AuthContext";
 import "./Navbar.css";
@@ -9,31 +9,58 @@ const Navbar = () => {
   const { user } = useContext(AuthContext);
 
   const seekerLinks = () => (
-    <ul>
-      <li>
-        <Link to="/profile/seeker">Profile</Link>
+    <ul className="navbar-nav">
+      <li className="nav-item">
+        <Link className="nav-link" to="/profile/seeker">
+          Profile
+        </Link>
       </li>
-      <li>
-        <Link to="/jobs/applications">History</Link>
+      <li className="nav-item">
+        <Link className="nav-link" to="/jobs/applications">
+          History
+        </Link>
       </li>
-      <li>
-        <Link to="/logout">Logout</Link>
+      <li className="nav-item">
+        <Link className="nav-link" to="/logout">
+          Logout
+        </Link>
       </li>
     </ul>
   );
+
   const employerLinks = () => (
-    <ul>
-      <li>
-        <Link to="/jobs/create">CreateJob</Link>
+    <ul className="navbar-nav">
+      <li className="nav-item dropdown">
+        <span
+          className="nav-link dropdown-toggle"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Hire
+        </span>
+        <ul className="dropdown-menu">
+          <li>
+            <Link className="dropdown-item" to="/jobs/create">
+              Create Job
+            </Link>
+          </li>
+          <li>
+            <Link className="dropdown-item" to="/jobs/employer">
+              Your Jobs
+            </Link>
+          </li>
+        </ul>
       </li>
-      <li>
-        <Link to="/jobs/employer">YourJobs</Link>
+      <li className="nav-item">
+        <Link className="nav-link" to="/profile/employer">
+          Profile
+        </Link>
       </li>
-      <li>
-        <Link to="/profile/employer">Profile</Link>
-      </li>
-      <li>
-        <Link to="/logout">Logout</Link>
+      <li className="nav-item">
+        <Link className="nav-link" to="/logout">
+          Logout
+        </Link>
       </li>
     </ul>
   );
@@ -41,59 +68,91 @@ const Navbar = () => {
   const authLinks = () => (
     <>{user.is_employer ? employerLinks() : seekerLinks()}</>
   );
+
   const guestLinks = () => (
-    <ul>
-      <li>
-        <Link to="/signup">Seeker</Link>
+    <ul className="navbar-nav">
+      <li className="nav-item">
+        <Link className="nav-link" to="/login">
+          Login
+        </Link>
       </li>
-      <li>
-        <Link to="/signup-employer">Employer</Link>
-      </li>
-      <li>
-        <Link to="/login">Login</Link>
+      <li className="nav-item dropdown">
+        <span
+          className="nav-link dropdown-toggle"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Sign Up
+        </span>
+        <ul className="dropdown-menu">
+          <li>
+            <Link className="dropdown-item" to="/signup">
+              Seeker
+            </Link>
+          </li>
+          <li>
+            <Link className="dropdown-item" to="/signup-employer">
+              Employer
+            </Link>
+          </li>
+        </ul>
       </li>
     </ul>
   );
 
-  const [showMediaIcons, setShowMediaIcons] = useState(false);
-
   return (
-    <div className="heroNav">
-      <nav className="mainNav">
-        <div className="logoNav">
-          <Link to="/">
-            Hire <span>Nepal</span>
-          </Link>
-        </div>
-        <div
-          className={
-            showMediaIcons ? "menu-link mobile-menu-link" : "menu-link"
-          }
+    <nav className="navbar navbar-expand-md navbar-light bg-body-tertiary navbar-fixed">
+      <div className="container">
+        <a className="navbar-brand" href="/">
+          <img
+            src={logo}
+            alt="Navbar Logo"
+            className="mb-1"
+            style={{ width: "60px", height: "30px" }}
+          />
+          <span className="navbar-title h4">
+            Hire <span className="text-danger"> Nepal</span>
+          </span>
+        </a>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
-          <ul>
-            <li>
-              <Link to="/jobs">Jobs</Link>
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul className="navbar-nav mx-auto">
+            <li className="nav-item">
+              <Link className="nav-link" to="/jobs">
+                Jobs
+              </Link>
             </li>
-
-            <li>
-              <Link to="/jobs/explore">Explore</Link>
+            <li className="nav-item">
+              <Link className="nav-link" to="/jobs/explore">
+                Explore
+              </Link>
             </li>
-            <li>
-              <Link to="/resume">Resume</Link>
+            <li className="nav-item">
+              <Link className="nav-link" to="/resume">
+                Resume
+              </Link>
             </li>
-            <li>
-              <Link to="/cover-letter">Cover Letter</Link>
+            <li className="nav-item">
+              <Link className="nav-link" to="/cover-letter">
+                Cover Letter
+              </Link>
             </li>
           </ul>
           {user ? authLinks() : guestLinks()}
         </div>
-        <div className="hamburger-menu">
-          <a href="/" onClick={() => setShowMediaIcons(!showMediaIcons)}>
-            <Menu />
-          </a>
-        </div>
-      </nav>
-    </div>
+      </div>
+    </nav>
   );
 };
 
