@@ -5,6 +5,7 @@ import { MyFloatingTextInput } from "../../components/Inputs";
 const ProfileInput = ({ profile, handleProfileSubmit }) => {
   return (
     <Formik
+      enableReinitialize
       initialValues={{
         name: profile.name || "",
         job_title: profile.job_title || "",
@@ -13,7 +14,7 @@ const ProfileInput = ({ profile, handleProfileSubmit }) => {
         address: profile.address || "",
       }}
       validationSchema={Yup.object({
-        name: Yup.string().required('Required'),
+        name: Yup.string().required("Required"),
         job_title: Yup.string(),
         email: Yup.string(),
         phone: Yup.string(),

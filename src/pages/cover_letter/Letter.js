@@ -1,12 +1,13 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 // Rich text editor input
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 // Print HTML as PDF
 import ReactToPrint from "react-to-print";
 
-// import axiosInstance from "../../axios_instance";
-// import { urls } from "../../config";
+import AuthContext from "../../context/AuthContext";
+import axiosInstance from "../../axios_instance";
+import { profile_urls } from "../../config";
 import CoverLetter from "./CoverLetter";
 import CompanyInput from "./CompnayInput";
 import ProfileInput from "./ProfileInput";
@@ -17,7 +18,6 @@ const Letter = () => {
 
   // Input States
   const [activeColor, setActiveColor] = useState("#3437A8");
-  const activeColorStyle = { color: activeColor };
   const [profile, setProfile] = useState({
     name: "Van Rossum",
     job_title: "Python Developer",
@@ -34,6 +34,30 @@ const Letter = () => {
   const [body, setBody] = useState(
     "<p>Dear Hiring Manager,</p><p>... Letter Body ...</p><p>Sincerely,</p><i>Your Name</i>"
   );
+
+  // If the seeker is logged-in allow to populate some fields with profile data
+  const { user } = useContext(AuthContext);
+  const handleFetchFromProfile = () => {
+    axiosInstance
+      .get(profile_urls.SEEKER_PROFILE)
+      .then((res) => {
+        const { name, email, city, phone_number, bio } = res.data;
+        const newProfile = {
+          name: name,
+          job_title: "",
+          email: email,
+          phone: phone_number,
+          address: city,
+        };
+        setProfile(newProfile);
+        // Create boilerplate letter_body from Profile bio
+        if (bio) {
+          const letter_body = `<p>Dear Hiring Manager,</p><p> ${bio}</p><p>Sincerely,</p><i>${name}</i>`;
+          setBody(letter_body);
+        }
+      })
+      .catch((err) => console.log(err));
+  };
 
   const handleProfileSubmit = (formData) => {
     setProfile({ ...formData });
@@ -110,30 +134,35 @@ const Letter = () => {
                     <p className="text-lead">{profile.job_title}</p>
                     <div>
                       <div className="my-1">
-                        <i className="bi bi-envelope" style={activeColorStyle}>
-                          {"  "}
-                        </i>
+                        <i className="bi bi-envelope text-success">{"  "}</i>
                         {profile.email}
                       </div>
                       <div className="my-1">
-                        <i className="bi bi-telephone" style={activeColorStyle}>
-                          {"  "}
-                        </i>
+                        <i className="bi bi-telephone text-success">{"  "}</i>
                         {profile.phone}
                       </div>
                       <div className="my-1">
-                        <i
-                          className="bi bi-geo-alt-fill"
-                          style={activeColorStyle}
-                        >
+                        <i className="bi bi-geo-alt-fill text-success">
                           {"  "}
                         </i>
                         {profile.address}
                       </div>
+                      {/* If seeker, allow to fetch data from Profile */}
+                      {user && !user.is_employer && (
+                        <button
+                          className="btn btn-outline-primary btn-sm my-2"
+                          onClick={handleFetchFromProfile}
+                        >
+                          Fetch Profile Data
+                        </button>
+                      )}
                     </div>
                   </div>
                   <div>
-                    <ProfileInput profile={profile} handleProfileSubmit={handleProfileSubmit} />
+                    <ProfileInput
+                      profile={profile}
+                      handleProfileSubmit={handleProfileSubmit}
+                    />
                   </div>
                 </div>
               </div>
@@ -220,13 +249,13 @@ const Letter = () => {
                 aria-labelledby="headingFour"
                 data-bs-parent="#accordionExample"
               >
-                <div className="accordion-body" style={{height: "400px"}}>
+                <div className="accordion-body" style={{ height: "400px" }}>
                   <ReactQuill
                     theme="snow"
                     value={body}
                     onChange={setBody}
                     placeholder="Enter letter body here"
-                    style={{height: "300px"}}
+                    style={{ height: "300px" }}
                   />
                 </div>
               </div>
