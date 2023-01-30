@@ -1,3 +1,7 @@
+.nav{
+  background: transparent;
+}
+
 .nav-link:hover {
   color: red !important;
   border-bottom: 2px solid red;
