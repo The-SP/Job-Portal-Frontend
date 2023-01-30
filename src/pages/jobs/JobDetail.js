@@ -6,6 +6,8 @@ import AuthContext from "../../context/AuthContext";
 import axiosInstance from "../../axios_instance";
 import { urls } from "../../config";
 
+import './jobs.css'
+
 const JobDetail = () => {
   const { user } = useContext(AuthContext);
   const [job, setJob] = useState(null);
@@ -51,7 +53,7 @@ const JobDetail = () => {
                 </div>
 
                 <div className="mb-5">
-                  <h4 className="mb-3">Job description</h4>
+                  <h4 className="mb-3 p-3 jd-title">Job description</h4>
                   <p>
                     We're seeking a highly skilled {job.title} to join our team
                     as a {job.employment_type} member and drive growth. We're
@@ -62,7 +64,28 @@ const JobDetail = () => {
                     Apply now and take your career to new heights with us.
                   </p>
 
-                  <h4 className="mb-3">Qualifications</h4>
+                  <h4 className="mb-3 p-3 jd-title">Job specification</h4>
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td className="w-33 p-2">Education level</td>
+                        <td className="w-3 p-2">:</td>
+                        <td className="w-64 p-2">{job.education_level}</td>
+                      </tr>
+                      <tr>
+                        <td className="w-33 p-2">Experience Required</td>
+                        <td className="w-3 p-2">:</td>
+                        <td className="w-64 p-2">{job.experience_required} years</td>
+                      </tr>
+                      <tr>
+                        <td className="w-33 p-2">Professional Skill Required</td>
+                        <td className="w-3 p-2">:</td>
+                        <td className="w-64 p-2">{job.skill_required}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <h4 className="mb-3 p-3 jd-title">Qualifications</h4>
                   <p>
                     The following Qualifications are expected when you apply for
                     the job.
