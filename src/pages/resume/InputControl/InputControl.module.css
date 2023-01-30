@@ -24,3 +24,11 @@ input:hover {
 input:focus {
   border: 1px solid #239ce2;
 }
+
+@media(max-width:600px){
+  input {
+    padding: 8px 10px;
+    font-size: 0.9rem;
+    border-radius: 5px;
+  }
+}

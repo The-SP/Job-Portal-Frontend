@@ -148,3 +148,36 @@
 .hidden {
   display: none;
 }
+
+@media(max-width:800px){
+  .container{
+    min-width: 500px;
+    max-width: 600px;
+  }
+  .mainMain {
+    /* flex-direction: column; */
+    gap: 20px;
+  }
+}
+
+@media(max-width:650px){
+  .container{
+    min-width: 300px;
+    max-width: 500px;
+  }
+  .main {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+@media(max-width:600px){
+  .container{
+    min-width: 200px;
+    max-width: 450px;
+  }
+  .main {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
