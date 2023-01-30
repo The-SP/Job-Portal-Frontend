@@ -1,37 +1,46 @@
 .job-item {
-    border: 1px solid transparent;
-    border-radius: 2px;
-    box-shadow: 0 0 45px rgba(0, 0, 0, .08);
-    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
-    transition: .5s;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  box-shadow: 0 0 45px rgba(0, 0, 0, 0.08);
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+  transition: 0.5s;
 }
 
 .job-item:hover {
-    border-color: rgba(0, 0, 0, .08);
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
 }
 
 /* ScrapedJobItem */
 
-.applyScrapped a{
-    border-radius: 24px;
-    border-color: green;
-    box-shadow: rgb(0 0 0 / 20%) 0 3px 5px -1px, rgb(0 0 0 / 14%) 0 6px 10px 0, rgb(0 0 0 / 12%) 0 1px 18px 0;
-    font-size: 14px;
-    height: 40px;
-    letter-spacing: .25px;
-    padding: 10px 15px;
-    transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1),opacity 15ms linear 30ms,transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
-    will-change: transform,opacity;
-    z-index: 0;
+.applyScrapped a {
+  border-radius: 24px;
+  border-color: green;
+  box-shadow: rgb(0 0 0 / 20%) 0 3px 5px -1px, rgb(0 0 0 / 14%) 0 6px 10px 0,
+    rgb(0 0 0 / 12%) 0 1px 18px 0;
+  font-size: 14px;
+  height: 40px;
+  letter-spacing: 0.25px;
+  padding: 10px 15px;
+  transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 15ms linear 30ms, transform 270ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+  will-change: transform, opacity;
+  z-index: 0;
 }
 .applyScrapped a:not(:disabled) {
-    box-shadow: rgb(60 64 67 / 30%) 0 1px 3px 0, rgb(60 64 67 / 15%) 0 4px 8px 3px;
+  box-shadow: rgb(60 64 67 / 30%) 0 1px 3px 0, rgb(60 64 67 / 15%) 0 4px 8px 3px;
 }
 
-.applyScrapped a:hover{
-    background: #f6f9fe;
-    color: #174ea6;
+.applyScrapped a:hover {
+  background: #f6f9fe;
+  color: #174ea6;
 }
 
-
+.job-summary {
+  background: radial-gradient(
+    circle at 10% 20%,
+    rgb(239, 246, 249) 0%,
+    rgb(206, 239, 253) 90%
+  );
+  border-radius: 10px;
+}

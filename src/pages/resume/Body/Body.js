@@ -66,7 +66,7 @@ function Body() {
           <label>Color picker</label>
           <input
             type="color"
-            class="form-control form-control-color"
+            className="form-control form-control-color"
             value={activeColor}
             onChange={(e) => setActiveColor(e.target.value)}
             title="Choose your color"
@@ -78,7 +78,7 @@ function Body() {
               <button style={{ background: activeColor }}>
                 Download{" "}
                 <i
-                  class="bi bi-file-earmark-arrow-down-fill fa-lg"
+                  className="bi bi-file-earmark-arrow-down-fill fa-lg"
                   role="button"
                 ></i>
               </button>

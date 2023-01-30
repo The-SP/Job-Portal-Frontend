@@ -48,7 +48,7 @@
   padding: 0;
 }
 
-.social-list li, a {
+.social-list li, .social-list a {
   padding: 10px;
   color: #8e24aa;
   font-size: 19px;
