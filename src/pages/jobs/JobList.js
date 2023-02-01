@@ -20,7 +20,7 @@ const JobList = () => {
 
   return (
     <div className="container-fluid py-5 px-5">
-      <h2>All Jobs List</h2>
+      <h2 className="text-center mb-5">All Jobs List</h2>
       {jobs.map((job, index) => {
         return <JobItem key={index} job={job} />;
       })}

@@ -1,23 +1,74 @@
 import './Home.css'
+import heroimg from '../components/hero.jpg'
 
 const Home = () => {
 
   return (
-    <div>
-        <div className="header-main">
-          <h1 className="header-title">
-              <p>FIND YOUR </p><p className="span">PERFECT</p><p> JOB EASILY</p>
-          </h1>
+    <>
+    <section id="hero" className="min-vh-100 d-flex align-items-center text-center">
+        <div className="container">
+            <div className="row">
+                <div className="col-12">
+                    <h1 className="text-uppercase text-white fw-semibold display-1">Welcome to hire nepal</h1>
+                    <h5 className="text-uppercase text-white mt-3 mb-4">Accelerate Your Tech Career with a World of Opportunities</h5>
+                    <div>
+                        <a href="/jobs" className="btn btn-dark">Get Started</a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div className="search-wrapper">
-            <div className="search-box">
-                <div className="search-card">
-                    <input type="text" className="search-input" placeholder="Job Title or Keywords"/>
-                    <button className="search-button">Search</button>
+    </section> 
+    <section id="services" className="section-padding border-top">
+    <div className="container">
+        <div className="row mt-5">
+            <div className="col-12 text-center">
+                <div className="section-title">
+                    <h1 className="display-4 fw-semibold">Our Services</h1>
+                    <div className="line"></div>
+                </div>
+            </div>
+        </div>
+        <div className="row g-4 text-center">
+            <div className="col-lg-3 col-sm-6">
+                <div className="service theme-shadow p-lg-5 p-4">
+                    <div className="iconbox">
+                        <i className="ri-pen-nib-fill"></i>
+                    </div>
+                    <h4 className="mt-4 mb-3">Apply For Jobs</h4>
+                    <p>Offer job seekers the ability to search for and apply to job openings posted by employers.</p>
+                </div>
+            </div>
+            <div className="col-lg-3 col-sm-6">
+                <div className="service theme-shadow p-lg-5 p-4">
+                    <div className="iconbox">
+                      <i className="bi bi-file-earmark-person"></i>
+                    </div>
+                    <h4 className="mt-4 mb-3">Build Resume</h4>
+                    <p>Provide tools for job seekers to create and upload their resumes, making it easy for employers to find and review them.</p>
+                </div>
+            </div>
+            <div className="col-lg-3 col-sm-6">
+                <div className="service theme-shadow p-lg-5 p-4">
+                    <div className="iconbox">
+                        <i className="ri-ruler-2-fill"></i>
+                    </div>
+                    <h4 className="mt-4 mb-3">Employer Branding</h4>
+                    <p>Help employers to showcase their company culture, mission, and values to attract the right candidates.</p>
+                </div>
+            </div>
+            <div className="col-lg-3 col-sm-6">
+                <div className="service theme-shadow p-lg-5 p-4">
+                    <div className="iconbox">
+                        <i className="ri-pie-chart-2-fill"></i>
+                    </div>
+                    <h4 className="mt-4 mb-3">Job Recommendation</h4>
+                    <p>Use machine learning algorithms to recommend job openings to job seekers based on their skills and preferences.</p>
                 </div>
             </div>
         </div>
     </div>
+    </section> 
+    </> 
   );
 };
 

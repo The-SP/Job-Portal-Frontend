@@ -102,7 +102,7 @@ const Navbar = () => {
   );
 
   return (
-    <nav className="navbar navbar-expand-md navbar-light bg-body-tertiary navbar-fixed">
+    <nav className="navbar navbar-expand-md navbar-light bg-body-tertiary navbar-fixed fixed-top">
       <div className="container">
         <a className="navbar-brand" href="/">
           <img
