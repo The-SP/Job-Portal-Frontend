@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import Home from "./pages/Home";
 // Auth
 import Login from "./pages/user/Login";
@@ -95,6 +96,7 @@ const App = () => (
         <Route exact path="/resume" element={<ResumeBuilder />} />
         <Route exact path="/cover-letter" element={<Letter />} />
       </Routes>
+      <Footer />
     </AuthProvider>
   </BrowserRouter>
 );
