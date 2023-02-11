@@ -10,7 +10,8 @@ const auth_urls = {
 const profile_urls = {
   SEEKER_PROFILE: "api/profile/seeker/",
   EMPLOYER_PROFILE: "api/profile/employer/",
-  Company_PROFILE: "api/profile/employer/:id/",
+  COMPANY_PROFILE: "api/profile/employer/:id/",
+  APPLICANT_PROFILE: "api/profile/seeker/:id/",
 };
 
 const urls = {

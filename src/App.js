@@ -19,6 +19,7 @@ import SeekerProfileUpdate from "./pages/profile/SeekerProfileUpdate";
 import EmployerProfile from "./pages/profile/EmployerProfile";
 import EmployerProfileUpdate from "./pages/profile/EmployerProfileUpdate";
 import CompanyProfile from "./pages/profile/CompanyProfile";
+import ApplicantProfile from "./pages/profile/ApplicantProfile";
 // Jobs
 import JobList from "./pages/jobs/JobList";
 import JobCreate from "./pages/jobs/JobCreate";
@@ -36,7 +37,6 @@ import ApplicationCreate from "./pages/job_applications/ApplicationCreate";
 // Resume
 import ResumeBuilder from "./pages/resume/ResumeBuilder";
 import Letter from "./pages/cover_letter/Letter";
-
 
 const App = () => (
   <BrowserRouter>
@@ -65,6 +65,11 @@ const App = () => (
         />
         <Route
           exact
+          path="/profile/seeker/:id"
+          element={<ApplicantProfile />}
+        />
+        <Route
+          exact
           path="/profile/employer/:id"
           element={<CompanyProfile />}
         />
@@ -83,7 +88,11 @@ const App = () => (
         <Route exact path="/jobs/employer" element={<EmployerJobList />} />
         <Route exact path="/jobs/explore" element={<ScrapedJobList />} />
         {/* Recommendations */}
-        <Route exact path="/jobs/recommendations" element={<RecommendedJobList />} />
+        <Route
+          exact
+          path="/jobs/recommendations"
+          element={<RecommendedJobList />}
+        />
         {/* Job Applications */}
         <Route
           exact

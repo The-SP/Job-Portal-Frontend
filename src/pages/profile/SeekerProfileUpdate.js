@@ -11,7 +11,7 @@ import {
   MyFloatingTextInput,
 } from "../../components/Inputs";
 
-const ProfileUpdate = () => {
+const SeekerProfileUpdate = () => {
   const navigate = useNavigate();
   const [profile, setProfile] = useState(null);
 
@@ -150,4 +150,4 @@ const ProfileUpdate = () => {
   );
 };
 
-export default ProfileUpdate;
+export default SeekerProfileUpdate;

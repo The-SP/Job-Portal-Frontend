@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./profile.css";
 import axiosInstance from "../../axios_instance";
 
-const Profile = () => {
+const SeekerProfile = () => {
   const [profile, setProfile] = useState(null);
 
   useEffect(() => {
@@ -108,4 +108,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default SeekerProfile;

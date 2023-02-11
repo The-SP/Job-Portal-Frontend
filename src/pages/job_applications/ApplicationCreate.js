@@ -40,13 +40,13 @@ const ApplicationCreate = () => {
                     name: user ? user.name : "",
                     email: user ? user.email : "",
                     phone_number: "",
-                    cover_letter: "",
+                    message: "",
                   }}
                   validationSchema={Yup.object({
                     name: Yup.string().required("Required"),
                     email: Yup.string().email("Invalid email").required("Required"),
                     phoneNumber: Yup.number(),
-                    coverLetter: Yup.string(),
+                    message: Yup.string(),
                   })}
                   onSubmit={(formData) => {
                     handleSubmit(formData);
@@ -75,15 +75,14 @@ const ApplicationCreate = () => {
                     />
 
                     <MyFloatingTextArea
-                      label="Cover Letter"
-                      name="cover_letter"
+                      label="Message"
+                      name="message"
                       type="text"
-                      placeholder="Enter your cover letter"
+                      placeholder="Enter your message"
                     />
 
                     <div className="mb-3">
                       <label htmlFor="resume">Resume</label>
-
                       <input
                         type="file"
                         className="form-control"

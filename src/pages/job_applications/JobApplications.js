@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 import axiosInstance from "../../axios_instance";
 import { urls } from "../../config";
@@ -22,30 +22,38 @@ const JobApplicationsList = () => {
 
   return (
     <div className="container-fluid py-5 px-5">
-      <h2>Job Applications</h2>
+      <div className="display-6 mb-4">
+        Job Applications for {applications[0].job_title}
+      </div>
       <table class="table table-xs table-striped table-hover">
         <thead>
           <tr>
-            <th>Id</th>
-            <th>User</th>
+            <th>#</th>
+            <th>Applicant</th>
             <th>Email</th>
             <th>Phone Number</th>
-            <th>Cover Letter</th>
-            <th>Created At</th>
-            <th>Updated At</th>
+            <th>Message</th>
+            <th>Applied Date</th>
           </tr>
         </thead>
         <tbody>
           {applications.map((application, index) => {
             return (
               <tr key={index}>
-                <td>{application.id}</td>
-                <td>{application.user}</td>
+                <td>{index + 1}</td>
+                <td>
+                  {" "}
+                  <Link to={`/profile/seeker/${application.seeker_id}`}>
+                    {application.name}
+                  </Link>
+                </td>{" "}
                 <td>{application.email}</td>
                 <td>{application.phone_number}</td>
-                <td>{application.cover_letter.substring(0, 15)}...</td>
+                <td>
+                  {application.message && application.message.substring(0, 15)}
+                  ...
+                </td>
                 <td>{application.created_at.substring(0, 10)}</td>
-                <td>{application.updated_at.substring(0, 10)}</td>
               </tr>
             );
           })}
