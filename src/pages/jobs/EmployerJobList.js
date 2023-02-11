@@ -11,7 +11,7 @@ const EmployerJobList = () => {
       .get(urls.EMPLOYER_JOBS)
       .then((res) => {
         console.table("Jobs:", res.data);
-        setJobs(res.data);
+        setJobs(res.data);        
       })
       .catch((err) => console.log(err));
   }, []);
@@ -20,7 +20,7 @@ const EmployerJobList = () => {
 
   return (
     <div className="container-fluid py-5 px-5">
-      <h2>Jobs posted by your Company</h2>
+      <h2 className="mb-2">Jobs at {jobs[0].company}</h2>
       {jobs.map((job, index) => {
         return <EmployerJobItem key={index} job={job} />;
       })}

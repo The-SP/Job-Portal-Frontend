@@ -152,7 +152,7 @@ const JobUpdate = () => {
             placeholder="Enter the skills required for the job, separated by commas"
           />
           <MyTextArea
-            label="description"
+            label="Job Description"
             name="description"
             type="text"
             placeholder="Enter the job description in detail"

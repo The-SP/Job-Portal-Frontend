@@ -7,7 +7,7 @@ import axiosInstance from "../../axios_instance";
 import { profile_urls } from "../../config";
 import {
   MyFloatingTextInput,
-  MyFloatingTextArea,
+  MyTextArea,
 } from "../../components/Inputs";
 
 const EmployerProfileUpdate = () => {
@@ -104,7 +104,7 @@ const EmployerProfileUpdate = () => {
                     type="email"
                     placeholder="name@example.com"
                   />
-                  <MyFloatingTextArea
+                  <MyTextArea
                     label="Company Description"
                     name="company_description"
                     type="text"
