@@ -60,8 +60,8 @@ const MySelect = ({ label, required, options, ...props }) => {
           Select a {label}
         </option>
         {options.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label}
+          <option key={option} value={option}>
+            {option}
           </option>
         ))}
       </select>{" "}
