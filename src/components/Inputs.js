@@ -29,6 +29,24 @@ const MyTextInput = ({ label, required, ...props }) => {
   );
 };
 
+const MyTextArea = ({ label, required, ...props }) => {
+  const [field] = useField(props);
+  return (
+    <div className="form-group mb-3">
+      <label htmlFor={props.id || props.name} className="form-label">
+        {label}
+        {required && <span className="text-danger"> *</span>}
+      </label>
+      <textarea
+        className="form-control"
+        style={{ height: "200px" }}
+        {...field}
+        {...props}
+      />
+    </div>
+  );
+};
+
 const MySelect = ({ label, required, options, ...props }) => {
   const [field, meta] = useField(props);
   return (
@@ -122,4 +140,10 @@ const MyFloatingTextArea = ({ label, required, ...props }) => {
 //   );
 // };
 
-export { MyTextInput, MySelect, MyFloatingTextInput, MyFloatingTextArea };
+export {
+  MyTextInput,
+  MyTextArea,
+  MySelect,
+  MyFloatingTextInput,
+  MyFloatingTextArea,
+};

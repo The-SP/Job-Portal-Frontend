@@ -6,8 +6,9 @@ import * as Yup from "yup";
 import axiosInstance from "../../axios_instance";
 import { profile_urls } from "../../config";
 import {
+  MyTextInput,
+  MyTextArea,
   MyFloatingTextInput,
-  MyFloatingTextArea,
 } from "../../components/Inputs";
 
 const ProfileUpdate = () => {
@@ -54,6 +55,7 @@ const ProfileUpdate = () => {
                   website: profile.website || "",
                   bio: profile.bio || "",
                   job_title: profile.job_title || "",
+                  skills: profile.skills || ""
                 }}
                 validationSchema={Yup.object({
                   name: Yup.string().required("Required"),
@@ -66,6 +68,7 @@ const ProfileUpdate = () => {
                   website: Yup.string().url("Enter a valid url"),
                   bio: Yup.string(),
                   job_title: Yup.string(),
+                  skills: Yup.string(),
                 })}
                 onSubmit={(formData) => {
                   handleSubmit(formData);
@@ -124,7 +127,15 @@ const ProfileUpdate = () => {
                     type="text"
                     placeholder="url"
                   />
-                  <MyFloatingTextArea label="Bio" name="bio" type="text" />
+
+                  <MyTextInput
+                    label="Skills"
+                    name="skills"
+                    type="text"
+                    placeholder="Enter skills seperated by comma (eg: Web Developer, Data Scientist)"
+                  />
+
+                  <MyTextArea label="Bio" name="bio" type="text" />
 
                   <button type="submit" className="btn btn-outline-success">
                     Update

@@ -159,7 +159,7 @@ const Navbar = () => {
               </Link>
             </li>
 
-            {!user.is_employer && seekerMiddleLinks()}
+            {user && !user.is_employer && seekerMiddleLinks()}
           </ul>
           {user ? authLinks() : guestLinks()}
         </div>

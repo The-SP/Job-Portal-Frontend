@@ -37,7 +37,7 @@ const Profile = () => {
                 {profile.email}{" "}
                 {profile.phone_number && ` | ${profile.phone_number}`}
               </p>
-              
+
               {profile.city && (
                 <span>
                   {profile.city}, {profile.country}
@@ -55,6 +55,13 @@ const Profile = () => {
               {profile.bio && (
                 <div className="px-4 mt-1">
                   <p className="profile-fonts">{profile.bio}</p>
+                </div>
+              )}
+
+              {profile.skills && (
+                <div className="my-3">
+                  <span className="fw-bold">Skills: </span>
+                  <span className="lead">{profile.skills}</span>
                 </div>
               )}
 
