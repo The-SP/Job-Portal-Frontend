@@ -5,7 +5,7 @@ import * as Yup from "yup";
 
 import { urls } from "../../config";
 import axiosInstance from "../../axios_instance";
-import { MyTextInput, MySelect } from "../../components/Inputs";
+import { MyTextInput, MySelect, MyTextArea } from "../../components/Inputs";
 import {
   JOB_LEVEL_CHOICES,
   EMPLOYMENT_TYPE_CHOICES,
@@ -56,8 +56,7 @@ const JobUpdate = () => {
           education_level: job.education_level,
           experience_required: job.experience_required,
           skill_required: job.skill_required,
-          tasks: job.tasks,
-          perks_and_benefits: job.perks_and_benefits,
+          description: job.description,
         }}
         validationSchema={Yup.object({
           // Basic Information
@@ -76,8 +75,7 @@ const JobUpdate = () => {
           experience_required: Yup.number().min(0),
           skill_required: Yup.string(),
           //   Additional Description
-          tasks: Yup.string(),
-          perks_and_benefits: Yup.string(),
+          description: Yup.string(),
         })}
         onSubmit={(updatedJob) => {
           handleSubmit(updatedJob);
@@ -153,17 +151,11 @@ const JobUpdate = () => {
             type="text"
             placeholder="Enter the skills required for the job, separated by commas"
           />
-          <MyTextInput
-            label="Tasks"
-            name="tasks"
+          <MyTextArea
+            label="description"
+            name="description"
             type="text"
-            placeholder="Enter the job tasks, separated by commas"
-          />
-          <MyTextInput
-            label="Perks and Benefits"
-            name="perks_and_benefits"
-            type="text"
-            placeholder="Enter the perks and benefits offered with the job, separated by commas"
+            placeholder="Enter the job description in detail"
           />
 
           <button type="submit" className="btn btn-success">

@@ -6,7 +6,7 @@ import AuthContext from "../../context/AuthContext";
 import axiosInstance from "../../axios_instance";
 import { urls } from "../../config";
 
-import './jobs.css'
+import "./jobs.css";
 
 const JobDetail = () => {
   const { user } = useContext(AuthContext);
@@ -54,15 +54,7 @@ const JobDetail = () => {
 
                 <div className="mb-5">
                   <h4 className="mb-3 p-3 jd-title">Job description</h4>
-                  <p>
-                    We're seeking a highly skilled {job.title} to join our team
-                    as a {job.employment_type} member and drive growth. We're
-                    looking for someone who has excelled in {job.skill_required}
-                    . If you're a tech-savvy professional with{" "}
-                    {job.experience_required} years of experience and a passion
-                    for excellence, this is the perfect opportunity for you.
-                    Apply now and take your career to new heights with us.
-                  </p>
+                  <p>{job.description}</p>
 
                   <h4 className="mb-3 p-3 jd-title">Job specification</h4>
                   <table>
@@ -75,10 +67,14 @@ const JobDetail = () => {
                       <tr>
                         <td className="w-33 p-2">Experience Required</td>
                         <td className="w-3 p-2">:</td>
-                        <td className="w-64 p-2">{job.experience_required} years</td>
+                        <td className="w-64 p-2">
+                          {job.experience_required} years
+                        </td>
                       </tr>
                       <tr>
-                        <td className="w-33 p-2">Professional Skill Required</td>
+                        <td className="w-33 p-2">
+                          Professional Skill Required
+                        </td>
                         <td className="w-3 p-2">:</td>
                         <td className="w-64 p-2">{job.skill_required}</td>
                       </tr>
@@ -103,10 +99,6 @@ const JobDetail = () => {
                     <li>
                       <i className="fa fa-angle-right text-primary me-2"></i>
                       Familiarization with {job.skill_required}.
-                    </li>
-                    <li>
-                      <i className="fa fa-angle-right text-primary me-2"></i>
-                      Problem-solving and Communication skills.
                     </li>
                   </ul>
                 </div>
