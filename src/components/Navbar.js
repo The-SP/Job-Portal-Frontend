@@ -35,16 +35,6 @@ const Navbar = () => {
           Recommendations
         </Link>
       </li>
-      <li className="nav-item">
-        <Link className="nav-link" to="/resume">
-          Resume
-        </Link>
-      </li>
-      <li className="nav-item">
-        <Link className="nav-link" to="/cover-letter">
-          Cover Letter
-        </Link>
-      </li>
     </>
   );
 
@@ -158,8 +148,17 @@ const Navbar = () => {
                 Explore
               </Link>
             </li>
-
             {user && !user.is_employer && seekerMiddleLinks()}
+            <li className="nav-item">
+              <Link className="nav-link" to="/resume">
+                Resume
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/cover-letter">
+                Cover Letter
+              </Link>
+            </li>{" "}
           </ul>
           {user ? authLinks() : guestLinks()}
         </div>
