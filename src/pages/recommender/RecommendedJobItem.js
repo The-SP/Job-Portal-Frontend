@@ -26,7 +26,7 @@ const RecommendedJobItem = ({ job }) => {
         </div>
 
         <div className="col-sm-12 col-md-2">
-            <span className="btn btn-danger">{job.similarity_scores} %</span>
+            <span className="float-end btn btn-danger">{job.similarity_scores} %</span>
           </div>
         </div>
       </div>

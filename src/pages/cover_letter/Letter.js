@@ -41,10 +41,10 @@ const Letter = () => {
     axiosInstance
       .get(profile_urls.SEEKER_PROFILE)
       .then((res) => {
-        const { name, email, city, phone_number, bio } = res.data;
+        const { name, email, city, phone_number, bio, job_title } = res.data;
         const newProfile = {
           name: name,
-          job_title: "",
+          job_title: job_title,
           email: email,
           phone: phone_number,
           address: city,

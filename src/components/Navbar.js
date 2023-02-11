@@ -28,6 +28,26 @@ const Navbar = () => {
     </ul>
   );
 
+  const seekerMiddleLinks = () => (
+    <>
+      <li className="nav-item">
+        <Link className="nav-link" to="/jobs/recommendations">
+          Recommendations
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link className="nav-link" to="/resume">
+          Resume
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link className="nav-link" to="/cover-letter">
+          Cover Letter
+        </Link>
+      </li>
+    </>
+  );
+
   const employerLinks = () => (
     <ul className="navbar-nav">
       <li className="nav-item dropdown">
@@ -138,16 +158,8 @@ const Navbar = () => {
                 Explore
               </Link>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/resume">
-                Resume
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/cover-letter">
-                Cover Letter
-              </Link>
-            </li>
+
+            {!user.is_employer && seekerMiddleLinks()}
           </ul>
           {user ? authLinks() : guestLinks()}
         </div>

@@ -53,6 +53,7 @@ const ProfileUpdate = () => {
                   linkedin: profile.linkedin || "",
                   website: profile.website || "",
                   bio: profile.bio || "",
+                  job_title: profile.job_title || "",
                 }}
                 validationSchema={Yup.object({
                   name: Yup.string().required("Required"),
@@ -64,6 +65,7 @@ const ProfileUpdate = () => {
                   linkedin: Yup.string().url("Enter a valid url"),
                   website: Yup.string().url("Enter a valid url"),
                   bio: Yup.string(),
+                  job_title: Yup.string(),
                 })}
                 onSubmit={(formData) => {
                   handleSubmit(formData);
@@ -75,6 +77,13 @@ const ProfileUpdate = () => {
                     name="name"
                     type="text"
                     placeholder="Enter your name"
+                    required
+                  />
+                  <MyFloatingTextInput
+                    label="Job Title"
+                    name="job_title"
+                    type="text"
+                    placeholder="Eg: Web Developer, Frontend, Data Scientist,.."
                     required
                   />
                   <MyFloatingTextInput
