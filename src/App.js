@@ -27,6 +27,8 @@ import JobUpdate from "./pages/jobs/JobUpdate";
 import JobDelete from "./pages/jobs/JobDelete";
 import EmployerJobList from "./pages/jobs/EmployerJobList";
 import ScrapedJobList from "./pages/jobs/ScrapedJobList";
+// Recommended Jobs
+import RecommendedJobList from "./pages/recommender/RecommendedJobList";
 // Job-Applications
 import SeekerApplicationsList from "./pages/job_applications/SeekerApplications";
 import JobApplicationsList from "./pages/job_applications/JobApplications";
@@ -80,6 +82,8 @@ const App = () => (
         <Route exact path="/jobs/create" element={<JobCreate />} />
         <Route exact path="/jobs/employer" element={<EmployerJobList />} />
         <Route exact path="/jobs/explore" element={<ScrapedJobList />} />
+        {/* Recommendations */}
+        <Route exact path="/jobs/recommendations" element={<RecommendedJobList />} />
         {/* Job Applications */}
         <Route
           exact

@@ -19,6 +19,7 @@ const urls = {
   JOB_DETAIL: "api/jobs/:id",
   JOB_UPDATE: "api/jobs/:id/update/",
   JOB_SCRAPED: "api/jobs/scraped/",
+  JOB_RECOMMENDED: "api/jobs/recommendations/",
   EMPLOYER_JOBS: "api/jobs/employer/",
   JOB_APPLICATION_CREATE: "api/jobs/applications/create/",
   JOB_APPLICATION_DETAIL: "api/jobs/applications/:id/",
