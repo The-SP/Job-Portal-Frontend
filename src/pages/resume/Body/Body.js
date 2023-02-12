@@ -10,12 +10,11 @@ import styles from "./Body.module.css";
 function Body() {
   const sections = {
     basicInfo: "Basic Info",
+    summary: "About Me",
     workExp: "Work Experience",
     project: "Projects",
     education: "Education",
     achievement: "Achievements",
-    summary: "Summary",
-    other: "Other",
   };
   const resumeRef = useRef();
 
@@ -25,6 +24,11 @@ function Body() {
       id: sections.basicInfo,
       sectionTitle: sections.basicInfo,
       detail: {},
+    },
+    [sections.summary]: {
+      id: sections.summary,
+      sectionTitle: sections.summary,
+      detail: "",
     },
     [sections.workExp]: {
       id: sections.workExp,
@@ -45,17 +49,7 @@ function Body() {
       id: sections.achievement,
       sectionTitle: sections.achievement,
       points: [],
-    },
-    [sections.summary]: {
-      id: sections.summary,
-      sectionTitle: sections.summary,
-      detail: "",
-    },
-    [sections.other]: {
-      id: sections.other,
-      sectionTitle: sections.other,
-      detail: "",
-    },
+    }
   });
 
   return (
