@@ -69,7 +69,7 @@ function Editor(props) {
         />
         <InputControl
           label="Location"
-          placeholder="Enter location eg. Remote"
+          placeholder="Enter location eg. Kathmandu, Nepal"
           value={values.location}
           onChange={(event) =>
             setValues((prev) => ({ ...prev, location: event.target.value }))
@@ -100,19 +100,11 @@ function Editor(props) {
       <div className={styles.column}>
         <label>Enter work description</label>
         <InputControl
-          placeholder="Line 1"
-          value={values.points ? values.points[0] : ""}
-          onChange={(event) => handlePointUpdate(event.target.value, 0)}
-        />
-        <InputControl
-          placeholder="Line 2"
-          value={values.points ? values.points[1] : ""}
-          onChange={(event) => handlePointUpdate(event.target.value, 1)}
-        />
-        <InputControl
-          placeholder="Line 3"
-          value={values.points ? values.points[2] : ""}
-          onChange={(event) => handlePointUpdate(event.target.value, 2)}
+          placeholder="Description"
+          value={values.description}
+          onChange={(event) =>
+            setValues((prev) => ({ ...prev, description: event.target.value }))
+          }
         />
       </div>
     </div>
@@ -200,6 +192,14 @@ function Editor(props) {
           setValues((prev) => ({ ...prev, college: event.target.value }))
         }
       />
+      <InputControl
+          label="Location"
+          placeholder="Enter location eg. Kathmandu, Nepal"
+          value={values.location}
+          onChange={(event) =>
+            setValues((prev) => ({ ...prev, location: event.target.value }))
+          }
+        />
       <div className={styles.row}>
         <InputControl
           label="Start Date"
@@ -310,23 +310,11 @@ function Editor(props) {
   const summaryBody = (
     <div className={styles.detail}>
       <InputControl
-        label="Summary"
+        label="About Me"
         value={values.summary}
-        placeholder="Enter your objective/summary"
+        placeholder="Write a brief intro about yourself."
         onChange={(event) =>
           setValues((prev) => ({ ...prev, summary: event.target.value }))
-        }
-      />
-    </div>
-  );
-  const otherBody = (
-    <div className={styles.detail}>
-      <InputControl
-        label="Other"
-        value={values.other}
-        placeholder="Enter something"
-        onChange={(event) =>
-          setValues((prev) => ({ ...prev, other: event.target.value }))
         }
       />
     </div>
@@ -336,6 +324,8 @@ function Editor(props) {
     switch (sections[activeSectionKey]) {
       case sections.basicInfo:
         return basicInfoBody;
+      case sections.summary:
+        return summaryBody;
       case sections.workExp:
         return workExpBody;
       case sections.project:
@@ -344,10 +334,6 @@ function Editor(props) {
         return educationBody;
       case sections.achievement:
         return achievementsBody;
-      case sections.summary:
-        return summaryBody;
-      case sections.other:
-        return otherBody;
       default:
         return null;
     }
@@ -383,7 +369,7 @@ function Editor(props) {
           endDate: values.endDate,
           companyName: values.companyName,
           location: values.location,
-          points: values.points,
+          description: values.description
         };
         const tempDetails = [...information[sections.workExp]?.details];
         tempDetails[activeDetailIndex] = tempDetail;
@@ -425,6 +411,7 @@ function Editor(props) {
           college: values.college,
           startDate: values.startDate,
           endDate: values.endDate,
+          location: values.location,
         };
         const tempDetails = [...information[sections.education]?.details];
         tempDetails[activeDetailIndex] = tempDetail;
@@ -459,19 +446,6 @@ function Editor(props) {
           ...prev,
           [sections.summary]: {
             ...prev[sections.summary],
-            detail: tempDetail,
-            sectionTitle,
-          },
-        }));
-        break;
-      }
-      case sections.other: {
-        const tempDetail = values.other;
-
-        props.setInformation((prev) => ({
-          ...prev,
-          [sections.other]: {
-            ...prev[sections.other],
             detail: tempDetail,
             sectionTitle,
           },
@@ -544,6 +518,9 @@ function Editor(props) {
         ? activeInfo.details[0]?.startDate || ""
         : "",
       endDate: activeInfo?.details ? activeInfo.details[0]?.endDate || "" : "",
+      description: activeInfo?.details
+        ? activeInfo.details[0]?.description || ""
+        : "",
       points: activeInfo?.details
         ? activeInfo.details[0]?.points
           ? [...activeInfo.details[0]?.points]
@@ -560,8 +537,7 @@ function Editor(props) {
         : activeInfo?.detail?.github || "",
       phone: activeInfo?.detail?.phone || "",
       email: activeInfo?.detail?.email || "",
-      summary: typeof activeInfo?.detail !== "object" ? activeInfo.detail : "",
-      other: typeof activeInfo?.detail !== "object" ? activeInfo.detail : "",
+      summary: typeof activeInfo?.detail !== "object" ? activeInfo.detail : ""
     });
   }, [activeSectionKey]);
 
@@ -583,6 +559,7 @@ function Editor(props) {
       location: activeInfo.details[activeDetailIndex]?.location || "",
       startDate: activeInfo.details[activeDetailIndex]?.startDate || "",
       endDate: activeInfo.details[activeDetailIndex]?.endDate || "",
+      description:activeInfo.details[activeDetailIndex]?.description || "",
       points: activeInfo.details[activeDetailIndex]?.points || "",
       title: activeInfo.details[activeDetailIndex]?.title || "",
       linkedin: activeInfo.details[activeDetailIndex]?.linkedin || "",
