@@ -10,7 +10,6 @@
 .leftsection{
   grid-column: span 2;
   min-height: 100%;
-  background-color: #00324A;
 }
 .rightsection{
   grid-column: span 5;
@@ -46,11 +45,20 @@
 }
 
 .maintitle{
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   text-transform: uppercase;
   letter-spacing: 1px;
   color: #f7f7f7ec;
   padding-top: 3rem;
+  padding-bottom: 1rem;
+}
+
+.educontent{
+  padding-bottom: 1rem;
+}
+
+.paraedu{
+  color: #718096;
 }
 
 .contactinfo ul{
@@ -137,6 +145,41 @@
   border-radius: 50%;
   transform: translateX(-50%);
   left: 0;
+}
+
+/*Media Querries*/
+@media screen and (max-width:823px){
+  .righttitle::after{
+      width: 40%;
+  }
+}
+@media screen and (max-width:681px){
+  .righttitle::after{
+      width: 30%;
+  }
+}
+@media screen and (max-width:780px){
+  .timeline{
+      grid-template-columns: repeat(1, 1fr);
+  }
+}
+@media screen and (max-width:780px){
+  .leftsection{
+      grid-column: span 3;
+  }
+  .rightsection{
+      grid-column: span 4;
+  }
+}
+@media screen and (max-width:1200px){
+  .main{
+      grid-template-columns: repeat(1, 1fr);
+  }
+}
+@media screen and (max-width:390px){
+  .name{
+      font-size: 1.5rem;
+  }
 }
 
 
