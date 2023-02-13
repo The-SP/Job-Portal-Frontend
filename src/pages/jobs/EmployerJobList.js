@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axiosInstance from "../../axios_instance";
 import { urls } from "../../config";
 import EmployerJobItem from "./EmployerJobItem";
+import Spinner from "../../components/Spinner";
 
 const EmployerJobList = () => {
   const [jobs, setJobs] = useState(null);
@@ -16,7 +17,7 @@ const EmployerJobList = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  if (!jobs) return <></>;
+  if (!jobs) return <Spinner />;
 
   return (
     <div className="container-fluid py-5 px-5">

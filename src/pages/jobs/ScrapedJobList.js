@@ -3,6 +3,7 @@ import axiosInstance from "../../axios_instance";
 import ScrapedJobItem from "./ScrapedJobItem";
 import Pagination from "./Pagination";
 import { urls } from "../../config";
+import Spinner from "../../components/Spinner";
 
 const ScrapedJobList = () => {
   const [jobs, setJobs] = useState([]);
@@ -50,7 +51,7 @@ const ScrapedJobList = () => {
   //Handle search input change
   const handleSearchChange = (event) => setSearchTerm(event.target.value);
 
-  if (!jobs) return <></>;
+  if (!jobs) return <Spinner />;
 
   return (
     <div className="container-fluid py-5 px-5">
