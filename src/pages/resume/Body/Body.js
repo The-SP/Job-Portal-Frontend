@@ -18,7 +18,7 @@ function Body() {
   };
   const resumeRef = useRef();
 
-  const [activeColor, setActiveColor] = useState("#239ce2");
+  const [activeColor, setActiveColor] = useState("#00324A");
   const [resumeInformation, setResumeInformation] = useState({
     [sections.basicInfo]: {
       id: sections.basicInfo,
@@ -66,6 +66,7 @@ function Body() {
             title="Choose your color"
           />
         </div>
+        <div>
         <ReactToPrint
           trigger={() => {
             return (
@@ -80,6 +81,7 @@ function Body() {
           }}
           content={() => resumeRef.current}
         />
+        </div>
       </div>
       <div className={styles.main}>
         <Editor

@@ -10,30 +10,15 @@
 .heading {
   font-weight: 500;
   font-size: 2.1rem;
+  margin-top: 15px;
 }
 
 .toolbar {
   width: 100%;
   display: flex;
-  gap: 40px;
-  justify-content: space-between;
+  gap: 400px;
+  justify-content: center;
   align-items: center;
-}
-
-.colors {
-  display: flex;
-  gap: 20px;
-  padding: 0 30px;
-}
-
-.colors .color {
-  height: 36px;
-  width: 36px;
-  border-radius: 50%;
-  background-color: #239ce2;
-}
-.colors .active {
-  border: 2px solid #000;
 }
 
 .toolbar button {
@@ -64,13 +49,8 @@
   width: 100%;
 }
 
-@media (max-width:600px){
+@media (max-width:650px){
   .toolbar{
-    gap:10px;
-  }
-  .colors {
-    display: flex;
-    gap: 10px;
-    padding: 0 20px;
+    gap:100px;
   }
 }
