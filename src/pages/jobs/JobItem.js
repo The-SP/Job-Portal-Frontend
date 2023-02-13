@@ -5,14 +5,14 @@ const JobItem = ({ job }) => {
   return (
     <div className="job-item p-4 mb-4">
       <div className="row g-4">
-        <div className="col-sm-12 col-md-8 d-flex align-items-center">
+        <div className="col-sm-12 col-md-8 ps-4">
           {/* <img
             className="flex-shrink-0 img-fluid border rounded"
             src={job.logo_url}
             alt="company"
             style={{ width: "100px", height: "100px" }}
           /> */}
-          <div className="text-start ps-4">
+          <div className="text-start">
             <h5 className="mb-3">{job.title}</h5>
             <div className="mb-2">
               <Link
@@ -34,6 +34,11 @@ const JobItem = ({ job }) => {
               <i className="far fa-money-bill-alt text-success me-2"></i>
               {job.salary_range}
             </span>
+          </div>
+
+          <div className="my-3">
+            <span className="fw-bold">Skills:</span>
+            <span className="lead"> {job.skill_required}</span>
           </div>
         </div>
 
