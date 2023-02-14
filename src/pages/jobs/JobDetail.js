@@ -144,7 +144,15 @@ const JobDetail = () => {
                   data-wow-delay="0.1s"
                 >
                   <h4 className="mb-4">Company Detail</h4>
-                  <h5 className="display-6">{job.company.company_name}</h5>
+                  <h5 className="display-6">
+                    {" "}
+                    <Link
+                      to={`/profile/employer/${job.posted_by}`}
+                      style={{textDecoration: "none"}}
+                    >
+                      {job.company.company_name}{" "}
+                    </Link>
+                  </h5>
                   <p className="text-muted">{job.company.contact_email}</p>
                   <p>
                     <i className="fa fa-angle-right text-primary me-2"></i>

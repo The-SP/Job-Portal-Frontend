@@ -18,14 +18,15 @@ const JobApplicationsList = () => {
       .catch((err) => console.log(err));
   }, [id]);
 
-  if (!applications) return <>No applications!</>;
+  if (!applications || applications.length === 0)
+    return <div className="display-6 text-center my-5">No applications!</div>;
 
   return (
     <div className="container-fluid py-5 px-5">
       <div className="display-6 mb-4">
         Job Applications for {applications[0].job_title}
       </div>
-      <table class="table table-xs table-striped table-hover">
+      <table className="table table-xs table-striped table-hover">
         <thead>
           <tr>
             <th>#</th>
@@ -34,6 +35,7 @@ const JobApplicationsList = () => {
             <th>Phone Number</th>
             <th>Message</th>
             <th>Applied Date</th>
+            <th>Resume</th>
           </tr>
         </thead>
         <tbody>
@@ -54,6 +56,20 @@ const JobApplicationsList = () => {
                   ...
                 </td>
                 <td>{application.created_at.substring(0, 10)}</td>
+                <td>
+                  {application.resume ? (
+                    <a
+                      href={application.resume}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="btn btn-sm btn-success"
+                    >
+                      Resume
+                    </a>
+                  ) : (
+                    "None"
+                  )}
+                </td>
               </tr>
             );
           })}

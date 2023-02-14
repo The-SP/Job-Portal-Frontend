@@ -6,19 +6,27 @@ import * as Yup from "yup";
 import AuthContext from "../../context/AuthContext";
 import axiosInstance from "../../axios_instance";
 import { urls } from "../../config";
-import { MyFloatingTextInput, MyFloatingTextArea} from "../../components/Inputs";
+import {
+  MyFloatingTextInput,
+  MyFloatingTextArea,
+} from "../../components/Inputs";
 
 const ApplicationCreate = () => {
   const { user } = useContext(AuthContext);
 
   const { id } = useParams();
   const navigate = useNavigate();
-  const [resume, setResume] = useState("");
+  const [resume, setResume] = useState(null);
 
   const handleSubmit = (formData) => {
-    formData = { job: +id, ...formData };
+    formData = { job: +id, ...formData, resume };
     axiosInstance
-      .post(urls.JOB_APPLICATION_CREATE, formData)
+      .post(urls.JOB_APPLICATION_CREATE, formData, {
+        // Change header to accept file upload
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
       .then((res) => {
         console.log("Application sent:", res.data);
         navigate(-1);
@@ -44,7 +52,9 @@ const ApplicationCreate = () => {
                   }}
                   validationSchema={Yup.object({
                     name: Yup.string().required("Required"),
-                    email: Yup.string().email("Invalid email").required("Required"),
+                    email: Yup.string()
+                      .email("Invalid email")
+                      .required("Required"),
                     phoneNumber: Yup.number(),
                     message: Yup.string(),
                   })}
@@ -82,7 +92,7 @@ const ApplicationCreate = () => {
                     />
 
                     <div className="mb-3">
-                      <label htmlFor="resume">Resume</label>
+                      <label htmlFor="resume">Resume / Cover Letter</label>
                       <input
                         type="file"
                         className="form-control"

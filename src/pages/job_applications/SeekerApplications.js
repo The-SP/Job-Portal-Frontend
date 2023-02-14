@@ -29,31 +29,38 @@ const SeekerApplicationsList = () => {
             <th>#</th>
             <th>Job</th>
             <th>Company</th>
-            <th>Location</th>
-            <th>Level</th>
-            <th>Salary</th>
-            <th>Deadline</th>
+            <th>Applied Date</th>
+            <th>Resume</th>
             <th>Delete</th>
           </tr>
         </thead>
         <tbody>
-          {applications.map((job, index) => {
+          {applications.map((application, index) => {
             return (
               <tr key={index}>
                 <td>{index + 1}</td>
                 <td>
                   {" "}
-                  <Link
-                    to={`/jobs/${job.id}`}
-                  >
-                    {job.title}
+                  <Link to={`/jobs/${application.job_id}`}>
+                    {application.job_title}
                   </Link>
                 </td>
-                <td>{job.company}</td>
-                <td>{job.location}</td>
-                <td>{job.job_level}</td>
-                <td>{job.salary_range}</td>
-                <td>{job.deadline}</td>
+                <td>{application.company}</td>
+                <td>{application.created_at}</td>
+                <td>
+                  {application.resume ? (
+                    <a
+                      href={application.resume}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="btn btn-sm btn-success"
+                    >
+                      Resume
+                    </a>
+                  ) : (
+                    "None"
+                  )}
+                </td>
                 <td>
                   {/* Button trigger modal  */}
                   <button
@@ -61,7 +68,7 @@ const SeekerApplicationsList = () => {
                     className="btn btn-outline-danger"
                     data-bs-toggle="modal"
                     data-bs-target="#delApplicationModal"
-                    onClick={() => setActiveID(job.id)}
+                    onClick={() => setActiveID(application.id)}
                   >
                     X
                   </button>
