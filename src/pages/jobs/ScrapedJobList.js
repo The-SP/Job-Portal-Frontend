@@ -23,14 +23,6 @@ const ScrapedJobList = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  //Filter the jobs by searchTerm
-  // useEffect(() => {
-  //   setFilteredJobs(
-  //     jobs.filter((job) => job.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-  //     job.company.toLowerCase().includes(searchTerm.toLowerCase())
-  //     ) 
-  //   );
-  // }, [searchTerm]);
 
   const handleSearch = ()=>{
     setFilteredJobs(
