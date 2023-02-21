@@ -11,7 +11,7 @@
     left: -50%; /* move the pseudo-element to the left by 50% of the container width */
     width: 200%; /* set the width of the pseudo-element to 200% of the container width */
     height: 100%; /* set the height of the pseudo-element to 100% of the container height */
-    background: linear-gradient(#20dbc2 0%, #00bfa6 100%); /* set the background gradient */
+    background: linear-gradient(#079481, #20dbc2); /* set the background gradient */
     border-radius: 50% 50% 0 0; /* set the border-radius to create the curved shape */
     transform: rotate(-20deg); /* rotate the pseudo-element to create the curve */
     z-index: -1; /* set the z-index of the pseudo-element behind the container content */
@@ -41,4 +41,22 @@
     font-weight: bold;
 }
 
+/* signup page css */
+.main-container1 {
+    position: relative; /* make the container relative for absolute positioning of ::before */
+    overflow: hidden; /* hide the overflow of ::before */
+  }
+  
+  .main-container1::before {
+    content: ''; /* add content to the pseudo-element */
+    position: absolute; /* position the pseudo-element */
+    bottom: 0;
+    right: -50%; /* move the pseudo-element to the left by 50% of the container width */
+    width: 200%; /* set the width of the pseudo-element to 200% of the container width */
+    height: 100%; /* set the height of the pseudo-element to 100% of the container height */
+    background: linear-gradient(#4481eb, #04befe); /* set the background gradient */
+    border-radius: 0 0 50% 50%; /* set the border-radius to create the curved shape */
+    transform: rotate(20deg); /* rotate the pseudo-element to create the curve */
+    z-index: -1; /* set the z-index of the pseudo-element behind the container content */
+  }
   
