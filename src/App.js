@@ -109,7 +109,6 @@ const App = () => (
         <Route exact path="/resume" element={<ResumeBuilder />} />
         <Route exact path="/cover-letter" element={<Letter />} />
       </Routes>
-      <Footer />
     </AuthProvider>
   </BrowserRouter>
 );

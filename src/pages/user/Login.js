@@ -3,6 +3,8 @@ import { useNavigate, Link } from "react-router-dom";
 import axiosInstance from "../../axios_instance";
 import { auth_urls } from "../../config";
 import AuthContext from "../../context/AuthContext";
+import './user.css'
+import loginSvg from "./login.svg"
 
 const Login = () => {
   const navigate = useNavigate();
@@ -44,17 +46,17 @@ const Login = () => {
 
   return (
     <section>
-      <div className="container vh-100">
-        <div className="row d-flex justify-content-center align-items-center py-2">
-          <div className="col-12 col-md-8 col-lg-6 col-xl-5">
+      <div className="main-container container-fluid">
+        <div className="row">
+          <div className="col-12 col-md-8 col-lg-6 col-xl-5 col-6 px-0 mx-auto">
             <div
-              className="card bg-dark text-white"
-              style={{ borderRadius: 1 + "rem" }}
+              className="signin bg-light text-black"
+              style={{ borderRadius: 0.5 + "rem" }}
             >
-              <div className="card-body p-5 text-center">
+              <div className="p-4 text-center">
                 <div className="pb-5">
                   <h2 className="fw-bold mb-2 text-uppercase">Login</h2>
-                  <p className="text-white-50 mb-5">
+                  <p className="text-black-50 mb-5">
                     Please enter your login and password!
                   </p>
 
@@ -90,32 +92,40 @@ const Login = () => {
                   <p className="small mb-4 pb-lg-2">
                     <Link
                       to="/reset-password"
-                      className="text-white-50 fw-bold"
+                      className="text-black-50 fw-bold"
                     >
                       Forgot password?
                     </Link>
                   </p>
 
                   <button
-                    className="btn btn-outline-light btn-lg px-5"
+                    className="btn btn-outline-dark btn-lg px-5"
                     type="submit"
                     onClick={handleSubmit}
                   >
                     Login
                   </button>
                 </div>
-
-                <div>
-                  <p className="mb-0">
-                    Don't have an account?{" "}
-                    <Link to="/signup" className="text-white-50 fw-bold">
-                      Sign Up
-                    </Link>
-                  </p>
-                </div>
               </div>
             </div>
           </div>
+          <div className="panel col-6 px-0">
+            <div className="description">
+              <div className="mb-4">
+                <p>
+                  Don't have an account?{" "}
+                </p>
+                <button className="btn btn-outline-dark btn-lg px-5">
+                  <Link to="/signup" className="text-white fw-bold">
+                    Sign Up
+                  </Link>
+                </button>
+              </div>
+              <div>
+                <img src={loginSvg} alt="Not Found" />
+              </div>
+            </div>
+          </div>  
         </div>
       </div>
     </section>
