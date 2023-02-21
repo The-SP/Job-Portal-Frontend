@@ -1,5 +1,6 @@
 import './Home.css'
 import heroimg from '../components/hero.jpg'
+import Footer from '../components/Footer';
 
 const Home = () => {
 
@@ -68,6 +69,7 @@ const Home = () => {
         </div>
     </div>
     </section> 
+    <Footer/>
     </> 
   );
 };

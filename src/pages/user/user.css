@@ -41,6 +41,12 @@
     font-weight: bold;
 }
 
+@media screen and (max-width:993px) {
+    .panel{
+        display: none;
+    }
+}
+
 /* signup page css */
 .main-container1 {
     position: relative; /* make the container relative for absolute positioning of ::before */

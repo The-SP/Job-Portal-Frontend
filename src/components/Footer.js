@@ -1,13 +1,58 @@
 import React from 'react';
+import './Footer.css'
+import logo from './logo.png'
 
 const Footer = () => {
   return (
-    <footer className="bg-light py-3">
-      <div className="container">
-        <p className="text-center">
-          Copyright &copy; Hire Nepal 2023
-        </p>
+    <footer>
+      <div className="row">
+        <div className="col">
+          <div className="col1">
+            <img src={logo} alt="Not Found" />
+            <p className="brief">Our job application platform facilitates seamless job postings and 
+            applicant tracking for employers, while providing job seekers with a user-friendly interface to 
+            apply for their desired positions. With our streamlined process
+            , job matching has never been easier.</p>
+          </div>
+        </div>
+        <div className="col">
+          <div className="col2">
+            <h3>Creators</h3>
+            <h6>Suraj Pathak</h6>
+            <h6>Sayoush Subedi</h6>
+            <h6>Tikaharu Sharma</h6>
+            <h5>IOE,Pulchowk</h5>
+          </div>
+        </div>
+        <div className="col">
+          <div className="col3">
+            <h3>Links</h3>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="">Profile</a></li>
+              <li><a href="/jobs">Jobs Lists</a></li>
+              <li><a href="/jobs/explore">Scraped Jobs Lists</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="col">
+          <div className="col4">
+            <h3>Newsletter</h3>
+            <form>
+              <i className='far fa-envelope'></i>
+              <input type="text" placeholder='Send us some feedback' required/>
+              <button type='submit'><i className='fas fa-arrow-right'></i></button>
+            </form>
+            <div className="social-icons">
+              <i className="fab fa-facebook-f"></i>
+              <i className="fab fa-linkedin"></i>
+              <i className="fab fa-github"></i>
+            </div>
+          </div>
+        </div>
       </div>
+      <hr />
+      <p className='copyright'>Hire Nepal 2023 - All Rights Reserved</p>
     </footer>
   );
 };

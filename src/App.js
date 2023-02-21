@@ -4,7 +4,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 
 import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
 import Home from "./pages/Home";
 // Auth
 import Login from "./pages/user/Login";
@@ -111,6 +110,7 @@ const App = () => (
       </Routes>
     </AuthProvider>
   </BrowserRouter>
+
 );
 
 export default App;

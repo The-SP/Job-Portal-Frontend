@@ -66,7 +66,7 @@ const Signup = () => {
               </div>
             </div>
           </div>
-          <div className="col-12 col-md-8 col-lg-6 col-xl-5 px-0 mx-auto">
+          <div className="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5 px-0 mx-auto">
             <div
               className="signin bg-light text-black"
               style={{ borderRadius: 0.5 + "rem" }}

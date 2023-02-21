@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import axiosInstance from "../../axios_instance";
 import { auth_urls } from "../../config";
 import signupSvg from './signup.svg'
@@ -67,7 +67,7 @@ const EmployerSignup = () => {
               </div>
             </div>
           </div>
-          <div className="col-12 col-md-8 col-lg-6 col-xl-5 px-0 mx-auto">
+          <div className="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5 px-0 mx-auto">
             <div
               className="signin bg-light text-black"
               style={{ borderRadius: 0.5 + "rem" }}
