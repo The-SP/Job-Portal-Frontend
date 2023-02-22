@@ -1,6 +1,9 @@
 import './Home.css'
-import heroimg from '../components/hero.jpg'
 import Footer from '../components/Footer';
+import resumeIcon from '../components/resumeIcon.png'
+import jobIcon from '../components/jobIcon.png'
+import brandingIcon from '../components/brandingIcon.png'
+import recommendationIcon from '../components/recommendationIcon.png'
 
 const Home = () => {
 
@@ -33,7 +36,7 @@ const Home = () => {
             <div className="col-lg-3 col-sm-6">
                 <div className="service theme-shadow p-lg-5 p-4">
                     <div className="iconbox">
-                        <i className="ri-pen-nib-fill"></i>
+                        <img src={jobIcon} alt="" />
                     </div>
                     <h4 className="mt-4 mb-3">Apply For Jobs</h4>
                     <p>Offer job seekers the ability to search for and apply to job openings posted by employers.</p>
@@ -42,16 +45,16 @@ const Home = () => {
             <div className="col-lg-3 col-sm-6">
                 <div className="service theme-shadow p-lg-5 p-4">
                     <div className="iconbox">
-                      <i className="bi bi-file-earmark-person"></i>
+                      <img src={resumeIcon} alt="" />
                     </div>
-                    <h4 className="mt-4 mb-3">Build Resume</h4>
+                    <h4 className="mt-4 mb-3">Build Your Resume</h4>
                     <p>Provide tools for job seekers to create and upload their resumes, making it easy for employers to find and review them.</p>
                 </div>
             </div>
             <div className="col-lg-3 col-sm-6">
                 <div className="service theme-shadow p-lg-5 p-4">
                     <div className="iconbox">
-                        <i className="ri-ruler-2-fill"></i>
+                        <img src={brandingIcon} alt="" />
                     </div>
                     <h4 className="mt-4 mb-3">Employer Branding</h4>
                     <p>Help employers to showcase their company culture, mission, and values to attract the right candidates.</p>
@@ -60,7 +63,7 @@ const Home = () => {
             <div className="col-lg-3 col-sm-6">
                 <div className="service theme-shadow p-lg-5 p-4">
                     <div className="iconbox">
-                        <i className="ri-pie-chart-2-fill"></i>
+                        <img src={recommendationIcon} alt="" />
                     </div>
                     <h4 className="mt-4 mb-3">Job Recommendation</h4>
                     <p>Use machine learning algorithms to recommend job openings to job seekers based on their skills and preferences.</p>

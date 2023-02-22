@@ -31,16 +31,9 @@
     color: #727272;
 }
 
-.iconbox {
+.iconbox img{
     width: 70px;
     height: 70px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(78,87,212, 0.1);
-    color: #4e57d4;
-    font-size: 34px;
-    flex: none;
 }
 
 .section-title .line {
