@@ -4,20 +4,25 @@
     background: linear-gradient(rgba(0,0,0, 0.507), rgba(0,0,0, 0.438)), url(../components/hero.jpg);
     background-position: center;
     background-size: cover;
+    animation: appear-from-top 1s ease-in-out;
 }
 
 #hero .btn {
     font-weight: 600;
     font-size: 14px;
     text-transform: uppercase;
-    border-radius: 3px;
+    border-radius: 30px;
     padding: 10px 24px;
+    background-color: #dc3545;
+    border: none;
+    animation: slide-in 2s;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 #hero .btn:hover {
-    background-color: #dc3545;
-    border: none;
-}
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4);
+    transform: translate(-2px, -2px);
+  }
 
 #services{
     margin-bottom: 40px;
@@ -48,3 +53,23 @@
     box-shadow: 0px 15px 25px rgba(0,0,0, 0.08);
 }
 
+@keyframes slide-in {
+    0% { transform: translateY(100%); } /* start with the element offscreen to the bottom */
+    100% { transform: translateY(0); } /* end with the element fully visible */
+  }
+
+.col-12 h1{
+    animation: slide-in 1s;
+}
+.col-12 h5{
+    animation: slide-in 1.5s;
+}
+
+@keyframes appear-from-top {
+    0% {
+      transform: translateY(-30%); /* start with the background image shifted 100% of its height above the container */
+    }
+    100% {
+      transform: translateY(0); /* end with the background image in its original position */
+    }
+  }
