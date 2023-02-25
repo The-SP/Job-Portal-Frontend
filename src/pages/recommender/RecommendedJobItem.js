@@ -45,7 +45,7 @@ const RecommendedJobItem = ({ job }) => {
         </div>
 
         <div className="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-          <div className="float-end btn btn-danger mb-3">
+          <div className="float-end btn btn-primary mb-3">
             {job.similarity_scores} %
           </div>
           <div className="d-flex mb-3">

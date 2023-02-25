@@ -2,6 +2,11 @@ import axios from "axios";
 
 const baseURL = "http://127.0.0.1:8000/";
 
+const removeTokens = () => {
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("refresh_token");
+}
+
 const axiosInstance = axios.create({
   baseURL: baseURL,
   timeout: 10000, // 10sec
@@ -48,8 +53,7 @@ axiosInstance.interceptors.response.use(
       // For unknown reasons, refresh_token was stored as 'undefined'(string). If this occurs delete the tokens 
       if (refreshToken === 'undefined') {
         console.log("refresh token is undefined");
-        localStorage.removeItem("access_token");
-        localStorage.removeItem("refresh_token");
+        removeTokens()
         // set refreshToken to falsy value so that below if's don't execute
         refreshToken = false
       }
@@ -82,6 +86,7 @@ axiosInstance.interceptors.response.use(
             });
         } else {
           console.log("Refresh token is expired", tokenParts.exp, now);
+          removeTokens()
           window.location.href = "/login/";
         }
       } else {
