@@ -1,37 +1,62 @@
 import './Home.css'
+import { useState,useEffect,useRef } from 'react';
 import Footer from '../components/Footer';
 import resumeIcon from '../components/resumeIcon.png'
 import jobIcon from '../components/jobIcon.png'
 import brandingIcon from '../components/brandingIcon.png'
 import recommendationIcon from '../components/recommendationIcon.png'
+import homeimg from '../components/home2.png'
 
 const Home = () => {
 
+    const [isVisible, setIsVisible] = useState(false);
+  const componentRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      });
+    });
+
+    observer.observe(componentRef.current);
+
+    // Clean up the observer when the component unmounts
+    return () => {
+      observer.unobserve(componentRef.current);
+    };
+  }, [])
+
   return (
     <>
-    <section id="hero" className="min-vh-100 d-flex align-items-center text-center">
-        <div className="container">
-            <div className="row">
-                <div className="col-12">
-                    <h1 className="text-uppercase text-white fw-semibold display-1">Welcome to hire nepal</h1>
-                    <h5 className="text-uppercase text-white mt-3 mb-4">Accelerate Your Tech Career with a World of Opportunities</h5>
+    <section id="hero" className='container'>
+        <div className="row mt-5">
+                <div className="col-md-7 main-text">
+                    <h1 className="text-uppercase text-black fw-semibold display-1">Welcome to hire nepal</h1>
+                    <h5 className="text-uppercase mt-3 mb-4">Accelerate Your Tech Career with a World of Opportunities</h5>
                     <div>
                         <a href="/jobs" className="btn btn-dark">Get Started</a>
                     </div>
                 </div>
-            </div>
+                <div className='col-md-5'>
+                    <img src={homeimg} alt="" />
+                </div>
         </div>
     </section> 
-    <section id="services" className="section-padding border-top">
+    <section id="services" className="">
     <div className="container">
-        <div className="row mt-5">
+        <div className="row mt-5 mb-5">
             <div className="col-12 text-center">
                 <div className="section-title">
-                    <h1 className="display-4 fw-semibold">Our Services</h1>
+                    <h3 className="display-5 fw-semibold">Our Services</h3>
                     <div className="line"></div>
                 </div>
             </div>
         </div>
+        <div className={`my-component${isVisible ? ' is-visible' : ''}`}
+      ref={componentRef}>
         <div className="row g-4 text-center">
             <div className="col-lg-3 col-sm-6">
                 <div className="service theme-shadow p-lg-5 p-4">
@@ -69,6 +94,7 @@ const Home = () => {
                     <p>Use machine learning algorithms to recommend job openings to job seekers based on their skills and preferences.</p>
                 </div>
             </div>
+        </div>
         </div>
     </div>
     </section> 

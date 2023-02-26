@@ -18,27 +18,27 @@
   }
   
  .main-container .sign{
-  animation: slide-in-right 1s ease-in;
+  animation: slide-in-right 1s ease-in-out;
  }
 
  .main-container1 .sign-up{
-  animation: slide-in-left 1s ease-in;
+  animation: slide-in-left 1s ease-in-out;
  }
 
  .panel .mb-4{
-  animation: slide-in-right 1.5s ease-in;
+  animation: slide-in-right 1.5s ease-in-out;
  }
 
  .panel img{
-  animation: slide-in-right 2s ease-in;
+  animation: slide-in-right 2s ease-in-out;
  }
 
  .panel1 .mb-4{
-  animation: slide-in-left 1.5s ease-in;
+  animation: slide-in-left 1.5s ease-in-out;
  }
 
  .panel1 img{
-  animation: slide-in-left 2s ease-in;
+  animation: slide-in-left 2s ease-in-out;
  }
 
 .panel img{

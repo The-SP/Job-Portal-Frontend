@@ -1,10 +1,22 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
 
-#hero {
-    background: linear-gradient(rgba(0,0,0, 0.507), rgba(0,0,0, 0.438)), url(../components/hero.jpg);
-    background-position: center;
-    background-size: cover;
-    animation: appear-from-top 1s ease-in-out;
+#hero img{
+    width: 100%;
+    height: 100%;
+    max-height: 65vh;
+    animation: slide-in 1s ease-in-out;
+}
+
+#hero h5{
+    color: #727272;
+    animation: slide-in 1.5s ease-in-out;
+}
+
+#hero .main-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    animation: slide-in 1s ease-in-out;
 }
 
 #hero .btn {
@@ -41,6 +53,10 @@
     height: 70px;
 }
 
+.section-title{
+    animation: slide-in 2s ease-in-out;
+}
+
 .section-title .line {
     width: 200px;
     height: 4px;
@@ -58,18 +74,21 @@
     100% { transform: translateY(0); } /* end with the element fully visible */
   }
 
-.col-12 h1{
-    animation: slide-in 1s;
-}
-.col-12 h5{
-    animation: slide-in 1.5s;
-}
-
-@keyframes appear-from-top {
+  @keyframes slideInFromBottom {
     0% {
-      transform: translateY(-30%); /* start with the background image shifted 100% of its height above the container */
+      transform: translateY(30%);
     }
     100% {
-      transform: translateY(0); /* end with the background image in its original position */
+      transform: translateY(0);
     }
   }
+  
+  .my-component {
+    opacity: 0;
+  }
+  
+  .my-component.is-visible {
+    opacity: 1;
+    animation: slideInFromBottom 1s ease-in-out forwards;
+  }
+  
