@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams} from "react-router-dom";
+import './jobapplication.css'
 
 import axiosInstance from "../../axios_instance";
 import { urls } from "../../config";
@@ -22,11 +23,14 @@ const JobApplicationsList = () => {
     return <div className="display-6 text-center my-5">No applications!</div>;
 
   return (
-    <div className="container-fluid py-5 px-5">
-      <div className="display-6 mb-4">
+    <div className="whole-table">
+    <div className="main-table container-fluid py-5 px-5">
+      <div className="table-div">
+      <div className="display-6 mb-4 text-center">
         Job Applications for {applications[0].job_title}
       </div>
-      <table className="table table-xs table-striped table-hover">
+      <div className="table__body">
+      <table>
         <thead>
           <tr>
             <th>#</th>
@@ -45,9 +49,9 @@ const JobApplicationsList = () => {
                 <td>{index + 1}</td>
                 <td>
                   {" "}
-                  <Link to={`/profile/seeker/${application.seeker_id}`}>
+                  <a href={`/profile/seeker/${application.seeker_id}`}>
                     {application.name}
-                  </Link>
+                  </a>
                 </td>{" "}
                 <td>{application.email}</td>
                 <td>{application.phone_number}</td>
@@ -75,6 +79,9 @@ const JobApplicationsList = () => {
           })}
         </tbody>
       </table>
+      </div>
+      </div>
+    </div>
     </div>
   );
 };

@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import './jobapplication.css'
 import axiosInstance from "../../axios_instance";
 import { urls } from "../../config";
 import ApplicationDelete from "./ApplicationDelete";
+import trash from './trash-2.svg'
 
 const SeekerApplicationsList = () => {
   const [applications, setApplications] = useState(null);
@@ -21,9 +22,14 @@ const SeekerApplicationsList = () => {
   if (!applications) return <h3 className="text-center">No applications!</h3>;
 
   return (
-    <div className="container-fluid py-5 px-5">
+    <div className="whole-table">
+    <div className="main-table container-fluid py-5 px-5">
+      <div className="table-div">
+      <div className="table-header">
       <h2>Your Job Applications</h2>
-      <table className="table table-xs table-striped table-hover">
+      </div>
+      <div className="table__body">
+      <table>
         <thead>
           <tr>
             <th>#</th>
@@ -41,12 +47,12 @@ const SeekerApplicationsList = () => {
                 <td>{index + 1}</td>
                 <td>
                   {" "}
-                  <Link to={`/jobs/${application.job_id}`}>
+                  <a href={`/jobs/${application.job_id}`}>
                     {application.job_title}
-                  </Link>
+                  </a>
                 </td>
                 <td>{application.company}</td>
-                <td>{application.created_at}</td>
+                <td>{application.created_at.substring(0, 10)}</td>
                 <td>
                   {application.resume ? (
                     <a
@@ -70,7 +76,7 @@ const SeekerApplicationsList = () => {
                     data-bs-target="#delApplicationModal"
                     onClick={() => setActiveID(application.id)}
                   >
-                    X
+                    <img src={trash} alt="" />
                   </button>
                 </td>
               </tr>
@@ -78,8 +84,12 @@ const SeekerApplicationsList = () => {
           })}
         </tbody>
       </table>
-      {/* This creates the modal when delete button is clicked */}
-      {<ApplicationDelete applicationID={activeID} />}
+      </div>
+      </div>
+      
+    </div>
+    {/* This creates the modal when delete button is clicked */}
+    {<ApplicationDelete applicationID={activeID} />}
     </div>
   );
 };
