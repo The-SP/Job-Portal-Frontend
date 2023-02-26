@@ -48,7 +48,7 @@ const Login = () => {
     <section>
       <div className="main-container container-fluid">
         <div className="row">
-          <div className="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5 col-6 px-0 mx-auto">
+          <div className="sign col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5 col-6 px-0 mx-auto">
             <div
               className="signin bg-light text-black"
               style={{ borderRadius: 0.5 + "rem" }}
@@ -115,7 +115,7 @@ const Login = () => {
                 <p>
                   Don't have an account?{" "}
                 </p>
-                <button className="btn btn-outline-dark btn-lg px-5 text-white fw-bold"
+                <button className="btn btn-outline-dark btn-md px-3 text-white fw-bold"
                  onClick={()=> {navigate('/signup')}}>
                     Sign Up
                 </button>

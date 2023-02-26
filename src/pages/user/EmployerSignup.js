@@ -51,13 +51,13 @@ const EmployerSignup = () => {
     <section>
       <div className="main-container1 container-fluid">
         <div className="row d-flex justify-content-center align-items-center py-2">
-          <div className="panel col-6 px-0">
+          <div className="panel1 col-6 px-0">
             <div className="description">
               <div className="mb-4">
                 <p>
                   Already have an account?{" "}
                 </p>
-                <button className="btn btn-outline-dark btn-lg px-5 text-white fw-bold"
+                <button className="btn btn-outline-dark btn-md px-3 text-white fw-bold"
                  onClick={()=> {navigate('/login')}}>
                     Login
                 </button>
@@ -67,7 +67,7 @@ const EmployerSignup = () => {
               </div>
             </div>
           </div>
-          <div className="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5 px-0 mx-auto">
+          <div className="sign-up col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5 px-0 mx-auto">
             <div
               className="signin bg-light text-black"
               style={{ borderRadius: 0.5 + "rem" }}
