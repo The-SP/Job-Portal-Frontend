@@ -25,7 +25,9 @@ const Home = () => {
 
     // Clean up the observer when the component unmounts
     return () => {
-      observer.unobserve(componentRef.current);
+        if (componentRef.current) {
+            observer.unobserve(componentRef.current);
+          }
     };
   }, [])
 
