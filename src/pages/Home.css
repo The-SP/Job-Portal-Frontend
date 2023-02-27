@@ -91,4 +91,10 @@
     opacity: 1;
     animation: slideInFromBottom 1s ease-in-out forwards;
   }
+
+  @media screen and (max-width:766px){
+    #hero .col-md-5{
+      display: none;
+    }
+  }
   
