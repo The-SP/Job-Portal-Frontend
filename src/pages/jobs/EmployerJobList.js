@@ -21,7 +21,7 @@ const EmployerJobList = () => {
 
   return (
     <div className="container-fluid py-5 px-5">
-      <h2 className="mb-2">Jobs at {jobs[0].company}</h2>
+      <h2 className="mb-2 page-title">Jobs at {jobs[0].company}</h2>
       {jobs.map((job, index) => {
         return <EmployerJobItem key={index} job={job} />;
       })}

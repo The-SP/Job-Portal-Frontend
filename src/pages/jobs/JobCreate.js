@@ -26,7 +26,7 @@ const JobCreate = () => {
 
   return (
     <div className="contianer mx-5 p-5">
-      <h2>Create new job</h2>
+      <h2 className="page-title text-center">Create new job</h2>
 
       {/* Pass initial values, validation and submit funciton */}
       <Formik

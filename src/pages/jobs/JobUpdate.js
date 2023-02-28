@@ -40,7 +40,7 @@ const JobUpdate = () => {
 
   return (
     <div className="contianer mx-5 p-5">
-      <h2>Update job</h2>
+      <h2 className="text-center page-title">Update job</h2>
 
       {/* Pass initial values, validation and submit funciton */}
       <Formik

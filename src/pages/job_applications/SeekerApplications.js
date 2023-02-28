@@ -25,7 +25,7 @@ const SeekerApplicationsList = () => {
       <div className="main-table container-fluid py-5 px-5">
         <div className="table-div">
           <div className="table-header">
-            <h2>Your Job Applications</h2>
+            <h2 className="page-title">Your Job Applications</h2>
           </div>
           <div className="table__body">
             <table>

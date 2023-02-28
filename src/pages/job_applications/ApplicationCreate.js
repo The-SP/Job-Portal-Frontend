@@ -41,7 +41,7 @@ const ApplicationCreate = () => {
           <div className="col-sm-12 col-md-8 mx-auto mb-2">
             <div className="card">
               <div className="card-body">
-                <h2 className="text-center mb-3">Apply</h2>
+                <h2 className="text-center mb-3 page-title">Apply</h2>
                 {/* Pass initial values, validation and submit funciton */}
                 <Formik
                   initialValues={{

@@ -112,10 +112,10 @@ const Login = () => {
           <div className="panel col-6 px-0">
             <div className="description">
               <div className="mb-4">
-                <p>
+                <p className="text-light">
                   Don't have an account?{" "}
                 </p>
-                <button className="btn btn-outline-dark btn-md px-3 text-white fw-bold"
+                <button className="btn btn-outline-primary btn-md px-3 text-white fw-bold"
                  onClick={()=> {navigate('/signup')}}>
                     Sign Up
                 </button>

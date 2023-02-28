@@ -63,7 +63,7 @@ const RecommendedJobList = () => {
 
   return (
     <div className="container-fluid py-5 px-5">
-      <h2 className="text-center mb-5">Jobs Recommended for you</h2>
+      <h2 className="text-center mb-5 page-title fs-1">Jobs Recommended for you</h2>
       <div className="search-box">
         <input
           type="text"

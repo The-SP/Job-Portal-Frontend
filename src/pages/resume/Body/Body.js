@@ -54,7 +54,7 @@ function Body() {
 
   return (
     <div className={styles.container}>
-      <p className={styles.heading}>Resume Builder</p>
+      <p className={`${styles.heading} page-title`}>Resume Builder</p>
       <div className={styles.toolbar}>
         <div>
           <label>Color picker</label>

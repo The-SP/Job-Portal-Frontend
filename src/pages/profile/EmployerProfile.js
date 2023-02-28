@@ -32,7 +32,7 @@ const EmployerProfile = () => {
             </div> */}
 
             <div className="text-center mt-3">
-              <h5 className="mt-2 mb-0">{profile.company_name}</h5>
+              <h5 className="mt-2 mb-0 page-title">{profile.company_name}</h5>
               <p className="small text-muted">{profile.contact_email}</p>
               <span>
                 {profile.company_location}, {profile.country}

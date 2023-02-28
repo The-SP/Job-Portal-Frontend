@@ -47,7 +47,7 @@ const ScrapedJobList = () => {
 
   return (
     <div className="container-fluid py-5 px-5">
-      <h2 className="text-center mb-5">Scraped Jobs</h2>
+      <h2 className="text-center mb-5 page-title">Scraped Jobs</h2>
       <div className="search-box">
         <input
           type="text"

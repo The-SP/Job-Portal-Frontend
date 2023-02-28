@@ -38,7 +38,7 @@ const CompanyProfile = () => {
               {/* <span className="bg-secondary p-1 px-4 rounded text-white">
                 Web Developer
               </span> */}
-              <h5 className="mt-2 mb-0">{profile.company_name}</h5>
+              <h5 className="mt-2 mb-0 page-title">{profile.company_name}</h5>
               <p className="small text-muted">{profile.contact_email}</p>
               <span>
                 {profile.company_location}, {profile.country}

@@ -73,7 +73,7 @@ const Letter = () => {
           {/* Cover Letter, Color Picker and Download Button */}
           <div className="cover-letter-input-card mb-4 border bg-white">
             <div className="d-flex justify-content-between align-items-center p-2">
-              <div className="h5 my-3 text-center">Cover Letter</div>
+              <div className="my-3 text-center page-title fs-1">Cover Letter</div>
               <div className="d-flex align-items-center">
                 <span className="my-auto mx-2">
                   <input

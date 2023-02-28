@@ -54,7 +54,7 @@ const EmployerSignup = () => {
           <div className="panel1 col-6 px-0">
             <div className="description">
               <div className="mb-4">
-                <p>
+                <p className="text-light">
                   Already have an account?{" "}
                 </p>
                 <button className="btn btn-outline-dark btn-md px-3 text-white fw-bold"

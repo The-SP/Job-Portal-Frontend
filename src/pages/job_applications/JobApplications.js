@@ -26,7 +26,7 @@ const JobApplicationsList = () => {
     <div className="whole-table">
     <div className="main-table container-fluid py-5 px-5">
       <div className="table-div">
-      <div className="display-6 mb-4 text-center">
+      <div className="display-6 mb-4 text-center page-title fs-1">
         Job Applications for {applications[0].job_title}
       </div>
       <div className="table__body">
@@ -66,7 +66,7 @@ const JobApplicationsList = () => {
                       href={application.resume}
                       target="_blank"
                       rel="noreferrer"
-                      className="btn btn-sm btn-success"
+                      className="btn btn-sm btn-success text-light"
                     >
                       Resume
                     </a>

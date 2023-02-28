@@ -34,7 +34,7 @@ const ApplicantProfile = () => {
             </div> */}
 
             <div className="text-center mt-3">
-              <h5 className="mt-2 mb-0">{profile.name}</h5>
+              <h5 className="mt-2 mb-0 page-title fs-1">{profile.name}</h5>
               <p className="small text-muted">
                 {profile.email}{" "}
                 {profile.phone_number && ` | ${profile.phone_number}`}
