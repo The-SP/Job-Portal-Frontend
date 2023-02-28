@@ -46,8 +46,8 @@
 }
 
 /* jobdetail.js css */
-.jd-title{
-  border-bottom: 1px solid rgba(0,0,0,.125);
+.jd-title {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 /* Pagination css */
@@ -103,20 +103,20 @@
 }
 
 /* scraped job item css */
-.search-box{
+.search-box {
   margin-bottom: 20px;
   align-items: center;
   justify-content: center;
   text-align: center;
 }
-.search-box input{
+.search-box input {
   width: 40%;
   border-radius: none;
 }
-.search-box button{
+.search-box button {
   height: 45px;
   width: 80px;
-  background-color:#174ea6;
+  background-color: #174ea6;
   color: #fff;
   border: none;
   border-radius: 4px;

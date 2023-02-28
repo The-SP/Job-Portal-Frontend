@@ -43,7 +43,7 @@ const ScrapedJobList = () => {
   //Handle search input change
   const handleSearchChange = (event) => setSearchTerm(event.target.value);
 
-  if (!jobs) return <Spinner />;
+  if (jobs.length === 0) return <Spinner />;
 
   return (
     <div className="container-fluid py-5 px-5">

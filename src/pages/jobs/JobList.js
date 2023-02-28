@@ -49,11 +49,11 @@ const JobList = () => {
     }
   };
 
-  if (!jobs) return <Spinner />;
+  if (jobs.length === 0) return <Spinner />;
 
   return (
     <div className="container-fluid py-5 px-5">
-      <h2 className="text-center mb-5">All Jobs List</h2>
+      <h2 className="text-center mb-5 page-title">All Jobs List</h2>
       <div className="search-box">
         <input
           type="text"

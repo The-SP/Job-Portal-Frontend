@@ -12,7 +12,6 @@ const RecommendedJobList = () => {
   const [filteredJobs, setFilteredJobs] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
-
   useEffect(() => {
     axiosInstance
       .get(urls.JOB_RECOMMENDED, {
@@ -29,7 +28,9 @@ const RecommendedJobList = () => {
   //Get current posts
   const indexofLastJob = currentPage * jobsPerPage;
   const indexofFirstJob = indexofLastJob - jobsPerPage;
-  const currentJobs = filteredJobs?filteredJobs.slice(indexofFirstJob, indexofLastJob):[];
+  const currentJobs = filteredJobs
+    ? filteredJobs.slice(indexofFirstJob, indexofLastJob)
+    : [];
 
   //change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
@@ -38,7 +39,7 @@ const RecommendedJobList = () => {
   const handleSearchChange = (event) => {
     const searchTerm = event.target.value.toLowerCase();
     setSearchTerm(searchTerm);
-  
+
     if (searchTerm === "") {
       setFilteredJobs(jobs);
     } else {
@@ -51,9 +52,8 @@ const RecommendedJobList = () => {
       );
     }
   };
-  
 
-  if (!jobs)
+  if (jobs.length === 0)
     return (
       <div className="text-center">
         Running Recommender Engine...
@@ -75,7 +75,11 @@ const RecommendedJobList = () => {
       {currentJobs.map((job, index) => {
         return <RecommendedJobItem key={index} job={job} />;
       })}
-      <Pagination jobsPerPage={jobsPerPage} totalJobs={filteredJobs.length} paginate={paginate} />
+      <Pagination
+        jobsPerPage={jobsPerPage}
+        totalJobs={filteredJobs.length}
+        paginate={paginate}
+      />
     </div>
   );
 };

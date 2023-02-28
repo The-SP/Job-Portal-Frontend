@@ -27,12 +27,11 @@ const JobDetail = () => {
 
   return (
     <div className="container-fluid py-5 px-5">
-      <h1 className="text-center mb-5">Job Detail</h1>
       <div className="row">
         <div className="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
           <div className="container">
             <div className="row gy-5 gx-4">
-              <h2>{job.company.company_name}</h2>
+              <h2 className="page-title">{job.company.company_name}</h2>
               <div className="col-lg-8">
                 <div className="d-flex align-items-center mb-5">
                   <div className="text-start ps-4">
