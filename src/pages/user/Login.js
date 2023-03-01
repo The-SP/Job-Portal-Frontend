@@ -47,8 +47,8 @@ const Login = () => {
   return (
     <section>
       <div className="main-container container-fluid">
-        <div className="row">
-          <div className="sign col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5 col-6 px-0 mx-auto">
+        <div className="row d-flex justify-content-center align-items-center py-2 sign">
+          <div className="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5 col-6 px-0 mx-auto">
             <div
               className="signin bg-light text-black"
               style={{ borderRadius: 0.5 + "rem" }}

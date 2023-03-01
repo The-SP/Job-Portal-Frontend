@@ -49,7 +49,7 @@ const Signup = () => {
   return (
     <section>
       <div className="main-container1 container-fluid">
-        <div className="row d-flex justify-content-center align-items-center py-2">
+        <div className="row d-flex justify-content-center align-items-center py-2 sign-up">
           <div className="panel1 col-6 px-0">
             <div className="description">
               <div className="mb-4">
@@ -66,7 +66,7 @@ const Signup = () => {
               </div>
             </div>
           </div>
-          <div className="sign-up col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5 px-0 mx-auto">
+          <div className="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5 px-0 mx-auto">
             <div
               className="signin bg-light text-black"
               style={{ borderRadius: 0.5 + "rem" }}

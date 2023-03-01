@@ -18,27 +18,13 @@
   }
   
  .main-container .sign{
-  animation: slide-in-right 1s ease-in-out;
+  animation: slide-in-right 0.8s;
+  animation-timing-function: linear;
  }
 
  .main-container1 .sign-up{
-  animation: slide-in-left 1s ease-in-out;
- }
-
- .panel .mb-4{
-  animation: slide-in-right 1.5s ease-in-out;
- }
-
- .panel img{
-  animation: slide-in-right 2s ease-in-out;
- }
-
- .panel1 .mb-4{
-  animation: slide-in-left 1.5s ease-in-out;
- }
-
- .panel1 img{
-  animation: slide-in-left 2s ease-in-out;
+  animation: slide-in-left 0.8s;
+  animation-timing-function: linear;
  }
 
 .panel img{
@@ -95,12 +81,12 @@
   }
 
   @keyframes slide-in-right {
-    0% { transform: translateX(100%); } /* start with the element offscreen to the left */
+    0% { transform: translateX(50%); } /* start with the element offscreen to the left */
     100% { transform: translateX(0); } /* end with the element fully visible */
   }
 
   @keyframes slide-in-left {
-    0% { transform: translateX(-100%); } /* start with the element offscreen to the left */
+    0% { transform: translateX(-50%); } /* start with the element offscreen to the left */
     100% { transform: translateX(0); } /* end with the element fully visible */
   }
   
