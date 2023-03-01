@@ -61,6 +61,7 @@ const JobList = () => {
           value={searchTerm}
           onChange={handleSearchChange}
         />
+        <div className="icon-search"><i class="bi bi-search"></i></div>
       </div>
       {currentJobs.map((job, index) => {
         return <JobItem key={index} job={job} />;

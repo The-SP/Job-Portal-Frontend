@@ -23,15 +23,6 @@ const ScrapedJobList = () => {
       .catch((err) => console.log(err));
   }, []);
 
-
-  const handleSearch = ()=>{
-    setFilteredJobs(
-      jobs.filter((job) => job.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      job.company.toLowerCase().includes(searchTerm.toLowerCase())
-      ) 
-    );
-  }
-
   //Get current posts
   const indexofLastJob = currentPage * jobsPerPage;
   const indexofFirstJob = indexofLastJob - jobsPerPage;
@@ -41,7 +32,22 @@ const ScrapedJobList = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   //Handle search input change
-  const handleSearchChange = (event) => setSearchTerm(event.target.value);
+  const handleSearchChange = (event) => {
+    const searchTerm = event.target.value.toLowerCase();
+    setSearchTerm(searchTerm);
+  
+    if (searchTerm === "") {
+      setFilteredJobs(jobs);
+    } else {
+      setFilteredJobs(
+        jobs.filter(
+          (job) =>
+            job.title.toLowerCase().includes(searchTerm) ||
+            job.company.toLowerCase().includes(searchTerm)
+        )
+      );
+    }
+  };
 
   if (jobs.length === 0) return <Spinner />;
 
@@ -55,7 +61,7 @@ const ScrapedJobList = () => {
           value={searchTerm}
           onChange={handleSearchChange}
         />
-        <button onClick={handleSearch}>Search</button>
+        <div className="icon-search"><i class="bi bi-search"></i></div>
       </div>
       {currentJobs.map((job, index) => {
         return <ScrapedJobItem key={index} job={job} />;

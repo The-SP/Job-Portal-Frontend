@@ -102,22 +102,32 @@
   border: 0;
 }
 
-/* scraped job item css */
 .search-box {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  position: relative;
+  display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
 }
 .search-box input {
-  width: 40%;
-  border-radius: none;
+  width: 500px;
+  border-radius: 60px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 14px 22px;
 }
-.search-box button {
-  height: 45px;
-  width: 80px;
-  background-color: #174ea6;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
+
+.icon-search{
+  position: absolute;
+  margin-left: 420px;
+  color: blue;
+  font-size: 25px;
+  cursor: pointer;
+  font-weight: bolder;
+}
+
+@media (max-width:600px) {
+  .icon-search{
+    margin-left: 300px;
+  }
 }

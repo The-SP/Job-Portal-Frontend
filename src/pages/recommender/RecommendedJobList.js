@@ -4,6 +4,7 @@ import Spinner from "../../components/Spinner";
 import { urls } from "../../config";
 import Pagination from "../jobs/Pagination";
 import RecommendedJobItem from "./RecommendedJobItem";
+import '../jobs/jobs.css'
 
 const RecommendedJobList = () => {
   const [jobs, setJobs] = useState([]);
@@ -71,6 +72,7 @@ const RecommendedJobList = () => {
           value={searchTerm}
           onChange={handleSearchChange}
         />
+        <div className="icon-search"><i class="bi bi-search"></i></div>
       </div>
       {currentJobs.map((job, index) => {
         return <RecommendedJobItem key={index} job={job} />;
