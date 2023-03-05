@@ -1,7 +1,33 @@
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { motion,useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const RecommendedJobItem = ({ job }) => {
+
+  const {ref, inView}=useInView();
+  const animation= useAnimation();
+
+  useEffect(()=>{
+    if(inView){
+      animation.start({
+        y:0,
+        transition:{
+          type:'spring',
+          duration:1,
+          bounce:0.3
+        }
+      })
+    }
+    if(!inView){
+      animation.start({
+        y:40
+      })
+    }
+  },[inView])
+
   return (
+    <motion.div ref={ref} animate={animation}>
     <div className="job-item p-4 mb-4">
       <div className="row g-4">
         <div className="col-sm-12 col-md-8 ps-4">
@@ -60,6 +86,7 @@ const RecommendedJobItem = ({ job }) => {
         </div>
       </div>
     </div>
+    </motion.div>
   );
 };
 

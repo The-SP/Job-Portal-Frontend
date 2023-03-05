@@ -63,9 +63,9 @@ const JobList = () => {
         />
         <div className="icon-search"><i class="bi bi-search"></i></div>
       </div>
-      {currentJobs.map((job, index) => {
-        return <JobItem key={index} job={job} />;
-      })}
+      {currentJobs.map((job, index) => (
+        <JobItem key={index} job={job} />
+      ))}
       <Pagination jobsPerPage={jobsPerPage} totalJobs={filteredJobs.length} paginate={paginate} />
     </div>
   );

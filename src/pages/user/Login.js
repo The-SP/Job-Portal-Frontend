@@ -1,10 +1,11 @@
 import { useContext, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import axiosInstance from "../../axios_instance";
 import { auth_urls } from "../../config";
 import AuthContext from "../../context/AuthContext";
 import './user.css'
 import loginSvg from "./login.svg"
+import {motion} from 'framer-motion'
 
 const Login = () => {
   const navigate = useNavigate();
@@ -47,7 +48,11 @@ const Login = () => {
   return (
     <section>
       <div className="main-container container-fluid">
-        <div className="row d-flex justify-content-center align-items-center py-2 sign">
+        <motion.div className="row d-flex justify-content-center align-items-center py-2 sign"
+        initial={{x:'-100vw'}}
+        animate={{x:0}}
+        transition={{type:'spring',stiffness:120}}
+        >
           <div className="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5 col-6 px-0 mx-auto">
             <div
               className="signin bg-light text-black"
@@ -89,22 +94,26 @@ const Login = () => {
 
                   <div className="error text-danger fw-bold mb-4">{error}</div>
 
-                  <p className="small mb-4 pb-lg-2">
-                    <Link
-                      to="/reset-password"
+                  <motion.p className="small mb-4 pb-lg-2 w-20"
+                   whileHover={{scale:1.1}}
+                   transition={{type:'spring',stiffness:300}}>
+                    <a
+                     
+                      href="/reset-password"
                       className="text-black-50 fw-bold"
                     >
                       Forgot password?
-                    </Link>
-                  </p>
+                    </a>
+                  </motion.p>
 
-                  <button
+                  <motion.button
                     className="btn btn-outline-dark btn-lg px-5"
                     type="submit"
                     onClick={handleSubmit}
+                    whileHover={{scale:1.1}}
                   >
                     Login
-                  </button>
+                  </motion.button>
                 </div>
               </div>
             </div>
@@ -115,17 +124,18 @@ const Login = () => {
                 <p className="text-light">
                   Don't have an account?{" "}
                 </p>
-                <button className="btn btn-outline-primary btn-md px-3 text-white fw-bold"
+                <motion.button className="btn btn-outline-primary btn-md px-3 text-white fw-bold"
+                 whileHover={{scale:1.1}}
                  onClick={()=> {navigate('/signup')}}>
                     Sign Up
-                </button>
+                </motion.button>
               </div>
               <div>
                 <img src={loginSvg} alt="Not Found" />
               </div>
             </div>
           </div>  
-        </div>
+        </motion.div>
       </div>
     </section>
   );

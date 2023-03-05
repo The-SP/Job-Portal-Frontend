@@ -4,6 +4,7 @@ import axiosInstance from "../../axios_instance";
 import { auth_urls } from "../../config";
 import signupSvg from './signup.svg'
 import './user.css'
+import {motion} from 'framer-motion'
 
 const EmployerSignup = () => {
   const navigate = useNavigate();
@@ -49,18 +50,22 @@ const EmployerSignup = () => {
 
   return (
     <section>
-      <div className="main-container1 container-fluid">
-        <div className="row d-flex justify-content-center align-items-center py-2">
+      <motion.div className="main-container1 container-fluid">
+        <div className="row d-flex justify-content-center align-items-center py-2"
+        initial={{x:'-100vw'}}
+        animate={{x:0}}
+        transition={{type:'spring',stiffness:120}}>
           <div className="panel1 col-6 px-0">
             <div className="description">
               <div className="mb-4">
                 <p className="text-light">
                   Already have an account?{" "}
                 </p>
-                <button className="btn btn-outline-dark btn-md px-3 text-white fw-bold"
-                 onClick={()=> {navigate('/login')}}>
+                <motion.button className="btn btn-outline-dark btn-md px-3 text-white fw-bold"
+                 onClick={()=> {navigate('/login')}}
+                 whileHover={{scale:1.1}}>
                     Login
-                </button>
+                </motion.button>
               </div>
               <div>
                 <img src={signupSvg} alt="Not Found" />
@@ -123,19 +128,20 @@ const EmployerSignup = () => {
 
                   <div className="error text-danger fw-bold mb-3">{error}</div>
 
-                  <button
+                  <motion.button
                     className="btn btn-outline-dark btn-lg px-5"
                     type="submit"
                     onClick={handleSubmit}
+                    whileHover={{scale:1.1}}
                   >
                     Sign Up
-                  </button>
+                  </motion.button>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

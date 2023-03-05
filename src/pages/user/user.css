@@ -16,20 +16,13 @@
     transform: rotate(-20deg); /* rotate the pseudo-element to create the curve */
     z-index: -1; /* set the z-index of the pseudo-element behind the container content */
   }
-  
- .main-container .sign{
-  animation: slide-in-right 0.8s;
-  animation-timing-function: linear;
- }
-
- .main-container1 .sign-up{
-  animation: slide-in-left 0.8s;
-  animation-timing-function: linear;
- }
-
 .panel img{
     height: 300px;
     width: 100%;
+}
+
+a{
+  text-decoration: none;
 }
 
 .panel1 img{
