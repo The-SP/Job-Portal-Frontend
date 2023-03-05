@@ -36,6 +36,19 @@
     transform: translate(-2px, -2px);
   }
 
+.col-md-7 .display-4, .col-md-7 .display-1{
+  line-height: 1.3;
+  overflow: hidden;
+}
+
+.col-md-7 span{
+  display: inline-block;
+}
+
+.col-md-7 span.second{
+  margin-left: 20px;
+}
+
 #services{
     margin-bottom: 40px;
 }

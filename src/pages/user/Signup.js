@@ -47,13 +47,30 @@ const Signup = () => {
     setName("");
   };
 
+  let easeing = [0.6,-0.05,0.01,0.99];
+
+  const fadeInUp = {
+    initial:{
+      y:60,
+      opacity:0,
+    },
+    animate:{
+      y:0,
+      opacity:1,
+      transition:{
+        duration:1,
+        ease:easeing
+      }
+    }
+  };
+
   return (
     <section>
       <div className="main-container1 container-fluid">
         <motion.div className="row d-flex justify-content-center align-items-center py-2 sign-up"
-        initial={{x:'-100vw'}}
-        animate={{x:0}}
-        transition={{type:'spring',stiffness:120}}>
+        variants={fadeInUp}
+        initial='initial'
+        animate='animate'>
           <div className="panel1 col-6 px-0">
             <div className="description">
               <div className="mb-4">

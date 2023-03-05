@@ -13,16 +13,6 @@ const Home = () => {
 
   let easeing = [0.6,-0.05,0.01,0.99];
 
-  const stagger = {
-    animate:{
-      transition:{
-        delayChildren:0.4,
-        staggerChildren:0.2,
-        staggerDirection:1
-      }
-    }
-  }
-
   const fadeInUp = {
     initial:{
       y:-60,
@@ -35,8 +25,8 @@ const Home = () => {
       y:0,
       opacity:1,
       transition:{
-        duration:0.6,
-        delay:0.5,
+        duration:1,
+        delay:1.2,
         ease:easeing
       }
     }
@@ -74,13 +64,29 @@ const Home = () => {
 
   const letter = {
     initial:{
-      y:400
+      y:400,
     },
     animate:{
-      y:-400,
-      transition:{duration:5}
+      y:0,
+      transition:{duration:1, ...transition}
     }
   };
+
+  const btnGroup={
+    initial:{
+      y:-60,
+      opacity:0
+    },
+    animate:{
+      y:0,
+      opacity:1,
+      transition:{
+        delay:1.5,
+        duration:1,
+        ease:easeing
+      }
+    }
+  }
 
   const {ref, inView}=useInView({threshold:0.2});
   const animation= useAnimation();
@@ -102,60 +108,62 @@ const Home = () => {
   },[inView])
 
   return (
-    <div>
+    <motion.div initial='initial' animate='animate'>
       <section id="hero" className="container">
-        <motion.div className="row mt-5" initial={{opacity:0}} animate={{opacity:1}} transition={{duration:1, ease:easeing}}>
+        <div className="row mt-5">
           <div className="col-md-7 main-text">
-            <motion.h1 className="fw-semibold display-3">
-              <motion.span 
-                initial={{y:-200}} 
-                animate={{y:0}}
-                transition={{
-                  duration:5,
-                  delayChildren:0.4,
-                  staggerChildren:0.04,
-                  staggerDirection:-1}
-                }>
-                  <motion.span variants={letter}>D</motion.span>
+            <motion.h1 className="fw-semibold display-4">
+              <motion.span variants={firstName} initial="initial" animate="animate">
+                  <motion.span variants={letter}>W</motion.span>
                   <motion.span variants={letter}>e</motion.span>
-                  <motion.span variants={letter}>s</motion.span>
-                  <motion.span variants={letter}>i</motion.span>
-                  <motion.span variants={letter}>g</motion.span>
-                  <motion.span variants={letter}>n</motion.span>
-                  <motion.span variants={letter}>f</motion.span>
-                  <motion.span variants={letter}>o</motion.span>
+                  <motion.span variants={letter}>l</motion.span>
                   <motion.span variants={letter}>c</motion.span>
-                  <motion.span variants={letter}>u</motion.span>
-                  <motion.span variants={letter}>s</motion.span>
+                  <motion.span variants={letter}>o</motion.span>
+                  <motion.span variants={letter}>m</motion.span>
                   <motion.span variants={letter}>e</motion.span>
-                  <motion.span variants={letter}>d</motion.span>
+                  <motion.span variants={letter} className="second">t</motion.span>
+                  <motion.span variants={letter}>o</motion.span>
               </motion.span>
             </motion.h1>
-            <h1 className="text-uppercase fw-semibold display-1 ">
-              hire nepal
-            </h1>
-            <h5 className="text-uppercase mt-3 mb-4">
+            <motion.h1 className="text-uppercase fw-semibold display-1 ">
+              <motion.span variants={lastName} initial="initial" animate="animate">
+                  <motion.span variants={letter}>h</motion.span>
+                  <motion.span variants={letter}>i</motion.span>
+                  <motion.span variants={letter}>r</motion.span>
+                  <motion.span variants={letter}>e</motion.span>
+                  <motion.span variants={letter} className="second">n</motion.span>
+                  <motion.span variants={letter}>e</motion.span>
+                  <motion.span variants={letter}>p</motion.span>
+                  <motion.span variants={letter}>a</motion.span>
+                  <motion.span variants={letter}>l</motion.span>
+              </motion.span>
+            </motion.h1>
+            <motion.h5 className="text-uppercase mt-3 mb-4" variants={fadeInUp}>
               Accelerate Your Tech Career with a World of Opportunities
-            </h5>
-            <div>
+            </motion.h5>
+            <motion.div variants={btnGroup}>
               <a href="/jobs" className="btn btn-dark">
                 Get Started
               </a>
-            </div>
+            </motion.div>
           </div>
-          <div className="col-md-5">
-            <img src={homeimg} alt="" />
-          </div>
-        </motion.div>
+          <motion.div className="col-md-5">
+            <motion.img src={homeimg} alt="" initial={{x:200, opacity:0}} animate={{x:0, opacity:1}} transition={{duration:.5, delay:0.8}}/>
+          </motion.div>
+        </div>
       </section>
       <section id="services" className="">
         <div className="container">
           <div className="row mt-5 mb-5">
             <div className="col-12 text-center">
-              <div className="section-title">
+              <motion.div className="section-title"
+              initial={{opacity:0,y:50}}
+              animate={{opacity:1,y:0}}
+              transition={{duration:0.5,delay:2}}
+              >
                 <h3 className="page-title">Our Services</h3>
                 <div className="line"></div>
-              </div>
+              </motion.div>
             </div>
           </div>
           <div ref={ref}>
@@ -218,7 +226,7 @@ const Home = () => {
         </div>
       </section>
       <Footer />
-    </div>
+    </motion.div>
   );
 };
 
