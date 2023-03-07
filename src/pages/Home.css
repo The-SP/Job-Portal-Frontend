@@ -87,3 +87,9 @@
     -webkit-background-clip: text;
     padding-bottom: 0.05rem;
   }
+
+  @media screen and (max-width:766px){
+    #hero .col-md-5{
+      display: none;
+    }
+  }

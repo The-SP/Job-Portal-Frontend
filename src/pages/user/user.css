@@ -49,9 +49,12 @@ a{
 }
 
 @media screen and (max-width:993px) {
-    .panel{
+    .panel img {
         display: none;
     }
+    .panel1 img {
+      display: none;
+  }
 }
 
 /* signup page css */
