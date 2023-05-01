@@ -1,30 +1,28 @@
-# Getting Started with Create React App
+# Hire Nepal
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A Job Portal website for finding your dream job in Nepal.  
+This project was developed as part of a Bachelor's in Computer Engineering (Third year) Minor Project.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Job Listings: Browse through the latest job postings from top companies in Nepal.
+- Job Recommendations: Get personalized job recommendations based on your profile and preferences using machine learning.
+- Easy Apply: Apply for a job with just a few clicks.
+- Employer Dashboard: Manage your job postings and applicants from a single platform.
+- Custom Resume Generator: Generate a professional resume tailored to the job you are applying for.
+- Cover Letter Generator: Generate a personalized cover letter to accompany your resume.
 
-### `npm start`
+## Project Setup
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+To run this app locally, clone this repo and install the dependencies.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+git clone https://github.com/The-SP/Job-Portal-Frontend.git
+cd Job-Portal-Frontend
+npm install
+```
 
-### `npm test`
+## Backend
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+[Backend Repo Link](https://github.com/The-SP/Job-Portal-Backend)  
+You can use the link above to access the code for the backend api of the project.
