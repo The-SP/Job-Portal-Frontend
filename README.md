@@ -26,3 +26,40 @@ npm install
 
 [Backend Repo Link](https://github.com/The-SP/Job-Portal-Backend)  
 You can use the link above to access the code for the backend api of the project.
+
+## Screenshots
+
+<table>
+  <tr>
+    <td>Homepage</td>
+    <td>Services</td>
+  </tr>
+  <tr>
+    <td><img src="./screenshots/homepage.png"></td>
+    <td><img src="./screenshots/services.png"></td>
+  </tr>
+  <tr>
+    <td>Job List</td>
+    <td>Job Detail</td>
+  </tr>
+  <tr>
+    <td><img src="./screenshots/job-list.png"></td>
+    <td><img src="./screenshots/job-detail.png"></td>
+  </tr>
+  <tr>
+    <td>Profile</td>
+    <td>Job Recommendation</td>
+  </tr>
+  <tr>
+    <td><img src="./screenshots/profile.png"></td>
+    <td><img src="./screenshots/recommendation.png"></td>
+  </tr>
+  <tr>
+    <td>Resume Builder</td>
+    <td>Cover Letter Builder</td>
+  </tr>
+  <tr>
+    <td><img src="./screenshots/resume.png"></td>
+    <td><img src="./screenshots/cover-letter.png"></td>
+  </tr>
+</table>
