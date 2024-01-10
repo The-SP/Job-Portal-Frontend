@@ -51,11 +51,10 @@ const JobApplicationsList = () => {
                     <tr key={index}>
                       <td>{index + 1}</td>
                       <td>
-                        {" "}
                         <a href={`/profile/seeker/${application.seeker_id}`}>
                           {application.name}
                         </a>
-                      </td>{" "}
+                      </td>
                       <td>{application.email}</td>
                       <td>{application.phone_number}</td>
                       <td>{application.created_at.substring(0, 10)}</td>
