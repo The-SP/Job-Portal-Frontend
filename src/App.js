@@ -33,6 +33,8 @@ import RecommendedJobList from "./pages/recommender/RecommendedJobList";
 import SeekerApplicationsList from "./pages/job_applications/SeekerApplications";
 import JobApplicationsList from "./pages/job_applications/JobApplications";
 import ApplicationCreate from "./pages/job_applications/ApplicationCreate";
+// Applicant Ranking
+import ResumeRanking from "./pages/resume_ranking/ResumeRanking";
 // Resume
 import ResumeBuilder from "./pages/resume/ResumeBuilder";
 import Letter from "./pages/cover_letter/Letter";
@@ -104,13 +106,18 @@ const App = () => (
           element={<JobApplicationsList />}
         />
         <Route exact path="/jobs/:id/apply" element={<ApplicationCreate />} />
+        {/* Applicant Ranking */}
+        <Route
+          exact
+          path="/jobs/:id/applicant-ranking"
+          element={<ResumeRanking />}
+        />
         {/* Resume */}
         <Route exact path="/resume" element={<ResumeBuilder />} />
         <Route exact path="/cover-letter" element={<Letter />} />
       </Routes>
     </AuthProvider>
   </BrowserRouter>
-
 );
 
 export default App;

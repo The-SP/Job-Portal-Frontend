@@ -26,6 +26,7 @@ const urls = {
   JOB_APPLICATION_DETAIL: "api/jobs/applications/:id/",
   USER_APPLICATIONS: "api/jobs/user-applications/",
   JOB_APPLICATIONS_LIST: "api/jobs/:job_id/applications/",
+  APPLICANT_RANKING: "api/jobs/applicant-ranking/:job_id/",
 };
 
 export { auth_urls, profile_urls, urls };
