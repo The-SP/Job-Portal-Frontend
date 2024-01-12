@@ -11,26 +11,41 @@ const ScoreTable = ({ resumeRankings }) => {
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Filename</th>
+                  <th>Applicant</th>
                   <th>Description Score</th>
                   <th>Education Score</th>
                   <th>Experience Score</th>
                   <th>Projects Score</th>
                   <th>Skills Score</th>
                   <th>Total Score</th>
+                  <th>Resume</th>
                 </tr>
               </thead>
               <tbody>
                 {resumeRankings.map((resume, index) => (
                   <tr key={index}>
                     <td>{index + 1}</td>
-                    <td>{resume.Filename.substr(0, 10)}</td>
+                    <td>{resume.name}</td>
                     <td>{resume.description_score}</td>
                     <td>{resume.education_score}</td>
                     <td>{resume.experience_score}</td>
                     <td>{resume.projects_score}</td>
                     <td>{resume.skills_score}</td>
                     <td>{resume.total_score}</td>
+                    <td>
+                        {resume.resume_url ? (
+                          <a
+                            href={`http://127.0.0.1:8000/${resume.resume_url}`}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="btn btn-sm btn-success text-light"
+                          >
+                            Resume
+                          </a>
+                        ) : (
+                          "None"
+                        )}
+                      </td>
                   </tr>
                 ))}
               </tbody>

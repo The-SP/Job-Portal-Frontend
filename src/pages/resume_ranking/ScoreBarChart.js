@@ -20,7 +20,7 @@ const ScoreBarChart = ({ resumeRankings }) => {
         <ResponsiveContainer width="100%" minHeight={400}>
           <BarChart data={resumeRankings}>
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="Filename" tick={{ fontSize: 10 }} />
+            <XAxis dataKey="name" tick={{ fontSize: 10 }} />
             <YAxis />
             <Tooltip />
             <Legend />
