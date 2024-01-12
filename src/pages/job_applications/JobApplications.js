@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import "./jobapplication.css";
 
 import axiosInstance from "../../axios_instance";
@@ -31,6 +31,12 @@ const JobApplicationsList = () => {
           <div className="display-6 mb-4 text-center page-title fs-1">
             Job Applications for {applications[0].job_title}
           </div>
+          <Link
+              to={`/jobs/${id}/applicant-ranking`}
+              className="btn btn-outline-success mx-5"
+            >
+              Parse resumes and Rank Applicants
+            </Link>
           <div className="table__body">
             <table>
               <thead>
