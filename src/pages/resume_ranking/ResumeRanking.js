@@ -7,6 +7,7 @@ import { urls } from "../../config";
 import Spinner from "../../components/Spinner";
 import ScoreTable from "./ScoreTable";
 import ScoreBarChart from "./ScoreBarChart";
+import WeightsInput from "./WeightsInput";
 
 const ResumeRanking = () => {
   const [resumeRankings, setResumeRankings] = useState([]);
@@ -35,6 +36,10 @@ const ResumeRanking = () => {
 
   return (
     <>
+      <WeightsInput
+        resumeRankings={resumeRankings}
+        setResumeRankings={setResumeRankings}
+      />
       <ScoreTable resumeRankings={resumeRankings} />
       <ScoreBarChart resumeRankings={resumeRankings} />
     </>
