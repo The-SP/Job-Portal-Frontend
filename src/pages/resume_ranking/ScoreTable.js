@@ -25,12 +25,12 @@ const ScoreTable = ({ resumeRankings }) => {
                   <tr key={index}>
                     <td>{index + 1}</td>
                     <td>{resume.Filename.substr(0, 10)}</td>
-                    <td>{Math.round(resume.description_score * 100)}</td>
-                    <td>{Math.round(resume.education_score * 100)}</td>
-                    <td>{Math.round(resume.experience_score * 100)}</td>
-                    <td>{Math.round(resume.projects_score * 100)}</td>
-                    <td>{Math.round(resume.skills_score * 100)}</td>
-                    <td>{Math.round(resume.total_score * 100)}</td>
+                    <td>{resume.description_score}</td>
+                    <td>{resume.education_score}</td>
+                    <td>{resume.experience_score}</td>
+                    <td>{resume.projects_score}</td>
+                    <td>{resume.skills_score}</td>
+                    <td>{resume.total_score}</td>
                   </tr>
                 ))}
               </tbody>
