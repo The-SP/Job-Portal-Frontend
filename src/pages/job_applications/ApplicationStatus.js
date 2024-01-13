@@ -1,33 +1,86 @@
-const ApplicationStatus = ({ status }) => {
-  let statusClass;
+import { useState } from "react";
 
-  switch (status) {
+import axiosInstance from "../../axios_instance";
+import { urls } from "../../config";
+
+const ApplicationStatus = ({ status, applicationID }) => {
+  const [currentStatus, setCurrentStatus] = useState(status);
+
+  const handleStatusChange = (newStatus) => {
+    // Update the status using an API call
+    axiosInstance
+      .patch(urls.JOB_APPLICATION_DETAIL.replace(":id", applicationID), {
+        status: newStatus,
+      })
+      .then(() => {
+        console.log(
+          `Changed application status of application ${applicationID} to ${newStatus}`
+        );
+
+        setCurrentStatus(newStatus);
+      })
+      .catch((err) => {
+        console.error("Error changing application status:", err);
+      });
+  };
+
+  const statusOptions = [
+    "pending",
+    "under_review",
+    "shortlisted",
+    "interview",
+    "rejected",
+    "hired",
+  ];
+
+  let statusClass;
+  switch (currentStatus) {
     case "pending":
-      statusClass = "badge text-bg-secondary";
+      statusClass = "btn-secondary";
       break;
     case "under_review":
-      statusClass = "badge text-bg-info";
+      statusClass = "btn-info";
       break;
     case "shortlisted":
-      statusClass = "badge text-bg-success";
+      statusClass = "btn-primary";
       break;
     case "interview":
-      statusClass = "badge text-bg-warning";
+      statusClass = "btn-warning";
       break;
     case "rejected":
-      statusClass = "badge text-bg-danger";
+      statusClass = "btn-danger";
       break;
     case "hired":
-      statusClass = "badge text-bg-primary";
+      statusClass = "btn-success";
       break;
     default:
-      statusClass = "badge text-bg-secondary";
+      statusClass = "btn-secondary";
   }
 
   return (
-    <span className={statusClass}>
-      {status.charAt(0).toUpperCase() + status.slice(1)}
-    </span>
+    <div className="dropdown">
+      <button
+        className={`btn dropdown-toggle ${statusClass}`}
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        {currentStatus.charAt(0).toUpperCase() + currentStatus.slice(1)}
+      </button>
+
+      <ul className="dropdown-menu">
+        {statusOptions.map((option, index) => (
+          <li key={index}>
+            <button
+              key={option}
+              className="dropdown-item"
+              onClick={() => handleStatusChange(option)}
+            >
+              {option}
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 

@@ -79,7 +79,7 @@ const JobApplicationsList = () => {
                         )}
                       </td>
                       <td>
-                        <ApplicationStatus status={application.status} />
+                        <ApplicationStatus status={application.status} applicationID={application.id} />
                       </td>
                     </tr>
                   );
