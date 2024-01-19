@@ -9,6 +9,7 @@ import ApplicationStatus from "./ApplicationStatus";
 
 const JobApplicationsList = () => {
   const [applications, setApplications] = useState(null);
+  const [isDownloading, setIsDownloading] = useState(false);
   const { id } = useParams();
 
   useEffect(() => {
@@ -21,6 +22,34 @@ const JobApplicationsList = () => {
       .catch((err) => console.log(err));
   }, [id]);
 
+  const handleDownload = () => {
+    setIsDownloading(true);
+    axiosInstance
+      .get(urls.JOB_APPLICATIONS_LIST_DOWNLOAD.replace(":job_id", id), {
+        responseType: "blob",
+      })
+      .then((response) => {
+        const blob = new Blob([response.data]);
+
+        // Create a link element to trigger the download
+        const link = document.createElement("a");
+        link.href = window.URL.createObjectURL(blob);
+        link.download = `job_applications_job_${id}.xlsx`;
+        document.body.appendChild(link);
+
+        // Trigger the download
+        link.click();
+
+        // Remove the link element
+        document.body.removeChild(link);
+        console.log("Excel File downloaded successfully!");
+      })
+      .catch((error) => {
+        console.error("Error downloading file:", error);
+      })
+      .finally(() => setIsDownloading(false));
+  };
+
   if (!applications || applications.length === 0)
     return <div className="display-6 text-center my-5">No applications!</div>;
 
@@ -32,11 +61,20 @@ const JobApplicationsList = () => {
             Job Applications for {applications[0].job_title}
           </div>
           <Link
-              to={`/jobs/${id}/applicant-ranking`}
-              className="btn btn-outline-success mx-5"
-            >
-              Parse resumes and Rank Applicants
-            </Link>
+            to={`/jobs/${id}/applicant-ranking`}
+            className="btn btn-outline-success mx-5"
+          >
+            Parse resumes and Rank Applicants
+          </Link>
+
+          {/* Download Excel File */}
+          <button
+            className="btn btn-outline-primary mx-3"
+            onClick={handleDownload}
+          >
+            {isDownloading ? "Downloading.." : "Download Excel"}
+          </button>
+
           <div className="table__body">
             <table>
               <thead>
@@ -79,7 +117,10 @@ const JobApplicationsList = () => {
                         )}
                       </td>
                       <td>
-                        <ApplicationStatus status={application.status} applicationID={application.id} />
+                        <ApplicationStatus
+                          status={application.status}
+                          applicationID={application.id}
+                        />
                       </td>
                     </tr>
                   );
