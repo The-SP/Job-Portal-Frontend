@@ -68,12 +68,22 @@ const JobApplicationsList = () => {
           </Link>
 
           {/* Download Excel File */}
-          <button
-            className="btn btn-outline-primary mx-3"
-            onClick={handleDownload}
-          >
-            {isDownloading ? "Downloading.." : "Download Excel"}
-          </button>
+          {isDownloading ? (
+            <button className="btn btn-primary" type="button" disabled >
+              <span
+                className="spinner-border spinner-border-sm"
+                aria-hidden="true"
+              ></span>
+              <span role="status">Downloading...</span>
+            </button>
+          ) : (
+            <button
+              className="btn btn-outline-primary mx-3"
+              onClick={handleDownload}
+            >
+              Download Excel
+            </button>
+          )}
 
           <div className="table__body">
             <table>
