@@ -14,6 +14,9 @@ const JobListComponent = ({ jobType }) => {
   } else if (jobType === "RECOMMENDED") {
     jobListUrl = urls.JOB_RECOMMENDED;
     pageTitle = "Jobs Recommended for you";
+  } else if (jobType === "BOOKMARK") {
+    jobListUrl = urls.JOB_BOOKMARK_LIST;
+    pageTitle = "Saved Jobs";
   }
 
   const [jobs, setJobs] = useState([]);

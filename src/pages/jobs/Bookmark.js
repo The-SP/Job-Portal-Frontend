@@ -5,11 +5,11 @@ import axiosInstance from "../../axios_instance";
 import AuthContext from "../../context/AuthContext";
 import { urls } from "../../config";
 
-const Bookmark = ({ jobID }) => {
+const Bookmark = ({ jobID, jobType }) => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const [isBookmarked, setIsBookmarked] = useState(false);
+  const [isBookmarked, setIsBookmarked] = useState(jobType === 'BOOKMARK');
 
   const addBookmark = (jobID) => {
     if (!user) {

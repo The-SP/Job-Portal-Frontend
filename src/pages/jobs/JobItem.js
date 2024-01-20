@@ -84,7 +84,7 @@ const JobItem = ({ job, jobType }) => {
             )}
 
             <div className="d-flex align-items-center mb-3">
-              <Bookmark jobID={job.id} />
+              <Bookmark jobID={job.id} jobType={jobType} />
 
               <Link to={`/jobs/${job.id}`} className="btn btn-outline-success">
                 View Job

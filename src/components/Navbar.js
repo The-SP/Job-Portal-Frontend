@@ -10,20 +10,38 @@ const Navbar = () => {
 
   const seekerLinks = () => (
     <ul className="navbar-nav">
-      <li className="nav-item">
-        <Link className="nav-link" to="/profile/seeker">
-          Profile
-        </Link>
-      </li>
-      <li className="nav-item">
-        <Link className="nav-link" to="/jobs/applications">
-          History
-        </Link>
-      </li>
-      <li className="nav-item">
-        <Link className="nav-link" to="/logout">
-          Logout
-        </Link>
+      <li className="nav-item dropdown">
+        <span
+          className="nav-link dropdown-toggle"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <i className="bi bi-person-circle me-1"></i>
+          Account
+        </span>
+        <ul className="dropdown-menu">
+          <li className="nav-item">
+            <Link className="nav-link" to="/profile/seeker">
+              Profile
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/jobs/applications">
+              History
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/jobs/bookmarks">
+              Bookmarks
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/logout">
+              Logout
+            </Link>
+          </li>
+        </ul>
       </li>
     </ul>
   );
