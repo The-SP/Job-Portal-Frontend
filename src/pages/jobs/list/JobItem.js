@@ -7,7 +7,6 @@ import { fadeIn } from "../../../utils/motionVariants";
 const JobItem = ({ job, jobType }) => {
   return (
     <MotionBox variants={fadeIn("up", "spring", 0.2, 0.75)}>
-      {" "}
       <div className="job-item p-4 mb-4">
         <div className="row g-4">
           <div className="col-sm-12 col-md-8 ps-4">
