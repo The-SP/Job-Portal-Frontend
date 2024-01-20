@@ -3,8 +3,8 @@ import { Link, useParams } from "react-router-dom";
 
 import AuthContext from "../../../context/AuthContext";
 
-import axiosInstance from "../../../axios_instance";
-import { urls } from "../../../config";
+import axiosInstance from "../../../utils/axios_instance";
+import { urls } from "../../../utils/config";
 
 const JobDetail = () => {
   const { user } = useContext(AuthContext);

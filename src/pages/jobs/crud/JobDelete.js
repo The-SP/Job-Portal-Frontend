@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import axiosInstance from "../../../axios_instance";
-import { urls } from "../../../config";
+import axiosInstance from "../../../utils/axios_instance";
+import { urls } from "../../../utils/config";
 
 const JobDelete = () => {
   const { id } = useParams();

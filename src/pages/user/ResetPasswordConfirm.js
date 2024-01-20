@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import axiosInstance from "../../axios_instance";
-import { auth_urls } from "../../config";
+import axiosInstance from "../../utils/axios_instance";
+import { auth_urls } from "../../utils/config";
 
 const ResetPassword = () => {
   const navigate = useNavigate();

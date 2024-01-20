@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
-import axiosInstance from "../../axios_instance";
-import { profile_urls } from "../../config";
+import axiosInstance from "../../utils/axios_instance";
+import { profile_urls } from "../../utils/config";
 import {
   MyTextInput,
   MyTextArea,

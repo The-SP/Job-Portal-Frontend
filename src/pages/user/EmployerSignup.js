@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate} from "react-router-dom";
-import axiosInstance from "../../axios_instance";
-import { auth_urls } from "../../config";
+import axiosInstance from "../../utils/axios_instance";
+import { auth_urls } from "../../utils/config";
 import signupSvg from './signup.svg'
 import './user.css'
 import {motion} from 'framer-motion'

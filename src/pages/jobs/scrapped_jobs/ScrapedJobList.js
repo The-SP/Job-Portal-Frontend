@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import axiosInstance from "../../../axios_instance";
+import axiosInstance from "../../../utils/axios_instance";
+import { urls } from "../../../utils/config";
 import ScrapedJobItem from "./ScrapedJobItem";
 import Pagination from "../list/Pagination";
-import { urls } from "../../../config";
 import Spinner from "../../../components/Spinner";
 
 const ScrapedJobList = () => {

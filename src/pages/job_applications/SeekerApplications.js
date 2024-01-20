@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import axiosInstance from "../../axios_instance";
-import { urls } from "../../config";
+import axiosInstance from "../../utils/axios_instance";
+import { urls } from "../../utils/config";
 import ApplicationDelete from "./ApplicationDelete";
 import './jobapplication.css'
 

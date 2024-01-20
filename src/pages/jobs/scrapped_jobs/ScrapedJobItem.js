@@ -1,31 +1,9 @@
-import { useEffect } from "react";
-import { useInView } from "react-intersection-observer";
-import { motion, useAnimation } from "framer-motion";
+import MotionBox from "../../../utils/motion";
+import { fadeIn } from "../../../utils/motionVariants";
 
 const ScrapedJobItem = ({ job }) => {
-  const { ref, inView } = useInView();
-  const animation = useAnimation();
-
-  useEffect(() => {
-    if (inView) {
-      animation.start({
-        y: 0,
-        transition: {
-          type: "spring",
-          duration: 1,
-          bounce: 0.3,
-        },
-      });
-    }
-    if (!inView) {
-      animation.start({
-        y: 40,
-      });
-    }
-  }, [inView, animation]);
-
   return (
-    <motion.div ref={ref} animate={animation}>
+    <MotionBox variants={fadeIn("up", "spring", 0.2, 0.5)}>
       <div className="job-item p-4 mb-4">
         <div className="row g-4">
           <div className="col-sm-12 col-md-8 d-flex align-items-center">
@@ -87,7 +65,7 @@ const ScrapedJobItem = ({ job }) => {
           </div>
         </div>
       </div>
-    </motion.div>
+    </MotionBox>
   );
 };
 

@@ -6,8 +6,8 @@ import "react-quill/dist/quill.snow.css";
 import ReactToPrint from "react-to-print";
 
 import AuthContext from "../../context/AuthContext";
-import axiosInstance from "../../axios_instance";
-import { profile_urls } from "../../config";
+import axiosInstance from "../../utils/axios_instance";
+import { profile_urls } from "../../utils/config";
 import CoverLetter from "./CoverLetter";
 import CompanyInput from "./CompnayInput";
 import ProfileInput from "./ProfileInput";
@@ -73,7 +73,9 @@ const Letter = () => {
           {/* Cover Letter, Color Picker and Download Button */}
           <div className="cover-letter-input-card mb-4 border bg-white">
             <div className="d-flex justify-content-between align-items-center p-2">
-              <div className="my-3 text-center page-title fs-1">Cover Letter</div>
+              <div className="my-3 text-center page-title fs-1">
+                Cover Letter
+              </div>
               <div className="d-flex align-items-center">
                 <span className="my-auto mx-2">
                   <input

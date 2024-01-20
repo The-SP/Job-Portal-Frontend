@@ -4,8 +4,8 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
 import AuthContext from "../../context/AuthContext";
-import axiosInstance from "../../axios_instance";
-import { urls } from "../../config";
+import axiosInstance from "../../utils/axios_instance";
+import { urls } from "../../utils/config";
 import {
   MyFloatingTextInput,
   MyFloatingTextArea,

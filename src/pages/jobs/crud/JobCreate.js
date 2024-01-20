@@ -2,8 +2,8 @@ import { useNavigate } from "react-router-dom";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
-import { urls } from "../../../config";
-import axiosInstance from "../../../axios_instance";
+import { urls } from "../../../utils/config";
+import axiosInstance from "../../../utils/axios_instance";
 import { MyTextInput, MySelect, MyTextArea } from "../../../components/Inputs";
 import {
   JOB_LEVEL_CHOICES,

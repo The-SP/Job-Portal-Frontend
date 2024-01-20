@@ -133,7 +133,7 @@ const Navbar = () => {
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
-          <span>Sign</span> Up
+          <span>Sign Up</span>
         </span>
         <ul className="dropdown-menu">
           <li>

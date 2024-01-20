@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./profile.css";
-import axiosInstance from "../../axios_instance";
+import axiosInstance from "../../utils/axios_instance";
 
 const EmployerProfile = () => {
   const [profile, setProfile] = useState(null);
