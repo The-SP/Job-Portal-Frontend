@@ -1,11 +1,11 @@
 import "./Home.css";
-import { useState, useEffect, useRef } from "react";
+import { useEffect } from "react";
 import Footer from "../components/Footer";
-import resumeIcon from "../components/resumeIcon.png";
-import jobIcon from "../components/jobIcon.png";
-import brandingIcon from "../components/brandingIcon.png";
-import recommendationIcon from "../components/recommendationIcon.png";
-import homeimg from "../components/home2.png";
+import resumeIcon from "../images/resumeIcon.png";
+import jobIcon from "../images/jobIcon.png";
+import brandingIcon from "../images/brandingIcon.png";
+import recommendationIcon from "../images/recommendationIcon.png";
+import homeimg from "../images/home2.png";
 import {motion, useAnimation} from 'framer-motion';
 import { useInView } from "react-intersection-observer";
 
@@ -105,7 +105,7 @@ const Home = () => {
         y:200
       })
     }
-  },[inView])
+  },[inView, animation])
 
   return (
     <motion.div initial='initial' animate='animate'>
