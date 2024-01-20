@@ -1,48 +1,62 @@
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
-import { urls } from "../../config";
-import axiosInstance from "../../axios_instance";
-import { MyTextInput, MySelect, MyTextArea } from "../../components/Inputs";
+import { urls } from "../../../config";
+import axiosInstance from "../../../axios_instance";
+import { MyTextInput, MySelect, MyTextArea } from "../../../components/Inputs";
 import {
   JOB_LEVEL_CHOICES,
   EMPLOYMENT_TYPE_CHOICES,
   JOB_NATURE_CHOICES,
 } from "./Choices";
 
-const JobCreate = () => {
+const JobUpdate = () => {
   const navigate = useNavigate();
+  const { id } = useParams();
+  const [job, setJob] = useState(null);
 
-  const handleSubmit = (job) => {
+  useEffect(() => {
     axiosInstance
-      .post(urls.JOB_CREATE, job)
+      .get(urls.JOB_UPDATE.replace(":id", id))
       .then((res) => {
-        console.log("Job posted:", res.data);
-        navigate("/jobs/employer");
+        setJob(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, [id]);
+
+  if (!job) return <h3>Job Not Found</h3>;
+
+  const handleSubmit = (updatedJob) => {
+    axiosInstance
+      .put(`api/jobs/${id}/update/`, updatedJob)
+      .then((res) => {
+        console.log("Job updated:", res.data);
+        navigate(`/jobs/${id}`);
       })
       .catch((error) => console.log("Form submit error:", error));
   };
 
   return (
     <div className="contianer mx-5 p-5">
-      <h2 className="page-title text-center">Create new job</h2>
+      <h2 className="text-center page-title">Update job</h2>
 
       {/* Pass initial values, validation and submit funciton */}
       <Formik
         initialValues={{
-          title: "",
-          location: "",
-          no_of_vacancy: 1,
-          salary_range: "",
-          deadline: "",
-          job_level: "",
-          employment_type: "",
-          job_nature: "",
-          education_level: "",
-          experience_required: 0,
-          skill_required: "",
-          description: "",
+          title: job.title,
+          location: job.location,
+          no_of_vacancy: job.no_of_vacancy,
+          salary_range: job.salary_range,
+          deadline: job.deadline,
+          job_level: job.job_level,
+          employment_type: job.employment_type,
+          job_nature: job.job_nature,
+          education_level: job.education_level,
+          experience_required: job.experience_required,
+          skill_required: job.skill_required,
+          description: job.description,
         }}
         validationSchema={Yup.object({
           // Basic Information
@@ -63,8 +77,8 @@ const JobCreate = () => {
           //   Additional Description
           description: Yup.string(),
         })}
-        onSubmit={(job) => {
-          handleSubmit(job);
+        onSubmit={(updatedJob) => {
+          handleSubmit(updatedJob);
         }}
       >
         <Form className="p-4 border border-2">
@@ -145,7 +159,7 @@ const JobCreate = () => {
           />
 
           <button type="submit" className="btn btn-success">
-            Post
+            Update
           </button>
         </Form>
       </Formik>
@@ -153,4 +167,4 @@ const JobCreate = () => {
   );
 };
 
-export default JobCreate;
+export default JobUpdate;

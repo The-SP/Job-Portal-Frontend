@@ -1,15 +1,15 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
-import axiosInstance from "../../axios_instance";
-import AuthContext from "../../context/AuthContext";
-import { urls } from "../../config";
+import axiosInstance from "../../../axios_instance";
+import AuthContext from "../../../context/AuthContext";
+import { urls } from "../../../config";
 
 const Bookmark = ({ jobID, jobType }) => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const [isBookmarked, setIsBookmarked] = useState(jobType === 'BOOKMARK');
+  const [isBookmarked, setIsBookmarked] = useState(jobType === "BOOKMARK");
 
   const addBookmark = (jobID) => {
     if (!user) {

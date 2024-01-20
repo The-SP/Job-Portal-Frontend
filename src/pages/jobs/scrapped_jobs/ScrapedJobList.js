@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import axiosInstance from "../../axios_instance";
+import axiosInstance from "../../../axios_instance";
 import ScrapedJobItem from "./ScrapedJobItem";
-import Pagination from "./Pagination";
-import { urls } from "../../config";
-import Spinner from "../../components/Spinner";
+import Pagination from "../list/Pagination";
+import { urls } from "../../../config";
+import Spinner from "../../../components/Spinner";
 
 const ScrapedJobList = () => {
   const [jobs, setJobs] = useState([]);
@@ -16,7 +16,7 @@ const ScrapedJobList = () => {
     axiosInstance
       .get(urls.JOB_SCRAPED)
       .then((res) => {
-        console.log("Total jobs fetched:", (res.data).length);
+        console.log("Total jobs fetched:", res.data.length);
         setJobs(res.data);
         setFilteredJobs(res.data);
       })
@@ -26,7 +26,9 @@ const ScrapedJobList = () => {
   //Get current posts
   const indexofLastJob = currentPage * jobsPerPage;
   const indexofFirstJob = indexofLastJob - jobsPerPage;
-  const currentJobs = filteredJobs?filteredJobs.slice(indexofFirstJob, indexofLastJob):[];
+  const currentJobs = filteredJobs
+    ? filteredJobs.slice(indexofFirstJob, indexofLastJob)
+    : [];
 
   //change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
@@ -35,7 +37,7 @@ const ScrapedJobList = () => {
   const handleSearchChange = (event) => {
     const searchTerm = event.target.value.toLowerCase();
     setSearchTerm(searchTerm);
-  
+
     if (searchTerm === "") {
       setFilteredJobs(jobs);
     } else {
@@ -61,12 +63,18 @@ const ScrapedJobList = () => {
           value={searchTerm}
           onChange={handleSearchChange}
         />
-        <div className="icon-search"><i class="bi bi-search"></i></div>
+        <div className="icon-search">
+          <i class="bi bi-search"></i>
+        </div>
       </div>
       {currentJobs.map((job, index) => {
         return <ScrapedJobItem key={index} job={job} />;
       })}
-      <Pagination jobsPerPage={jobsPerPage} totalJobs={filteredJobs.length} paginate={paginate} />
+      <Pagination
+        jobsPerPage={jobsPerPage}
+        totalJobs={filteredJobs.length}
+        paginate={paginate}
+      />
     </div>
   );
 };

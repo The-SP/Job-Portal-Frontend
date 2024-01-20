@@ -1,4 +1,4 @@
-import JobListComponent from "./JobListComponent";
+import JobListComponent from "../list/JobListComponent";
 
 const BookmarkJobList = () => {
   return (

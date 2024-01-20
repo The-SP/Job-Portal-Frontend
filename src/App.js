@@ -20,17 +20,17 @@ import EmployerProfileUpdate from "./pages/profile/EmployerProfileUpdate";
 import CompanyProfile from "./pages/profile/CompanyProfile";
 import ApplicantProfile from "./pages/profile/ApplicantProfile";
 // Jobs
-import JobList from "./pages/jobs/JobList";
-import JobCreate from "./pages/jobs/JobCreate";
-import JobDetail from "./pages/jobs/JobDetail";
-import JobUpdate from "./pages/jobs/JobUpdate";
-import JobDelete from "./pages/jobs/JobDelete";
-import EmployerJobList from "./pages/jobs/EmployerJobList";
-import ScrapedJobList from "./pages/jobs/ScrapedJobList";
+import JobList from "./pages/jobs/list/JobList";
+import JobCreate from "./pages/jobs/crud/JobCreate";
+import JobDetail from "./pages/jobs/crud/JobDetail";
+import JobUpdate from "./pages/jobs/crud/JobUpdate";
+import JobDelete from "./pages/jobs/crud/JobDelete";
+import EmployerJobList from "./pages/jobs/employer/EmployerJobList";
+import ScrapedJobList from "./pages/jobs/scrapped_jobs/ScrapedJobList";
 // Bookmarked Jobs
-import BookmarkJobList from "./pages/jobs/BookmarkList";
+import BookmarkJobList from "./pages/jobs/bookmarks/BookmarkList";
 // Recommended Jobs
-import RecommendedJobList from "./pages/jobs/RecommendedJobList";
+import RecommendedJobList from "./pages/jobs/list/RecommendedJobList";
 // Job-Applications
 import SeekerApplicationsList from "./pages/job_applications/SeekerApplications";
 import JobApplicationsList from "./pages/job_applications/JobApplications";

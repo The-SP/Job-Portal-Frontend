@@ -53,46 +53,40 @@ const Pagination = ({ jobsPerPage, totalJobs, paginate }) => {
       <nav aria-label="Page navigation example">
         <ul className="pagination">
           <li className={"page-item" + (currentPage === 1 ? " disabled" : "")}>
-            <a
+            <button
               className="page-link"
-              href="#"
               aria-label="Previous"
               onClick={() => beforePaginate(currentPage - 1)}
             >
               <span aria-hidden="true">&laquo;</span>
-            </a>
+            </button>
           </li>
           {pageNumbers.map((number, index) => (
             <li
               key={index}
               className={
-                "page-item" + (currentPage === number ? " active" : "")
-                +(number==='...'?" disabled":"")
+                "page-item" +
+                (currentPage === number ? " active" : "") +
+                (number === "..." ? " disabled" : "")
               }
             >
-              <a
-                className="page-link"
-                href="#"
-                onClick={() => beforePaginate(number)}
-              >
+              <button className="page-link" onClick={() => beforePaginate(number)}>
                 {number}
-              </a>
+              </button>
             </li>
           ))}
           <li
             className={
-              "page-item" +
-              (currentPage === totalPages ? " disabled" : "")
+              "page-item" + (currentPage === totalPages ? " disabled" : "")
             }
           >
-            <a
+            <button
               className="page-link"
-              href="#"
               aria-label="Next"
               onClick={() => beforePaginate(currentPage + 1)}
             >
               <span aria-hidden="true">&raquo;</span>
-            </a>
+            </button>
           </li>
         </ul>
       </nav>

@@ -1,9 +1,8 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import "./jobs.css";
 import { useInView } from "react-intersection-observer";
 import { motion, useAnimation } from "framer-motion";
-import Bookmark from "./Bookmark";
+import Bookmark from "../bookmarks/Bookmark";
 
 const JobItem = ({ job, jobType }) => {
   const { ref, inView } = useInView();

@@ -1,12 +1,10 @@
 import { useEffect, useState, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 
-import AuthContext from "../../context/AuthContext";
+import AuthContext from "../../../context/AuthContext";
 
-import axiosInstance from "../../axios_instance";
-import { urls } from "../../config";
-
-import "./jobs.css";
+import axiosInstance from "../../../axios_instance";
+import { urls } from "../../../config";
 
 const JobDetail = () => {
   const { user } = useContext(AuthContext);
@@ -147,7 +145,7 @@ const JobDetail = () => {
                     {" "}
                     <Link
                       to={`/profile/employer/${job.posted_by}`}
-                      style={{textDecoration: "none"}}
+                      style={{ textDecoration: "none" }}
                     >
                       {job.company.company_name}{" "}
                     </Link>

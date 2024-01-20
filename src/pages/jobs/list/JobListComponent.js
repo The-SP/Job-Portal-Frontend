@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import axiosInstance from "../../axios_instance";
-import { urls } from "../../config";
-import Spinner from "../../components/Spinner";
-import Pagination from "../jobs/Pagination";
+import axiosInstance from "../../../axios_instance";
+import { urls } from "../../../config";
+import Spinner from "../../../components/Spinner";
+import Pagination from "./Pagination";
 import JobItem from "./JobItem";
-import "../jobs/jobs.css";
+import "../jobs.css";
 
 const JobListComponent = ({ jobType }) => {
   let jobListUrl, pageTitle;
