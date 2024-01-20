@@ -5,7 +5,7 @@ import { useInView } from "react-intersection-observer";
 import { motion, useAnimation } from "framer-motion";
 import Bookmark from "./Bookmark";
 
-const JobItem = ({ job }) => {
+const JobItem = ({ job, jobType }) => {
   const { ref, inView } = useInView();
   const animation = useAnimation();
 
@@ -25,7 +25,7 @@ const JobItem = ({ job }) => {
         y: 40,
       });
     }
-  }, [inView]);
+  }, [inView, animation]);
 
   return (
     <motion.div ref={ref} animate={animation}>
@@ -66,9 +66,23 @@ const JobItem = ({ job }) => {
               <span className="fw-bold">Skills:</span>
               <span className="lead"> {job.skill_required}</span>
             </div>
+
+            {/* Display description if it's Recommendations page */}
+            {jobType === "RECOMMENDED" && (
+              <div className="small text-muted">
+                {job.description.substring(0, 250)}...
+              </div>
+            )}
           </div>
 
           <div className="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
+            {/* Display similarity score if it's Recommendations page */}
+            {jobType === "RECOMMENDED" && (
+              <div className="float-end btn btn-primary mb-3">
+                {job.similarity_scores} %
+              </div>
+            )}
+
             <div className="d-flex align-items-center mb-3">
               <Bookmark jobID={job.id} />
 
@@ -78,7 +92,9 @@ const JobItem = ({ job }) => {
             </div>
             <small className="text-truncate">
               <i className="far fa-calendar-alt text-success me-2"></i>Deadline:{" "}
-              {job.deadline_remaining}
+              {jobType === "RECOMMENDED"
+                ? job.deadline
+                : job.deadline_remaining}
             </small>
           </div>
         </div>

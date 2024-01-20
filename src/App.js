@@ -28,7 +28,7 @@ import JobDelete from "./pages/jobs/JobDelete";
 import EmployerJobList from "./pages/jobs/EmployerJobList";
 import ScrapedJobList from "./pages/jobs/ScrapedJobList";
 // Recommended Jobs
-import RecommendedJobList from "./pages/recommender/RecommendedJobList";
+import RecommendedJobList from "./pages/jobs/RecommendedJobList";
 // Job-Applications
 import SeekerApplicationsList from "./pages/job_applications/SeekerApplications";
 import JobApplicationsList from "./pages/job_applications/JobApplications";

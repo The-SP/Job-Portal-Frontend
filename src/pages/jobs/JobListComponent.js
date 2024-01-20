@@ -1,12 +1,21 @@
 import { useEffect, useState } from "react";
 import axiosInstance from "../../axios_instance";
-import Spinner from "../../components/Spinner";
 import { urls } from "../../config";
+import Spinner from "../../components/Spinner";
 import Pagination from "../jobs/Pagination";
-import RecommendedJobItem from "./RecommendedJobItem";
-import '../jobs/jobs.css'
+import JobItem from "./JobItem";
+import "../jobs/jobs.css";
 
-const RecommendedJobList = () => {
+const JobListComponent = ({ jobType }) => {
+  let jobListUrl, pageTitle;
+  if (jobType === "ALL") {
+    jobListUrl = urls.JOB_LIST;
+    pageTitle = "All Jobs List";
+  } else if (jobType === "RECOMMENDED") {
+    jobListUrl = urls.JOB_RECOMMENDED;
+    pageTitle = "Jobs Recommended for you";
+  }
+
   const [jobs, setJobs] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [jobsPerPage] = useState(10);
@@ -15,28 +24,27 @@ const RecommendedJobList = () => {
 
   useEffect(() => {
     axiosInstance
-      .get(urls.JOB_RECOMMENDED, {
-        timeout: 30000, // 30sec as recommendation algo takes lot of time
-      })
+      .get(jobListUrl)
       .then((res) => {
-        console.table("Jobs:", res.data);
+        // console.table("Jobs:", res.data);
+        console.log(`Fetched ${res.data.length} jobs`);
         setJobs(res.data);
         setFilteredJobs(res.data);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [jobListUrl]);
 
-  //Get current posts
+  // Get current posts
   const indexofLastJob = currentPage * jobsPerPage;
   const indexofFirstJob = indexofLastJob - jobsPerPage;
   const currentJobs = filteredJobs
     ? filteredJobs.slice(indexofFirstJob, indexofLastJob)
     : [];
 
-  //change page
+  // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  //Handle search input change
+  // Handle search input change
   const handleSearchChange = (event) => {
     const searchTerm = event.target.value.toLowerCase();
     setSearchTerm(searchTerm);
@@ -54,17 +62,13 @@ const RecommendedJobList = () => {
     }
   };
 
-  if (jobs.length === 0)
-    return (
-      <div className="text-center">
-        Running Recommender Engine...
-        <Spinner />
-      </div>
-    );
+  if (jobs.length === 0) {
+    return <Spinner />;
+  }
 
   return (
     <div className="container-fluid py-5 px-5">
-      <h2 className="text-center mb-5 page-title fs-1">Jobs Recommended for you</h2>
+      <h2 className="text-center mb-5 page-title fs-1">{pageTitle}</h2>
       <div className="search-box">
         <input
           type="text"
@@ -72,11 +76,13 @@ const RecommendedJobList = () => {
           value={searchTerm}
           onChange={handleSearchChange}
         />
-        <div className="icon-search"><i class="bi bi-search"></i></div>
+        <div className="icon-search">
+          <i className="bi bi-search"></i>
+        </div>
       </div>
-      {currentJobs.map((job, index) => {
-        return <RecommendedJobItem key={index} job={job} />;
-      })}
+      {currentJobs.map((job, index) => (
+        <JobItem key={index} job={job} jobType={jobType} />
+      ))}
       <Pagination
         jobsPerPage={jobsPerPage}
         totalJobs={filteredJobs.length}
@@ -86,4 +92,4 @@ const RecommendedJobList = () => {
   );
 };
 
-export default RecommendedJobList;
+export default JobListComponent;
