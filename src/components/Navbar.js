@@ -17,43 +17,40 @@ const Navbar = () => {
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
-          <i className="bi bi-person-circle me-1"></i>
-          Account
+          <span>
+            <i className="bi bi-person-circle me-1"></i>
+            Account
+          </span>
         </span>
         <ul className="dropdown-menu">
           <li className="nav-item">
             <Link className="nav-link" to="/profile/seeker">
-              Profile
+              <span>Profile</span>
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/jobs/recommendations">
+              <span>Recommendations</span>
             </Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/jobs/applications">
-              History
+              <span>History</span>
             </Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/jobs/bookmarks">
-              Bookmarks
+              <span>Bookmarks</span>
             </Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/logout">
-              Logout
+              <span>Logout</span>
             </Link>
           </li>
         </ul>
       </li>
     </ul>
-  );
-
-  const seekerMiddleLinks = () => (
-    <>
-      <li className="nav-item">
-        <Link className="nav-link" to="/jobs/recommendations">
-          Recommendations
-        </Link>
-      </li>
-    </>
   );
 
   const employerLinks = () => (
@@ -65,29 +62,29 @@ const Navbar = () => {
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
-          Hire
+          <span>Hire</span>
         </span>
         <ul className="dropdown-menu">
           <li>
             <Link className="dropdown-item" to="/jobs/create">
-              Create Job
+              <span>Create Job</span>
             </Link>
           </li>
           <li>
             <Link className="dropdown-item" to="/jobs/employer">
-              Your Jobs
+              <span>Your Jobs</span>
             </Link>
           </li>
         </ul>
       </li>
       <li className="nav-item">
         <Link className="nav-link" to="/profile/employer">
-          Profile
+          <span>Profile</span>
         </Link>
       </li>
       <li className="nav-item">
         <Link className="nav-link" to="/logout">
-          Logout
+          <span>Logout</span>
         </Link>
       </li>
     </ul>
@@ -97,11 +94,36 @@ const Navbar = () => {
     <>{user.is_employer ? employerLinks() : seekerLinks()}</>
   );
 
+  const publicLinks = () => (
+    <ul className="navbar-nav mx-auto">
+      <li className="nav-item">
+        <Link className="nav-link" to="/jobs">
+          <span>Jobs</span>
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link className="nav-link" to="/jobs/explore">
+          <span>Explore</span>
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link className="nav-link" to="/resume">
+          <span>Resume</span>
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link className="nav-link" to="/cover-letter">
+          <span>Cover Letter</span>
+        </Link>
+      </li>
+    </ul>
+  );
+
   const guestLinks = () => (
     <ul className="navbar-nav">
       <li className="nav-item">
         <Link className="nav-link" to="/login">
-          Login
+          <span>Login</span>
         </Link>
       </li>
       <li className="nav-item dropdown">
@@ -111,17 +133,17 @@ const Navbar = () => {
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
-          Sign Up
+          <span>Sign</span> Up
         </span>
         <ul className="dropdown-menu">
           <li>
             <Link className="dropdown-item" to="/signup">
-              Seeker
+              <span>Seeker</span>
             </Link>
           </li>
           <li>
             <Link className="dropdown-item" to="/signup-employer">
-              Employer
+              <span>Employer</span>
             </Link>
           </li>
         </ul>
@@ -155,29 +177,7 @@ const Navbar = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul className="navbar-nav mx-auto">
-            <li className="nav-item">
-              <Link className="nav-link" to="/jobs">
-                Jobs
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/jobs/explore">
-                Explore
-              </Link>
-            </li>
-            {user && !user.is_employer && seekerMiddleLinks()}
-            <li className="nav-item">
-              <Link className="nav-link" to="/resume">
-                Resume
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/cover-letter">
-                Cover Letter
-              </Link>
-            </li>{" "}
-          </ul>
+          {publicLinks()}
           {user ? authLinks() : guestLinks()}
         </div>
       </div>
