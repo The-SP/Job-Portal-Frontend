@@ -2,36 +2,33 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./jobs.css";
 import { useInView } from "react-intersection-observer";
-import {motion, useAnimation} from 'framer-motion';
+import { motion, useAnimation } from "framer-motion";
+import Bookmark from "./Bookmark";
 
 const JobItem = ({ job }) => {
+  const { ref, inView } = useInView();
+  const animation = useAnimation();
 
-  const {ref, inView}=useInView();
-  const animation= useAnimation();
-
-  useEffect(()=>{
-    if(inView){
+  useEffect(() => {
+    if (inView) {
       animation.start({
-        y:0,
-        transition:{
-          type:'spring',
-          duration:1,
-          bounce:0.3
-        }
-      })
+        y: 0,
+        transition: {
+          type: "spring",
+          duration: 1,
+          bounce: 0.3,
+        },
+      });
     }
-    if(!inView){
+    if (!inView) {
       animation.start({
-        y:40
-      })
+        y: 40,
+      });
     }
-  },[inView])
+  }, [inView]);
 
   return (
-    <motion.div
-      ref={ref}
-      animate={animation}
-    >
+    <motion.div ref={ref} animate={animation}>
       <div className="job-item p-4 mb-4">
         <div className="row g-4">
           <div className="col-sm-12 col-md-8 ps-4">
@@ -72,7 +69,9 @@ const JobItem = ({ job }) => {
           </div>
 
           <div className="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-            <div className="d-flex mb-3">
+            <div className="d-flex align-items-center mb-3">
+              <Bookmark jobID={job.id} />
+
               <Link to={`/jobs/${job.id}`} className="btn btn-outline-success">
                 View Job
               </Link>

@@ -16,9 +16,8 @@ const WeightsInput = ({ resumeRankings, setResumeRankings }) => {
       .map((weight) => Math.round(weight * 100))
       .reduce((sum, roundedWeight) => sum + roundedWeight, 0);
 
-    console.log(sumOfWeights);
-
     if (sumOfWeights !== 100) {
+      //   console.log(sumOfWeights);
       setShowAlert(true);
       return;
     } else {
