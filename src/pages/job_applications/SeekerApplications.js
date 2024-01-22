@@ -3,6 +3,7 @@ import axiosInstance from "../../utils/axios_instance";
 import { urls } from "../../utils/config";
 import ApplicationDelete from "./ApplicationDelete";
 import './jobapplication.css'
+import ApplicationStatusDisabled from "./ApplicationStatusDisabled";
 
 const SeekerApplicationsList = () => {
   const [applications, setApplications] = useState(null);
@@ -36,6 +37,7 @@ const SeekerApplicationsList = () => {
                   <th>Company</th>
                   <th>Applied Date</th>
                   <th>Resume</th>
+                  <th>Status</th>
                   <th>Delete</th>
                 </tr>
               </thead>
@@ -65,6 +67,9 @@ const SeekerApplicationsList = () => {
                         ) : (
                           "None"
                         )}
+                      </td>
+                      <td>
+                        <ApplicationStatusDisabled status={application.status} />
                       </td>
                       <td>
                         {/* Button trigger modal  */}

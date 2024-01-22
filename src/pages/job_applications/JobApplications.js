@@ -16,7 +16,7 @@ const JobApplicationsList = () => {
     axiosInstance
       .get(urls.JOB_APPLICATIONS_LIST.replace(":job_id", id))
       .then((res) => {
-        console.table("Job applications:", res.data);
+        // console.table("Job applications:", res.data);
         setApplications(res.data);
       })
       .catch((err) => console.log(err));
@@ -69,7 +69,7 @@ const JobApplicationsList = () => {
 
           {/* Download Excel File */}
           {isDownloading ? (
-            <button className="btn btn-primary" type="button" disabled >
+            <button className="btn btn-primary" type="button" disabled>
               <span
                 className="spinner-border spinner-border-sm"
                 aria-hidden="true"
@@ -82,6 +82,7 @@ const JobApplicationsList = () => {
               onClick={handleDownload}
             >
               Download Excel
+              <i className="bi bi-download ms-2"></i>
             </button>
           )}
 

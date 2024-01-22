@@ -1,3 +1,5 @@
+import ApplicationStatus from "../job_applications/ApplicationStatus";
+
 const ScoreTable = ({ resumeRankings }) => {
   return (
     <div className="whole-table">
@@ -19,6 +21,7 @@ const ScoreTable = ({ resumeRankings }) => {
                   <th>Skills Score</th>
                   <th>Total Score</th>
                   <th>Resume</th>
+                  <th>Status</th>
                 </tr>
               </thead>
               <tbody>
@@ -33,19 +36,25 @@ const ScoreTable = ({ resumeRankings }) => {
                     <td>{resume.skills_score}</td>
                     <td>{resume.total_score}</td>
                     <td>
-                        {resume.resume_url ? (
-                          <a
-                            href={`http://127.0.0.1:8000/${resume.resume_url}`}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="btn btn-sm btn-success text-light"
-                          >
-                            Resume
-                          </a>
-                        ) : (
-                          "None"
-                        )}
-                      </td>
+                      {resume.resume_url ? (
+                        <a
+                          href={`http://127.0.0.1:8000/${resume.resume_url}`}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="btn btn-sm btn-success text-light"
+                        >
+                          Resume
+                        </a>
+                      ) : (
+                        "None"
+                      )}
+                    </td>
+                    <td>
+                      <ApplicationStatus
+                        status={resume.status}
+                        applicationID={resume.id}
+                      />
+                    </td>
                   </tr>
                 ))}
               </tbody>
