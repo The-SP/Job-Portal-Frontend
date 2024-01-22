@@ -60,31 +60,33 @@ const JobApplicationsList = () => {
           <div className="display-6 mb-4 text-center page-title fs-1">
             Job Applications for {applications[0].job_title}
           </div>
-          <Link
-            to={`/jobs/${id}/applicant-ranking`}
-            className="btn btn-outline-success mx-5"
-          >
-            Parse resumes and Rank Applicants
-          </Link>
-
-          {/* Download Excel File */}
-          {isDownloading ? (
-            <button className="btn btn-primary" type="button" disabled>
-              <span
-                className="spinner-border spinner-border-sm"
-                aria-hidden="true"
-              ></span>
-              <span role="status">Downloading...</span>
-            </button>
-          ) : (
-            <button
-              className="btn btn-outline-primary mx-3"
-              onClick={handleDownload}
+          <div className="ms-2 ms-md-4">
+            <Link
+              to={`/jobs/${id}/applicant-ranking`}
+              className="btn btn-outline-success me-2"
             >
-              Download Excel
-              <i className="bi bi-download ms-2"></i>
-            </button>
-          )}
+              Parse resumes and Rank Applicants
+            </Link>
+
+            {/* Download Excel File */}
+            {isDownloading ? (
+              <button className="btn btn-primary" type="button" disabled>
+                <span
+                  className="spinner-border spinner-border-sm"
+                  aria-hidden="true"
+                ></span>
+                <span role="status">Downloading...</span>
+              </button>
+            ) : (
+              <button
+                className="btn btn-outline-primary"
+                onClick={handleDownload}
+              >
+                Download Excel
+                <i className="bi bi-download ms-2"></i>
+              </button>
+            )}
+          </div>
 
           <div className="table__body">
             <table>

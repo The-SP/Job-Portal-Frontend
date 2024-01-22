@@ -19,6 +19,7 @@ const JobListComponent = ({ jobType }) => {
     pageTitle = "Saved Jobs";
   }
 
+  const [isLoading, setIsLoading] = useState(false);
   const [jobs, setJobs] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [jobsPerPage] = useState(10);
@@ -26,6 +27,7 @@ const JobListComponent = ({ jobType }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
+    setIsLoading(true);
     axiosInstance
       .get(jobListUrl)
       .then((res) => {
@@ -34,7 +36,8 @@ const JobListComponent = ({ jobType }) => {
         setJobs(res.data);
         setFilteredJobs(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => setIsLoading(false));
   }, [jobListUrl]);
 
   // Get current posts
@@ -65,8 +68,15 @@ const JobListComponent = ({ jobType }) => {
     }
   };
 
+  if (isLoading) return <Spinner />;
+
   if (jobs.length === 0) {
-    return <Spinner />;
+    return (
+      <div className="container-fluid py-5 px-5">
+        <h2 className="text-center mb-5 page-title fs-1">{pageTitle}</h2>
+        <h4 className="text-center fs-2">No jobs found!</h4>
+      </div>
+    );
   }
 
   return (
