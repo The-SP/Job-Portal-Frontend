@@ -11,7 +11,7 @@ const EmployerJobList = () => {
     axiosInstance
       .get(urls.EMPLOYER_JOBS)
       .then((res) => {
-        console.table("Jobs:", res.data);
+        // console.table("Jobs:", res.data);
         setJobs(res.data);        
       })
       .catch((err) => console.log(err));

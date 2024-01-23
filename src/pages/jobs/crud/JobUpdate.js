@@ -54,6 +54,7 @@ const JobUpdate = () => {
           employment_type: job.employment_type,
           job_nature: job.job_nature,
           education_level: job.education_level,
+          education_field_of_study: job.education_field_of_study,
           experience_required: job.experience_required,
           skill_required: job.skill_required,
           description: job.description,
@@ -72,6 +73,7 @@ const JobUpdate = () => {
           job_nature: Yup.string().required("Job location is required"),
           //   Specification
           education_level: Yup.string(),
+          education_field_of_study: Yup.string(),
           experience_required: Yup.number().min(0),
           skill_required: Yup.string(),
           //   Additional Description
@@ -138,6 +140,12 @@ const JobUpdate = () => {
             name="education_level"
             type="text"
             placeholder="Enter required education level (e.g. Bachelor's Degree, Master's Degree)"
+          />
+          <MyTextInput
+            label="Education Field of Study (Major)"
+            name="education_field_of_study"
+            type="text"
+            placeholder="Enter required education field of study (e.g. Computer Engineering, Data Science)"
           />
           <MyTextInput
             label="Experience Required"

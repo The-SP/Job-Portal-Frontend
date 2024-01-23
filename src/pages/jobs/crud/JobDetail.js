@@ -86,8 +86,10 @@ const JobDetail = () => {
                   <ul className="list-unstyled">
                     <li>
                       <i className="fa fa-angle-right text-primary me-2"></i>At
-                      least a {job.education_level} holder in computer science,
-                      engineering, or information technology.
+                      least a {job.education_level} degree holder{" "}
+                      {job.education_field_of_study &&
+                        `in ${job.education_field_of_study}, or related field`}
+                      .
                     </li>
                     <li>
                       <i className="fa fa-angle-right text-primary me-2"></i>A
